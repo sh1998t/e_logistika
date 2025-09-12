@@ -1,0 +1,20 @@
+targets:
+  $default:
+    builders:
+      injectable_generator:injectable_builder:
+        enabled: true
+        options:
+          auto_register: true
+      json_serializable:json_serializable:
+        enabled: true
+        options:
+          explicit_to_json: true
+          include_if_null: false
+      retrofit_generator:retrofit_generator:
+        enabled: true
+
+
+
+
+
+
