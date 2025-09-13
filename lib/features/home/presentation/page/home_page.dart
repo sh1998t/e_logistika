@@ -1,114 +1,139 @@
-import 'package:e_logistika/core/constants/app_coler.dart';
-import 'package:e_logistika/features/auth/presentation/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../core/constants/app_coler.dart';
+import '../widget/app_bar_widget.dart';
 import '../widget/button_widget.dart';
+import '../widget/cancel_widget.dart';
+import '../widget/history_widget.dart';
+import '../widget/order_widget.dart';
+import '../widget/tab_bar_widget.dart';
+
 
 class HomePage extends StatefulWidget {
+  static const String name ='home_page';
+  static const String path ='/home_page';
   const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  late TabController _tabController;
+  int _currentIndex = 0;
+  bool _showActiveOrders = false;
+  int _selectedTabIndex = 0;
+
+  final List<Map<String, dynamic>> _tabs = [
+    {
+      "title": "Активный заказ",
+      "icon": 'assets/svg/check.svg',
+      "color": Colors.green,
+    },
+    {
+      "title": "История",
+      "icon": 'assets/svg/symbols_history.svg',
+      "color": Colors.orange,
+    },
+    {
+      "title": "Отмене",
+      "icon": 'assets/svg/cancel.svg',
+      "color": Colors.red,
+    },
+
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      backgroundColor: Color(0xFFEEF1F5),
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: false,
-        elevation: 0,
-        backgroundColor: Colors.white,
-        title: Row(
-          children: [
-            const CircleAvatar(
-              radius: 20,
-            ),
-            const SizedBox(width: 10),
+      backgroundColor: AppColor.backgroundColor,
+      appBar: const CustomAppBar(),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
+        child: _showActiveOrders ? _buildActiveOrdersView() : _buildCreateOrderView(),
+      ),
+    );
+  }
 
-            // Ism va rol
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Shavkat",
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w600,
-                    color: AppColor.black,
-                  ),
-                ),
-                Text(
-                  "Клиент",
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.grey,
-                  ),
-                ),
-              ],
-            ),
-          ],
+  Widget _buildCreateOrderView() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            'assets/images/order.png',
+            width: 298.w,
+            height: 301.h,
+            fit: BoxFit.fill,
+          ),
+          SizedBox(height: 80.h),
+          ButtonWidget(
+            color1: Color(0xFF185CAF),
+            color2: Color(0xFF104280),
+            title: '+ Создать новый заказ',
+            onPressed: () {
+              setState(() {
+                _showActiveOrders = true;
+              });
+            },
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildActiveOrdersView() {
+    return Column(
+      children: [
+        CustomTabBar(
+          selectedIndex: _selectedTabIndex,
+          onTabChanged: (index) {
+            setState(() {
+              _selectedTabIndex = index;
+            });
+          },
+          tabs: _tabs,
         ),
-        actions: [
-          Stack(
+        Expanded(
+          child: IndexedStack(
+            index: _selectedTabIndex,
             children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.notifications,
-                  color: Color(0xFF0D6EFD),
-                  size: 28,
-                ),
+              const ActiveOrdersTab(),
+              HistoryTab(
+                onBackPressed: () {
+                  setState(() {
+                    _showActiveOrders = false;
+                  });
+                },
               ),
-              Positioned(
-                right: 8,
-                top: 8,
-                child: Container(
-                  padding: const EdgeInsets.all(3),
-                  decoration: const BoxDecoration(
-                    color: Colors.orange,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Text(
-                    "2", // notification soni
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
+              CanceledTab(
+                onBackPressed: () {
+                  setState(() {
+                    _showActiveOrders = false;
+                  });
+                },
               ),
+              const Center(child: Text("Yangi tab qo'shildi")),
             ],
           ),
-        ],
-      )
-        ,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal:20.w  ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset('assets/images/order.png',
-              width: 298.w,
-              height: 301.h,
-              fit: BoxFit.fill,),
-            SizedBox(height: 80.h,),
-            ButtonWidget(
-              color1: Color(0xFF185CAF),
-           color2: Color(0xFF104280),
-            title: '+ Создать новый заказ',
-                onPressed: (){
-
-            })
-          ],
         ),
-      )
+      ],
     );
   }
 }

@@ -3,6 +3,8 @@ class RoutersName{
   static const String loginPath = '/login_page';
   static const String mainName = 'main_page';
   static const String mainPath = '/main_page';
+  static const String homeName = 'home_page';
+  static const String homePath = '/home_page';
   static const String navigationName = 'navigation';
   static const String navigationPath = '/navigation';
 }

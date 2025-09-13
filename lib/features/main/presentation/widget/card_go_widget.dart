@@ -17,8 +17,13 @@ class CargoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 19.w, vertical: 16.h),
+      margin: EdgeInsets.only(bottom: 10.h),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.r),
+            color: AppColor.white
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -26,6 +31,7 @@ class CargoCard extends StatelessWidget {
           Column(
             children: [
               // Start point
+              SizedBox(height: 5.h,),
               Container(
                 width: 10.r,
                 height: 10.r,
@@ -34,14 +40,14 @@ class CargoCard extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
               ),
-
+    
               // Vertical line
               Container(
                 width: 2.w,
                 height: 20.h,
                 color: AppColor.black.withValues(alpha: 0.3),
               ),
-
+    
               // End point
               Container(
                 width: 10.r,
@@ -54,7 +60,7 @@ class CargoCard extends StatelessWidget {
             ],
           ),
           const SizedBox(width: 12),
-
+    
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,7 +92,7 @@ class CargoCard extends StatelessWidget {
                               color: Colors.grey,
                             ),
                           ),
-
+    
                         ],
                       ),
                     ),
@@ -118,8 +124,6 @@ class CargoCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 20.h),
-
 
               ],
             ),

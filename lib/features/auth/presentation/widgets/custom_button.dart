@@ -11,6 +11,7 @@ class AppButton extends StatelessWidget {
   final VoidCallback onPressed;
   final double? height;
   final double? width;
+  final Size? size;
   final bool? isLoading;
   final VoidCallback? onLongPress;
   final TextStyle? titleStyle;
@@ -23,6 +24,7 @@ class AppButton extends StatelessWidget {
     required this.onPressed,
     this.height,
     this.width,
+    this.size,
     this.isLoading,
     this.onLongPress,
     this.titleStyle,
@@ -38,7 +40,8 @@ class AppButton extends StatelessWidget {
         onPressed: onPressed,
         onLongPress: onLongPress,
         style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.all(0),
+          minimumSize: size,
+            padding:  EdgeInsets.symmetric(horizontal: 4.w),
             backgroundColor: backgroundColor,
             elevation: 0,
             shape: RoundedRectangleBorder(

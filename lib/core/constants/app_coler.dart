@@ -46,4 +46,9 @@ class AppColor{
   static  Color  darkEggplant = Color.fromRGBO(51, 34, 51, 0.1);
   static  Color  darkEggplantColor = Color.fromRGBO(51, 34, 51, 0.7);
   static const Color darkGray = Color(0xFF323232);
+  static const Color backgroundColor = Color(0xFFEEF1F5);
+  static  Color buttonColor = Color(0xFF00FF47).withValues(alpha: 0.25);
+  static  Color buttonColor2 = Color(0xFFFAA300).withValues(alpha: 0.25);
+  static  Color titleColor = Color(0xFF00BB27);
+  static  Color titleColor2 = Color(0xFFFAA300);
 }
