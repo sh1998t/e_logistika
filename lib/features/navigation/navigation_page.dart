@@ -1,17 +1,19 @@
+import 'package:e_logistika/features/creation/presentation/page/creation_page/creation_map_page.dart';
 import 'package:e_logistika/features/home/presentation/page/home_page.dart';
 import 'package:e_logistika/features/navigation/widget/bottom_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/constants/app_coler.dart';
 import '../../core/utils/app_preference.dart';
-import '../profile/presentation/pages/profile_page.dart';
+import '../profile/presentation/page/profile_page.dart';
 
 class NavigationPage extends StatefulWidget {
   static const String name = 'navigation';
   static const String path = '/navigation';
   final String? pageIndex;
 
-  const NavigationPage({super.key, this.pageIndex});
+  const NavigationPage({super.key, this.pageIndex, });
 
   @override
   State<NavigationPage> createState() => _NavigationPageState();
@@ -27,7 +29,7 @@ class _NavigationPageState extends State<NavigationPage> {
     super.initState();
   }
 
-  List pages = [HomePage(), HomePage(), HomePage(), ProfilePage()];
+  List pages = [HomePage(), CreationMapPage(), HomePage(), ProfilePage()];
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,6 @@ class _NavigationPageState extends State<NavigationPage> {
       resizeToAvoidBottomInset: true,
       body: pages[index],
       bottomNavigationBar: Container(
-        
         decoration:  BoxDecoration(
           border: Border(top: BorderSide(color: AppColor.white)),
           boxShadow: [
@@ -49,12 +50,15 @@ class _NavigationPageState extends State<NavigationPage> {
           ],
         ),
         child: BottomAppBar(
+          padding: EdgeInsets.only(bottom: 10.h),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const SizedBox(),
               BottomItem(
-                icon:'assets/svg/home.svg',
+                icon:(index==0)
+                    ?'assets/svg/home_active.svg'
+                    :'assets/svg/home.svg',
                 color:
                 index == 0
                     ? AppColor.controllerActiveColor
@@ -67,7 +71,9 @@ class _NavigationPageState extends State<NavigationPage> {
                 title:'Home',
               ),
               BottomItem(
-                icon: 'assets/svg/creation.svg',
+                icon: (index==1)
+                    ?'assets/svg/creation_active.svg'
+                    :'assets/svg/creation.svg',
                 color:
                 index == 1
                     ? AppColor.controllerActiveColor
@@ -80,7 +86,7 @@ class _NavigationPageState extends State<NavigationPage> {
                 title: 'Creation',
               ),
               BottomItem(
-                icon: 'assets/svg/chat.svg',
+                icon: (index ==2)?'assets/svg/chat_active.svg':'assets/svg/chat.svg',
                 color:
                 index == 2
                     ? AppColor.controllerActiveColor
@@ -93,7 +99,9 @@ class _NavigationPageState extends State<NavigationPage> {
                 title: 'Chat',
               ),
               BottomItem(
-                icon: 'Assets.images.svg.profileCircle.path',
+                icon: (index==3)
+                    ?'assets/svg/chat_active.svg'
+                    :'assets/svg/chat.svg',
                 color:
                 index == 3
                     ? AppColor.controllerActiveColor
@@ -103,7 +111,7 @@ class _NavigationPageState extends State<NavigationPage> {
 
                   setState(() {});
                 },
-                title: 'Strings.profile',
+                title: 'profile',
               ),
 
               const SizedBox(),

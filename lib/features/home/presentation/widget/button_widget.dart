@@ -18,6 +18,10 @@ class ButtonWidget extends StatelessWidget {
   final TextStyle? titleStyle;
   final BorderRadiusGeometry? borderRadius;
 
+  /// Yangi qo‘shilgan parametrlari:
+  final Widget? leadingSvg;
+  final Widget? trailingSvg;
+
   const ButtonWidget({
     super.key,
     required this.title,
@@ -33,6 +37,8 @@ class ButtonWidget extends StatelessWidget {
     this.onLongPress,
     this.titleStyle,
     this.borderRadius,
+    this.leadingSvg,
+    this.trailingSvg,
   });
 
   @override
@@ -73,18 +79,36 @@ class ButtonWidget extends StatelessWidget {
                 ? const CircularProgressIndicator.adaptive(
               backgroundColor: Colors.white,
             )
-                : Text(
-              title,
-              style: titleStyle ??
-                  Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: titleColor ?? AppColor.white,
-                    fontSize: 17.sp,
+                : Padding(
+                  padding:  EdgeInsets.symmetric(horizontal: 15.w),
+                  child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                  if (leadingSvg != null) ...[
+                    leadingSvg!,
+                    SizedBox(width: 8.w),
+                  ],
+                  Text(
+                    title,
+                    style: titleStyle ??
+                        Theme.of(context)
+                            .textTheme
+                            .bodyMedium
+                            ?.copyWith(
+                          color: titleColor ?? AppColor.white,
+                          fontSize: 17.sp,
+                        ),
                   ),
-            ),
+                  if (trailingSvg != null) ...[
+                    SizedBox(width: 8.w),
+                    trailingSvg!,
+                  ],
+                                ],
+                              ),
+                ),
           ),
         ),
       ),
     );
   }
 }
-

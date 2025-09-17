@@ -1,3 +1,4 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -7,6 +8,7 @@ final GetIt getIt = GetIt.instance;
 
 @InjectableInit()
 Future<void> initDi() async {
+
   // Register SharedPreferences manually
   final sharedPreferences = await SharedPreferences.getInstance();
   getIt.registerSingleton<SharedPreferences>(sharedPreferences);
@@ -21,4 +23,6 @@ Future<void> disposeDi() async {
 abstract class RegisterModule {
   @preResolve
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
+  @lazySingleton
+  FlutterSecureStorage get secureStorage => const FlutterSecureStorage();
 }

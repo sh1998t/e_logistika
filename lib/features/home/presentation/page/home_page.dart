@@ -1,8 +1,11 @@
+import 'package:e_logistika/core/router/routers_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/constants/app_coler.dart';
+import '../../../../gen/assets.gen.dart';
 import '../widget/app_bar_widget.dart';
 import '../widget/button_widget.dart';
 import '../widget/cancel_widget.dart';
@@ -88,9 +91,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             color2: Color(0xFF104280),
             title: '+ Создать новый заказ',
             onPressed: () {
-              setState(() {
-                _showActiveOrders = true;
-              });
+              // setState(() {
+              //   _showActiveOrders = true;
+              // });
+              context.pushNamed(RoutersName.creationName, pathParameters: {'pageIndex': '1'});
+
+
             },
           )
         ],

@@ -1,12 +1,14 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/di/injection.dart';
 import 'core/router/app_router.dart';
 import 'core/utils/theme.dart';
 import 'features/main/presentation/pages/main_page.dart';
+import 'features/my_card/data/bloc/add_card_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,14 +40,17 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return MaterialApp.router(
-          title: 'Flutter Demo',
-          theme: AppTheme.lightTheme,
-          routerConfig: AppRouter.router,
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
-        );;
+        return MultiBlocProvider(providers: [
+          BlocProvider(create: (_) => CardCubit()),        ],
+
+            child: MaterialApp.router(
+              title: 'Flutter Demo',
+              theme: AppTheme.lightTheme,
+              routerConfig: AppRouter.router,
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
+            ));
       },
     );
   }

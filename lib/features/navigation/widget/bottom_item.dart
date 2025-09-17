@@ -18,29 +18,30 @@ class BottomItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: IconButton(
-        onPressed: function,
-        icon: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SvgPicture.asset(
-              icon,
-              colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
-              height: 24.h,
-            ),
-            Flexible(
-              child: Text(
-                title,
-                style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                  color: color,
-                ),
-                textAlign: TextAlign.center,
+    return IconButton(
+      onPressed: function,
+      icon: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            icon,
+            height: 22.r,
+            width: 22.r,
+          ),
+          Flexible(
+            child: Text(
+              title,
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w400,
+                color: color,
               ),
+              textAlign: TextAlign.center,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
