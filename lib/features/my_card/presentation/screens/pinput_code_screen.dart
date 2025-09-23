@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:e_logistika/features/home/presentation/widget/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -179,7 +180,7 @@ class _PinPutCodeScreenState extends State<PinPutCodeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "confirmation",
+                "Подтверждение",
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   fontSize: 32.sp,
                   fontWeight: FontWeight.bold,
@@ -187,7 +188,7 @@ class _PinPutCodeScreenState extends State<PinPutCodeScreen> {
                 ),
               ),
               Text(
-                "theCodeHasBeenNumber",
+                "Код был отправлен на номер  91 354**99",
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   fontSize: 15.sp,
                   fontWeight: FontWeight.w400,
@@ -234,34 +235,20 @@ class _PinPutCodeScreenState extends State<PinPutCodeScreen> {
                 ),
               ),
               SizedBox(height: 15.h),
-              OutlinedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    context.read<CardCubit>().addCard(widget.card!);
-                    int count = 0;
-                    Navigator.popUntil(context, (route) {
-                      return count++ == 2;
-                    });
-                    showProgressSnackBar(context);
-                  }
-                },
-                style: OutlinedButton.styleFrom(
-                  minimumSize: Size(343.w, 50.h),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                  ),
-                  side: BorderSide.none,
-                  backgroundColor: AppColor.containerColorBiometrics,
-                ),
-                child: Text(
-                  "continure",
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    fontSize: 17.sp,
-                    color: AppColor.black,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
+
+            ButtonWidget(title: "Продолжить",
+              color1: Color(0xFF185CAF),
+              color2: Color(0xFF104280),
+              onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                context.read<CardCubit>().addCard(widget.card!);
+                int count = 0;
+                Navigator.popUntil(context, (route) {
+                  return count++ == 2;
+                });
+                showProgressSnackBar(context);
+              }
+            },),
               SizedBox(height: 5.h),
               (secondsLeft != 0)
                   ? Row(

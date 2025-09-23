@@ -64,7 +64,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
-      appBar: const CustomAppBar(),
+      appBar: AppBar(
+        toolbarHeight: 70.h,
+        automaticallyImplyLeading: false,
+        title: ButtonWidget(
+          width: 337.w,
+            height: 46.h,
+            color1: Color(0xFF185CAF),
+            color2: Color(0xFF104280),
+            leadingSvg: SvgPicture.asset(Assets.svg.singin.path),
+
+            title: 'Вход в Е-логистика', onPressed: (){}),
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
         child: _showActiveOrders ? _buildActiveOrdersView() : _buildCreateOrderView(),
@@ -87,8 +98,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ),
           SizedBox(height: 80.h),
           ButtonWidget(
-            color1: Color(0xFF185CAF),
-            color2: Color(0xFF104280),
+            backgroundColor: Color(0xFF0D6EFD),
             title: '+ Создать новый заказ',
             onPressed: () {
               // setState(() {

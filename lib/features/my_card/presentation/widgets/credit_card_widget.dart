@@ -64,7 +64,7 @@ class CreditCardWidget extends StatelessWidget {
                           backgroundColor: AppColor.containerColor,
                           child: Center(
                             child: SvgPicture.asset(
-                              "Assets.images.svg.edit.path",
+                              Assets.svg.modeEdit.path,
                               width: 36.w,
                               height: 36.h,
                               fit: BoxFit.cover,
@@ -162,7 +162,7 @@ class CreditCardWidget extends StatelessWidget {
               ),
               child: Center(
                 child: SvgPicture.asset(
-                  "Assets.images.svg.edit.path",
+                  Assets.svg.modeEdit1.path,
                   width: 20.w,
                   height: 20.h,
                   colorFilter: ColorFilter.mode(
@@ -205,7 +205,7 @@ class CreditCardWidget extends StatelessWidget {
                           backgroundColor: AppColor.containerColor,
                           child: Center(
                             child: SvgPicture.asset(
-                              "Assets.images.svg.dalete.path",
+                                Assets.svg.deleteOutline.path,
                             ),
                           ),
                         ),

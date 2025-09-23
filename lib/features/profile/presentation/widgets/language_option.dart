@@ -23,8 +23,8 @@ class LanguageOption extends StatelessWidget {
     return ListTile(
       contentPadding: EdgeInsets.zero,
       leading: Container(
-        height: 40.h,
-        width: 40.w,
+        height: 24.r,
+        width: 24.r,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
           color: AppColor.payContainerColor,
@@ -32,8 +32,8 @@ class LanguageOption extends StatelessWidget {
         child: Center(
           child: SvgPicture.asset(
             icon ?? "",
-            width: 28.w,
-            height: 24.h,
+            width: 24.r,
+            height: 24.r,
           ),
         ),
       ),

@@ -82,8 +82,15 @@ class ButtonWidget extends StatelessWidget {
                 : Padding(
                   padding:  EdgeInsets.symmetric(horizontal: 15.w),
                   child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
+                    mainAxisAlignment: leadingSvg == null && trailingSvg == null
+                        ? MainAxisAlignment.center
+                        : leadingSvg == null
+                        ? MainAxisAlignment.start
+                        : trailingSvg == null
+                        ? MainAxisAlignment.spaceAround
+                        : MainAxisAlignment.spaceBetween,
+
+                    children: [
                   if (leadingSvg != null) ...[
                     leadingSvg!,
                     SizedBox(width: 8.w),
@@ -100,7 +107,7 @@ class ButtonWidget extends StatelessWidget {
                         ),
                   ),
                   if (trailingSvg != null) ...[
-                    SizedBox(width: 8.w),
+                    SizedBox(width: 24.w),
                     trailingSvg!,
                   ],
                                 ],

@@ -13,6 +13,8 @@ import 'features/my_card/data/bloc/add_card_cubit.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
+  await initDi();
+
   await EasyLocalization.ensureInitialized();
 
   // Dependency Injection

@@ -108,7 +108,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                             child: Container(
                               padding: const EdgeInsets.all(12),
                               child: SvgPicture.asset(
-                                "Assets.images.svg.qrCodeScanner.path",
+                                Assets.svg.qrCode.path,
 
                                 fit: BoxFit.contain,
                               ),
@@ -243,8 +243,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
                                       cardHolderFullName:
                                           cardNameController.text,
                                       logoUrl:
-                                         " Assets.images.svg.masterCard.path",
-                                      url: "Assets.images.png.cardImage.path",
+                                         Assets.images.cashCard1.path,
+                                      url:  Assets.images.cashCard.path,
                                     ),
                                   ),
                             ),

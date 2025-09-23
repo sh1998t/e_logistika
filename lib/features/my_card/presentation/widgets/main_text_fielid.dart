@@ -10,6 +10,7 @@ class MainTextField extends StatelessWidget {
     this.prefix,
     this.inputFormatters,
     this.hintText,
+    this.labelText,
     this.style,
     this.width,
     this.height,
@@ -29,6 +30,7 @@ class MainTextField extends StatelessWidget {
   final Widget? prefix;
   final List<TextInputFormatter>? inputFormatters;
   final String? hintText;
+  final String? labelText;
   final TextStyle? style;
   final double? width;
   final double? height;
@@ -84,6 +86,12 @@ class MainTextField extends StatelessWidget {
             suffixIcon: suffix,
             fillColor: AppColor.inputColors,
             hintText: hintText,
+            labelText: labelText,
+            labelStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+              fontSize: 15.sp,
+              color: AppColor.textLightGray,
+              fontWeight: FontWeight.w400,
+            ),
             hintStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
               fontSize: 15.sp,
               color: AppColor.textLightGray,
@@ -107,13 +115,13 @@ class MainTextField extends StatelessWidget {
             //     width: 1.5,
             //   ),
             // ),
-            // focusedBorder: OutlineInputBorder(
-            //   borderRadius: BorderRadius.circular(15),
-            //   borderSide: BorderSide(
-            //     color: Color(0xFF53637A),
-            //     width: 1.5,
-            //   ),
-            // ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15.r),
+              borderSide: const BorderSide(
+                color: Color(0xFF0D6EFD), // kerakli ko‘k rang
+                width: 1.5,
+              ),
+            ),
           ),
         ),
       ],

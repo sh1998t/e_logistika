@@ -133,4 +133,11 @@ class AppColor{
   static const Color successColor = Color(0xff34C759);
   static const Color secondaryBgColor = Color(0xffEFEFF4);
   static const Color linkColor = Color(0xff007AFF);
+  static const Color greenColor = Color(0xFF4CD137);
+  static  Color greyColor = Color(0xFF323232).withValues(alpha: 0.1);
+  static  Color greyColor2 = Color(0xFF323232);
+  static  Color blueColor = Color(0xFF1565C0);
+  static  Color dodgerBlueColor = Color(0xFF347ED9);
+  static  Color veryDark = Color(0xFF323232).withValues(alpha: 0.1);
+
 }

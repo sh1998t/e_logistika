@@ -1,11 +1,11 @@
-import 'package:e_logistika/features/creation/presentation/page/creation_page/creation_map_page.dart';
 import 'package:e_logistika/features/home/presentation/page/home_page.dart';
 import 'package:e_logistika/features/navigation/widget/bottom_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/constants/app_coler.dart';
-import '../../core/utils/app_preference.dart';
+import '../chat/presentation/page/chat_page.dart';
+import '../creation/presentation/page/creation_page.dart';
 import '../profile/presentation/page/profile_page.dart';
 
 class NavigationPage extends StatefulWidget {
@@ -29,7 +29,7 @@ class _NavigationPageState extends State<NavigationPage> {
     super.initState();
   }
 
-  List pages = [HomePage(), CreationMapPage(), HomePage(), ProfilePage()];
+  List pages = [HomePage(), CreationPage(), ChatPage(), ProfilePage()];
 
   @override
   Widget build(BuildContext context) {

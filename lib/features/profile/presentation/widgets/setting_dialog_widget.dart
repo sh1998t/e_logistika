@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 
 import '../../../../core/constants/app_coler.dart';
 
+import '../../../../gen/assets.gen.dart';
 import 'language_option.dart';
 
 class SettingDialogWidget extends StatefulWidget {
@@ -49,7 +50,7 @@ class _SettingDialogWidgetState extends State<SettingDialogWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "chooseLanguage",
+            "Язык интерфейса",
             style: Theme.of(context).textTheme.bodySmall!.copyWith(
               color: AppColor.black,
               fontWeight: FontWeight.w600,
@@ -58,22 +59,33 @@ class _SettingDialogWidgetState extends State<SettingDialogWidget> {
           ),
           SizedBox(height: 10.h),
           LanguageOption(
-            icon: "Assets.images.svg.flagsEn.path",
-            kartName: "English",
+            icon: "Assets.svg.flagUz.path",
+            kartName: "O`zbekcha",
             isSelected: isSelectedList[0],
             onTap: () async {
-              await context.setLocale(const Locale('en', 'EN'));
+              await context.setLocale(const Locale('uz', 'UZ'));
               setState(() {
                 isSelectedList = [true, false];
               });
             },
           ),
           LanguageOption(
-            icon: "Assets.images.svg.flagsArab.path",
-            kartName: "اللغة العربية",
+            icon: Assets.svg.flagRussia.path,
+            kartName: 'Русский',
             isSelected: isSelectedList[1],
             onTap: () async {
-              await context.setLocale(const Locale('ar', 'AR'));
+              await context.setLocale(const Locale('ru', 'RU'));
+              setState(() {
+                isSelectedList = [false, true];
+              });
+            },
+          ),
+          LanguageOption(
+            icon: "Assets.svg.flagEn.path",
+            kartName: 'English',
+            isSelected: isSelectedList[1],
+            onTap: () async {
+              await context.setLocale(const Locale('en', 'EN'));
               setState(() {
                 isSelectedList = [false, true];
               });

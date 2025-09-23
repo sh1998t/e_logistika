@@ -27,6 +27,9 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/Avatar.png
+  AssetGenImage get avatar => const AssetGenImage('assets/images/Avatar.png');
+
   /// File path: assets/images/background_image_login.png
   AssetGenImage get backgroundImageLogin =>
       const AssetGenImage('assets/images/background_image_login.png');
@@ -37,6 +40,24 @@ class $AssetsImagesGen {
   /// File path: assets/images/card1.png
   AssetGenImage get card1 => const AssetGenImage('assets/images/card1.png');
 
+  /// File path: assets/images/cash_card.png
+  AssetGenImage get cashCard =>
+      const AssetGenImage('assets/images/cash_card.png');
+
+  /// File path: assets/images/cash_card1.png
+  AssetGenImage get cashCard1 =>
+      const AssetGenImage('assets/images/cash_card1.png');
+
+  /// File path: assets/images/desigin.png
+  AssetGenImage get desigin => const AssetGenImage('assets/images/desigin.png');
+
+  /// File path: assets/images/desigin2.png
+  AssetGenImage get desigin2 =>
+      const AssetGenImage('assets/images/desigin2.png');
+
+  /// File path: assets/images/done.png
+  AssetGenImage get done => const AssetGenImage('assets/images/done.png');
+
   /// File path: assets/images/drive.png
   AssetGenImage get drive => const AssetGenImage('assets/images/drive.png');
 
@@ -46,22 +67,38 @@ class $AssetsImagesGen {
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
+  /// File path: assets/images/money_send.png
+  AssetGenImage get moneySend =>
+      const AssetGenImage('assets/images/money_send.png');
+
   /// File path: assets/images/order.png
   AssetGenImage get order => const AssetGenImage('assets/images/order.png');
 
   /// File path: assets/images/person.png
   AssetGenImage get person => const AssetGenImage('assets/images/person.png');
 
+  /// File path: assets/images/rectangle.png
+  AssetGenImage get rectangle =>
+      const AssetGenImage('assets/images/rectangle.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
+    avatar,
     backgroundImageLogin,
     card,
     card1,
+    cashCard,
+    cashCard1,
+    desigin,
+    desigin2,
+    done,
     drive,
     drive2,
     logo,
+    moneySend,
     order,
     person,
+    rectangle,
   ];
 }
 
@@ -71,11 +108,18 @@ class $AssetsSvgGen {
   /// File path: assets/svg/E_logo.svg
   SvgGenImage get eLogo => const SvgGenImage('assets/svg/E_logo.svg');
 
+  /// File path: assets/svg/Logo_1.svg
+  SvgGenImage get logo1 => const SvgGenImage('assets/svg/Logo_1.svg');
+
   /// File path: assets/svg/Vector.svg
   SvgGenImage get vector => const SvgGenImage('assets/svg/Vector.svg');
 
   /// File path: assets/svg/Vector1.svg
   SvgGenImage get vector1 => const SvgGenImage('assets/svg/Vector1.svg');
+
+  /// File path: assets/svg/arrow_bottun.svg
+  SvgGenImage get arrowBottun =>
+      const SvgGenImage('assets/svg/arrow_bottun.svg');
 
   /// File path: assets/svg/arrow_forward.svg
   SvgGenImage get arrowForward =>
@@ -91,6 +135,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/call.svg
   SvgGenImage get call => const SvgGenImage('assets/svg/call.svg');
 
+  /// File path: assets/svg/camera.svg
+  SvgGenImage get camera => const SvgGenImage('assets/svg/camera.svg');
+
   /// File path: assets/svg/cancel.svg
   SvgGenImage get cancel => const SvgGenImage('assets/svg/cancel.svg');
 
@@ -103,6 +150,13 @@ class $AssetsSvgGen {
   /// File path: assets/svg/check.svg
   SvgGenImage get check => const SvgGenImage('assets/svg/check.svg');
 
+  /// File path: assets/svg/check1.svg
+  SvgGenImage get check1 => const SvgGenImage('assets/svg/check1.svg');
+
+  /// File path: assets/svg/check_square.svg
+  SvgGenImage get checkSquare =>
+      const SvgGenImage('assets/svg/check_square.svg');
+
   /// File path: assets/svg/creation.svg
   SvgGenImage get creation => const SvgGenImage('assets/svg/creation.svg');
 
@@ -114,8 +168,27 @@ class $AssetsSvgGen {
   AssetGenImage get creditCard =>
       const AssetGenImage('assets/svg/credit_card.png');
 
+  /// File path: assets/svg/delete.svg
+  SvgGenImage get delete => const SvgGenImage('assets/svg/delete.svg');
+
+  /// File path: assets/svg/delete_outline.svg
+  SvgGenImage get deleteOutline =>
+      const SvgGenImage('assets/svg/delete_outline.svg');
+
+  /// File path: assets/svg/devices.svg
+  SvgGenImage get devices => const SvgGenImage('assets/svg/devices.svg');
+
   /// File path: assets/svg/document.svg
   SvgGenImage get document => const SvgGenImage('assets/svg/document.svg');
+
+  /// File path: assets/svg/error.svg
+  SvgGenImage get error => const SvgGenImage('assets/svg/error.svg');
+
+  /// File path: assets/svg/face_id 2.svg
+  SvgGenImage get faceId2 => const SvgGenImage('assets/svg/face_id 2.svg');
+
+  /// File path: assets/svg/flag_russia.svg
+  SvgGenImage get flagRussia => const SvgGenImage('assets/svg/flag_russia.svg');
 
   /// File path: assets/svg/full_screen.svg
   SvgGenImage get fullScreen => const SvgGenImage('assets/svg/full_screen.svg');
@@ -124,11 +197,17 @@ class $AssetsSvgGen {
   SvgGenImage get helpOutline =>
       const SvgGenImage('assets/svg/help_outline.svg');
 
+  /// File path: assets/svg/history.svg
+  SvgGenImage get history => const SvgGenImage('assets/svg/history.svg');
+
   /// File path: assets/svg/home.svg
   SvgGenImage get home => const SvgGenImage('assets/svg/home.svg');
 
   /// File path: assets/svg/home_active.svg
   SvgGenImage get homeActive => const SvgGenImage('assets/svg/home_active.svg');
+
+  /// File path: assets/svg/image 259.svg
+  SvgGenImage get image259 => const SvgGenImage('assets/svg/image 259.svg');
 
   /// File path: assets/svg/info.svg
   SvgGenImage get info => const SvgGenImage('assets/svg/info.svg');
@@ -142,6 +221,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/location.svg
   SvgGenImage get location => const SvgGenImage('assets/svg/location.svg');
 
+  /// File path: assets/svg/locations.svg
+  SvgGenImage get locations => const SvgGenImage('assets/svg/locations.svg');
+
   /// File path: assets/svg/lock.svg
   SvgGenImage get lock => const SvgGenImage('assets/svg/lock.svg');
 
@@ -154,9 +236,62 @@ class $AssetsSvgGen {
   /// File path: assets/svg/logout.svg
   SvgGenImage get logout => const SvgGenImage('assets/svg/logout.svg');
 
+  /// File path: assets/svg/lucide_wallet.svg
+  SvgGenImage get lucideWallet =>
+      const SvgGenImage('assets/svg/lucide_wallet.svg');
+
+  /// File path: assets/svg/microphone.svg
+  SvgGenImage get microphone => const SvgGenImage('assets/svg/microphone.svg');
+
   /// File path: assets/svg/mingcute_documents-line.svg
   SvgGenImage get mingcuteDocumentsLine =>
       const SvgGenImage('assets/svg/mingcute_documents-line.svg');
+
+  /// File path: assets/svg/mode_edit.svg
+  SvgGenImage get modeEdit => const SvgGenImage('assets/svg/mode_edit.svg');
+
+  /// File path: assets/svg/mode_edit1.svg
+  SvgGenImage get modeEdit1 => const SvgGenImage('assets/svg/mode_edit1.svg');
+
+  /// File path: assets/svg/money_send.svg
+  SvgGenImage get moneySend => const SvgGenImage('assets/svg/money_send.svg');
+
+  /// File path: assets/svg/money_send1.svg
+  SvgGenImage get moneySend1 => const SvgGenImage('assets/svg/money_send1.svg');
+
+  /// File path: assets/svg/more_horizontal .svg
+  SvgGenImage get moreHorizontal =>
+      const SvgGenImage('assets/svg/more_horizontal .svg');
+
+  /// File path: assets/svg/my_location.svg
+  SvgGenImage get myLocation => const SvgGenImage('assets/svg/my_location.svg');
+
+  /// File path: assets/svg/paperclip.svg
+  SvgGenImage get paperclip => const SvgGenImage('assets/svg/paperclip.svg');
+
+  /// File path: assets/svg/password.svg
+  SvgGenImage get password => const SvgGenImage('assets/svg/password.svg');
+
+  /// File path: assets/svg/qrCode.svg
+  SvgGenImage get qrCode => const SvgGenImage('assets/svg/qrCode.svg');
+
+  /// File path: assets/svg/singin.svg
+  SvgGenImage get singin => const SvgGenImage('assets/svg/singin.svg');
+
+  /// File path: assets/svg/sss.svg
+  SvgGenImage get sss => const SvgGenImage('assets/svg/sss.svg');
+
+  /// File path: assets/svg/star.svg
+  SvgGenImage get star => const SvgGenImage('assets/svg/star.svg');
+
+  /// File path: assets/svg/strelka.svg
+  SvgGenImage get strelka => const SvgGenImage('assets/svg/strelka.svg');
+
+  /// File path: assets/svg/success.svg
+  SvgGenImage get success => const SvgGenImage('assets/svg/success.svg');
+
+  /// File path: assets/svg/svgrepo.svg
+  SvgGenImage get svgrepo => const SvgGenImage('assets/svg/svgrepo.svg');
 
   /// File path: assets/svg/symbols_history.svg
   SvgGenImage get symbolsHistory =>
@@ -172,43 +307,78 @@ class $AssetsSvgGen {
   /// File path: assets/svg/truck.svg
   SvgGenImage get truck => const SvgGenImage('assets/svg/truck.svg');
 
+  /// File path: assets/svg/uzcard.png
+  AssetGenImage get uzcard => const AssetGenImage('assets/svg/uzcard.png');
+
   /// File path: assets/svg/wysiwyg.svg
   SvgGenImage get wysiwyg => const SvgGenImage('assets/svg/wysiwyg.svg');
 
   /// List of all assets
   List<dynamic> get values => [
     eLogo,
+    logo1,
     vector,
     vector1,
+    arrowBottun,
     arrowForward,
     bankCards1,
     calendar,
     call,
+    camera,
     cancel,
     chat,
     chatActive,
     check,
+    check1,
+    checkSquare,
     creation,
     creationActive,
     creditCard,
+    delete,
+    deleteOutline,
+    devices,
     document,
+    error,
+    faceId2,
+    flagRussia,
     fullScreen,
     helpOutline,
+    history,
     home,
     homeActive,
+    image259,
     info,
     lightbulb,
     loading,
     location,
+    locations,
     lock,
     logoE,
     logoLogin,
     logout,
+    lucideWallet,
+    microphone,
     mingcuteDocumentsLine,
+    modeEdit,
+    modeEdit1,
+    moneySend,
+    moneySend1,
+    moreHorizontal,
+    myLocation,
+    paperclip,
+    password,
+    qrCode,
+    singin,
+    sss,
+    star,
+    strelka,
+    success,
+    svgrepo,
     symbolsHistory,
     translate,
     transporter,
     truck,
+    uzcard,
     wysiwyg,
   ];
 }

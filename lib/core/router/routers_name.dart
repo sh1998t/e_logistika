@@ -28,4 +28,22 @@ class RoutersName{
 
   static const String devicesName = 'devices_screen';
   static const String devicesPath = '/devices_screen';
+
+  static const String createOrderName ='create_order_page';
+  static const String createOrderPath ='/create_order_page';
+
+  static const String walletPageName ='wallet_page';
+  static const String walletPagePath ='/wallet_page';
+
+  static const String recentTransactionsName ='recent_transactions';
+  static const String recentTransactionsPath ='/recent_transactions';
+
+  static const String upYourWalletName ='up_your_wallet';
+  static const String upYourWalletPath ='/up_your_wallet';
+
+  static const String donePageName ='done_page';
+  static const String donePagePath ='/done_page';
+
+  static const String transferWalletPageName='transfer_wallet_page';
+  static const String transferWalletPagePath='/transfer_wallet_page';
 }

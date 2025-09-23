@@ -99,8 +99,8 @@ class _MyCardScreenState extends State<MyCardScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SizedBox(height: 20.h),
-                            Image.asset(
-                              Assets.images.card.path,
+                            SvgPicture.asset(
+                              Assets.svg.bankCards1.path,
                               width: 80.w,
                               height: 80.h,
                               fit: BoxFit.cover,
@@ -151,17 +151,17 @@ class _MyCardScreenState extends State<MyCardScreen> {
                   }
                 },
               ),
-              //   Navigator.push(
-              //                     context,
-              //                     MaterialPageRoute(
-              //                         builder: (context) => const AddCardScreen()),
-              //                   );
+
               SizedBox(height: 10.h),
             ButtonWidget(
                 color1: Color(0xFF185CAF),
                 color2: Color(0xFF104280),
                 title: 'Добавить карту', onPressed: (){
-              
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const AddCardScreen()),
+              );
             }),
               SizedBox(height: 30.h),
             ],

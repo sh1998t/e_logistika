@@ -1,14 +1,19 @@
 import 'package:e_logistika/core/router/routers_name.dart';
-import 'package:e_logistika/features/creation/presentation/page/creation_page/creation_map_page.dart';
+import 'package:e_logistika/features/creation/presentation/page/create_searce_page.dart';
 import 'package:e_logistika/features/my_card/presentation/screens/my_card_screen.dart';
 import 'package:e_logistika/features/navigation/navigation_page.dart';
 import 'package:e_logistika/features/profile/presentation/page/biometrics_screen.dart';
+import 'package:e_logistika/features/profile/presentation/page/devices_screen.dart';
 import 'package:e_logistika/features/profile/presentation/page/pin_code_screen.dart';
 import 'package:e_logistika/features/profile/presentation/page/settings_screen.dart';
+import 'package:e_logistika/features/profile/presentation/page/wallet/done_page.dart';
+import 'package:e_logistika/features/profile/presentation/page/wallet/recent_transactions.dart';
+import 'package:e_logistika/features/profile/presentation/page/wallet/transfer_wallet_page.dart';
+import 'package:e_logistika/features/profile/presentation/page/wallet/up_your_wallet_page.dart';
+import 'package:e_logistika/features/profile/presentation/page/wallet/wallet_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../features/auth/presentation/pages/register_page.dart';
 import '../../features/main/presentation/pages/main_page.dart';
 
 
@@ -17,8 +22,8 @@ class AppRouter {
   GlobalKey<NavigatorState>();
 
   static final GoRouter router = GoRouter(
-    navigatorKey: _rootNavigatorKey, // Add navigator key here
-    initialLocation: '/', // Optional, for setting the initial route
+    navigatorKey: _rootNavigatorKey,
+    initialLocation: '/',
     routes: <RouteBase>[
       GoRoute(
         path: '/',
@@ -81,10 +86,54 @@ class AppRouter {
             path: RoutersName.devicesPath,
             name: RoutersName.devicesName,
             builder: (BuildContext context, GoRouterState state) {
-              return const ChangePinCodeScreen();
+              return const DevicesScreen();
             },
           ),
 
+          GoRoute(
+            path: RoutersName.createOrderPath,
+            name: RoutersName.createOrderName,
+            builder: (BuildContext context, GoRouterState state) {
+              return const CreateOrderScreen();
+            },
+          ),
+          GoRoute(
+            path: RoutersName.walletPagePath,
+            name: RoutersName.walletPageName,
+            builder: (BuildContext context, GoRouterState state) {
+              return const WalletPage();
+            },
+          ),
+          GoRoute(
+            path: RoutersName.transferWalletPagePath,
+            name: RoutersName.transferWalletPageName,
+            builder: (BuildContext context, GoRouterState state) {
+              return const TransferWalletPage();
+            },
+          ),
+
+          GoRoute(
+            path: RoutersName.recentTransactionsPath,
+            name: RoutersName.recentTransactionsName,
+            builder: (BuildContext context, GoRouterState state) {
+              return const RecentTransactions();
+            },
+          ),
+
+          GoRoute(
+            path: RoutersName.upYourWalletPath,
+            name: RoutersName.upYourWalletName,
+            builder: (BuildContext context, GoRouterState state) {
+              return const UpYourWalletPage();
+            },
+          ),
+          GoRoute(
+            path: RoutersName.donePagePath,
+            name: RoutersName.donePageName,
+            builder: (BuildContext context, GoRouterState state) {
+              return const DonePage();
+            },
+          ),
 
         ],
       ),

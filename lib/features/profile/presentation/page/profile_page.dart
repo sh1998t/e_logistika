@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:e_logistika/core/router/routers_name.dart';
 import 'package:e_logistika/features/home/presentation/widget/button_widget.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/constants/app_coler.dart';
 import '../../../../gen/assets.gen.dart';
+import '../widgets/setting_dialog_widget.dart';
 
 class ProfilePage extends StatelessWidget {
   static const String name = 'profile_screen';
@@ -113,10 +115,11 @@ class ProfilePage extends StatelessWidget {
                 spacing: 8.h,
                 children: [
                   RowWidget(
-                    title: "Мои заказы",
-                    url: Assets.svg.wysiwyg.path,
+                    title: "Мой кошелек",
+                    url: Assets.svg.lucideWallet.path,
                     onTap: (context) {
                       // context.pushNamed(RoutersName.myCardName);
+                      context.pushNamed(RoutersName.walletPageName);
                     },
                   ),
                   Container(
@@ -125,7 +128,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                   RowWidget(
                     title: "Мои карты",
-                    url: Assets.svg.creditCard.path,
+                    url: Assets.svg.wysiwyg.path,
                     onTap: (context) {
                       context.pushNamed(RoutersName.myCardName);
                     },
@@ -148,6 +151,20 @@ class ProfilePage extends StatelessWidget {
                   RowWidget(
                     title: "Язык интерфейса",
                     url: Assets.svg.translate.path,
+                    onTap: (context) {
+                      showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(20.r),
+                          ),
+                        ),
+                        builder: (context) {
+                          return const SettingDialogWidget();
+                        },
+                      );
+                    },
                   ),
                   Container(
                     padding: EdgeInsetsDirectional.only(start: 60.w),
