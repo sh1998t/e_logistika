@@ -26,7 +26,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late TabController _tabController;
   int _currentIndex = 0;
-  bool _showActiveOrders = false;
+  bool _showActiveOrders = true;
   int _selectedTabIndex = 0;
 
   final List<Map<String, dynamic>> _tabs = [
@@ -64,18 +64,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
-      appBar: AppBar(
+      appBar:(_showActiveOrders== false)? AppBar(
         toolbarHeight: 70.h,
         automaticallyImplyLeading: false,
         title: ButtonWidget(
-          width: 337.w,
+            width: 337.w,
             height: 46.h,
             color1: Color(0xFF185CAF),
             color2: Color(0xFF104280),
             leadingSvg: SvgPicture.asset(Assets.svg.singin.path),
 
             title: 'Вход в Е-логистика', onPressed: (){}),
-      ),
+      ):CustomAppBar(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
         child: _showActiveOrders ? _buildActiveOrdersView() : _buildCreateOrderView(),

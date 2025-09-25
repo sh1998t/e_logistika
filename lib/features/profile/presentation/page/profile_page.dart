@@ -20,6 +20,8 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColor.scaffoldBackground,
       appBar: AppBar(
+        backgroundColor: AppColor.scaffoldBackground,
+
         centerTitle: true,
         title: Text(
           'Профиль',
@@ -36,7 +38,9 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           children: [
             InkWell(
-              onTap: () {},
+              onTap: () {
+                context.pushNamed(RoutersName.profileEditPageName);
+              },
               child: Container(
                 padding:
                 EdgeInsets.symmetric(vertical: 8.h, horizontal: 12.w),
@@ -127,8 +131,19 @@ class ProfilePage extends StatelessWidget {
                     child: const Divider(color: Colors.black12),
                   ),
                   RowWidget(
-                    title: "Мои карты",
+                    title: "Мои заказы",
                     url: Assets.svg.wysiwyg.path,
+                    onTap: (context) {
+                      context.pushNamed(RoutersName.myOrdersPageName);
+                    },
+                  ),
+                  Container(
+                    padding: EdgeInsetsDirectional.only(start: 60.w),
+                    child: const Divider(color: Colors.black12),
+                  ),
+                  RowWidget(
+                    title: "Мои карты",
+                    url: Assets.svg.creditCard.path,
                     onTap: (context) {
                       context.pushNamed(RoutersName.myCardName);
                     },
@@ -171,16 +186,22 @@ class ProfilePage extends StatelessWidget {
                     child: const Divider(color: Colors.black12),
                   ),
                   RowWidget(
-                    title: "Информация о приложении",
-                    url: Assets.svg.helpOutline.path,
-                  ),
-                  Container(
-                    padding: EdgeInsetsDirectional.only(start: 60.w),
-                    child: const Divider(color: Colors.black12),
-                  ),
-                  RowWidget(
-                    title: "Идеи и предложения",
-                    url: Assets.svg.lightbulb.path,
+                    title: "Документы",
+                    url: Assets.svg.documents.path,
+                    onTap: (context) {
+                      showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(20.r),
+                          ),
+                        ),
+                        builder: (context) {
+                          return const SettingDialogWidget();
+                        },
+                      );
+                    },
                   ),
                   Container(
                     padding: EdgeInsetsDirectional.only(start: 60.w),

@@ -24,41 +24,47 @@ class _WalletHistoryWidgetState extends State<WalletHistoryWidget> {
           spacing: 4.h,
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
-
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-              Text('TOSHKENT SH, AT KH...',
-                  style:Theme.of(context).textTheme.bodySmall!.copyWith(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w400,
-                    color: AppColor.greyColor2,
-                  )),
-              Text('-1 130 000 UZS',
-                  style:Theme.of(context).textTheme.bodySmall!.copyWith(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w400,
-                    color: AppColor.greyColor2,
-                  )),
-            ],),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-              Text('Карты ....9081',
-                  style:Theme.of(context).textTheme.bodySmall!.copyWith(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w400,
-                    color: AppColor.greyColor2,
-                  )),
-              Text('09:19',
-                  style:Theme.of(context).textTheme.bodySmall!.copyWith(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w400,
-                    color: AppColor.greyColor2,
-                  )),
-            ],),
+            SizedBox(
+              width: MediaQuery.of(context).size.width - 80.w,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                Text('TOSHKENT SH, AT KH...',
+                    style:Theme.of(context).textTheme.bodySmall!.copyWith(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColor.greyColor2,
+                    )),
+                Text('-1 130 000 UZS',
+                    style:Theme.of(context).textTheme.bodySmall!.copyWith(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColor.greyColor2,
+                    )),
+              ],),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width - 80.w,
+
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                Text('Карты ....9081',
+                    style:Theme.of(context).textTheme.bodySmall!.copyWith(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColor.greyColor2,
+                    )),
+                Text('09:19',
+                    style:Theme.of(context).textTheme.bodySmall!.copyWith(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColor.greyColor2,
+                    )),
+              ],),
+            ),
           ],
         )
       ],

@@ -12,7 +12,7 @@ class AppColor{
   onSurface: Colors.black,
   );
   static const Color controllerActiveColor = Color(0xFF1656A5);
-  static const Color controllerUnActiveColor = Color(0xFF808080);
+  static const Color controllerUnActiveColor = Color(0xFF718093);
 
   static const Color primary = Color(0xFF00A628);
 
@@ -44,7 +44,7 @@ class AppColor{
   static const Color  lightGray = Color(0xffE9E9E9);
   static const Color  paleGray = Color(0xffC0BFBF);
   static  Color  darkEggplant = Color.fromRGBO(51, 34, 51, 0.1);
-  static  Color  darkEggplantColor = Color.fromRGBO(51, 34, 51, 0.7);
+  static  Color  darkEggplantColor = Color(0xFFE0E0E0);
   static const Color darkGray = Color(0xFF323232);
   static const Color backgroundColor = Color(0xFFEEF1F5);
   static  Color buttonColor = Color(0xFF00FF47).withValues(alpha: 0.25);
@@ -138,6 +138,14 @@ class AppColor{
   static  Color greyColor2 = Color(0xFF323232);
   static  Color blueColor = Color(0xFF1565C0);
   static  Color dodgerBlueColor = Color(0xFF347ED9);
+  static  Color greenColors = Color(0xFF75E363);
+  static  Color blackColor = Color(0xFF1C1B1B);
+  static  Color redkColor = Color(0xFFF20E0E);
   static  Color veryDark = Color(0xFF323232).withValues(alpha: 0.1);
+  static Color greyBlue30 = Color(0xFF00A8FF).withValues(alpha: 0.3);
+  static  Color greenBase30 = Color(0xFF44BD32).withValues(alpha: 0.3);
+  static  Color greenBase = Color(0xFF44BD32);
+
+
 
 }

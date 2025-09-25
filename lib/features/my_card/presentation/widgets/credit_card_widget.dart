@@ -308,112 +308,110 @@ class CreditCardWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Stack(
-            children: [
-              Container(
-                width: 343.w,
-                height: 190.h,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16.r),
-                ),
-                child: Image.asset("$url", fit: BoxFit.fill),
-              ),
-              Positioned(
-                top: 16.h,
-                left: 16.w,
-                child: Text(
-                  "$cardHolderFullName",
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    color: AppColor.white,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 80.h,
-                left: 16.w,
-                child: Text(
-                  "$cardNumber",
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    color: AppColor.white,
-                    fontSize: 22.sp,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 2,
-                  ),
-                ),
-              ),
-              Positioned(
-                bottom: 16.h,
-                left: 16.w,
-                child: Row(
+          Container(
+            width: 343.w,
+            height: 217.h,
+            padding: EdgeInsets.all(22.r),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16.r),
+              color: Color(0xFF1B324C),
+
+            ),
+            child:Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Card Holder Name",
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodySmall!.copyWith(
-                            color: AppColor.white,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12.sp,
-                          ),
-                        ),
-                        Text(
-                          "HILLERY NEVELIN",
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodySmall!.copyWith(
-                            color: AppColor.white,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 14.sp,
-                          ),
-                        ),
-                      ],
+                    Text(
+                      "$cardHolderFullName",
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                        color: AppColor.white,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
-                    SizedBox(width: 32.w),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Expired",
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodySmall!.copyWith(
-                            color: AppColor.white,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12.sp,
-                          ),
-                        ),
-                        Text(
-                          "$validFrom",
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodySmall!.copyWith(
-                            color: AppColor.white,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 14.sp,
-                          ),
-                        ),
-                      ],
-                    ),
+                    SvgPicture.asset(Assets.svg.logo2.path)
                   ],
                 ),
-              ),
-              Positioned(
-                bottom: 16.h,
-                right: 16.w,
-                child: SvgPicture.asset("$logoUrl", height: 24.h, width: 24.w),
-              ),
-              Positioned(
-                top: 16.h,
-                right: 16.w,
-                child: SvgPicture.asset("Assets.images.svg.creditCardLogo.path"),
-              ),
-            ],
+                SizedBox(height: 47.h,),
+                Center(
+                  child: Column(
+                    children: [
+                      Text(
+                        "$cardNumber",
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: AppColor.white,
+                          fontSize: 21.sp,
+                          fontWeight: FontWeight.w400,
+                          letterSpacing: 2,
+                        ),
+
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        spacing: 5.w,
+                        children: [
+                          SvgPicture.asset(Assets.svg.goot.path, width: 18.r,height: 12.r,
+                            fit: BoxFit.fill,
+                            colorFilter: ColorFilter.mode(
+                            AppColor.white,
+                              BlendMode.srcIn
+                            ),
+                          ),
+                          Text(
+                            "$validFrom",
+                            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              color: AppColor.white,
+                              fontSize: 15.sp,
+                              fontWeight: FontWeight.w400,
+                              letterSpacing: 2,
+                            ),
+
+                          ),
+
+                        ],
+                      )
+
+
+
+                    ],
+                  ),
+                ),
+              SizedBox(height: 14.sp,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Sayfiyev Fayozjon",
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodySmall!.copyWith(
+                      color: AppColor.white,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14.sp,
+                    ),
+                  ),
+
+                   Container(
+                     padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 5.h),
+                     decoration: BoxDecoration(
+                       borderRadius: BorderRadius.circular(4.r),
+                       color: AppColor.white
+                     ),
+                     child: SvgPicture.asset(Assets.svg.uzcardss.path, width: 24.w, height: 32.h,fit: BoxFit.cover,
+                     ),
+                     ),
+
+                ],
+              )
+              ],
+            )
           ),
+
+
+
+
           SizedBox(height: 10.h),
         ],
       ),

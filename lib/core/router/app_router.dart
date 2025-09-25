@@ -1,10 +1,13 @@
 import 'package:e_logistika/core/router/routers_name.dart';
+import 'package:e_logistika/features/chat/presentation/page/chat_message_page.dart';
 import 'package:e_logistika/features/creation/presentation/page/create_searce_page.dart';
 import 'package:e_logistika/features/my_card/presentation/screens/my_card_screen.dart';
 import 'package:e_logistika/features/navigation/navigation_page.dart';
 import 'package:e_logistika/features/profile/presentation/page/biometrics_screen.dart';
 import 'package:e_logistika/features/profile/presentation/page/devices_screen.dart';
+import 'package:e_logistika/features/profile/presentation/page/my_orders/my_orders_page.dart';
 import 'package:e_logistika/features/profile/presentation/page/pin_code_screen.dart';
+import 'package:e_logistika/features/profile/presentation/page/profile_edit_page.dart';
 import 'package:e_logistika/features/profile/presentation/page/settings_screen.dart';
 import 'package:e_logistika/features/profile/presentation/page/wallet/done_page.dart';
 import 'package:e_logistika/features/profile/presentation/page/wallet/recent_transactions.dart';
@@ -14,6 +17,7 @@ import 'package:e_logistika/features/profile/presentation/page/wallet/wallet_pag
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/chat/presentation/page/change_price_page.dart';
 import '../../features/main/presentation/pages/main_page.dart';
 
 
@@ -134,7 +138,34 @@ class AppRouter {
               return const DonePage();
             },
           ),
-
+          GoRoute(
+            path: RoutersName.profileEditPagePath,
+            name: RoutersName.profileEditPageName,
+            builder: (BuildContext context, GoRouterState state) {
+              return const ProfileEditPage();
+            },
+          ),
+          GoRoute(
+            path: RoutersName.myOrdersPagePath,
+            name: RoutersName.myOrdersPageName,
+            builder: (BuildContext context, GoRouterState state) {
+              return const MyOrdersPage();
+            },
+          ),
+          GoRoute(
+            path: RoutersName.chatMessagePagePath,
+            name: RoutersName.chatMessagePageName,
+            builder: (BuildContext context, GoRouterState state) {
+              return const ChatMessagePage();
+            },
+          ),
+          GoRoute(
+            path: RoutersName.changePricePagePath,
+            name: RoutersName.changePricePageName,
+            builder: (BuildContext context, GoRouterState state) {
+              return  ChangePricePage();
+            },
+          ),
         ],
       ),
     ],

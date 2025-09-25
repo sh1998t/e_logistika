@@ -152,7 +152,6 @@ class _MyCardScreenState extends State<MyCardScreen> {
                 },
               ),
 
-              SizedBox(height: 10.h),
             ButtonWidget(
                 color1: Color(0xFF185CAF),
                 color2: Color(0xFF104280),

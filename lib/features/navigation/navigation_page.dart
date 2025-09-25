@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/constants/app_coler.dart';
+import '../../gen/assets.gen.dart';
 import '../chat/presentation/page/chat_page.dart';
 import '../creation/presentation/page/creation_page.dart';
 import '../profile/presentation/page/profile_page.dart';
@@ -50,15 +51,17 @@ class _NavigationPageState extends State<NavigationPage> {
           ],
         ),
         child: BottomAppBar(
-          padding: EdgeInsets.only(bottom: 10.h),
+          padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 20.w),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               BottomItem(
-                icon:(index==0)
-                    ?'assets/svg/home_active.svg'
-                    :'assets/svg/home.svg',
+                icon:Assets.svg.homeTab.path,
+                iconColor:  index == 0
+                    ? AppColor.controllerActiveColor
+                    : AppColor.controllerUnActiveColor,
+
                 color:
                 index == 0
                     ? AppColor.controllerActiveColor
@@ -68,12 +71,14 @@ class _NavigationPageState extends State<NavigationPage> {
 
                   setState(() {});
                 },
-                title:'Home',
+                title:'Главная',
               ),
               BottomItem(
-                icon: (index==1)
-                    ?'assets/svg/creation_active.svg'
-                    :'assets/svg/creation.svg',
+                icon: Assets.svg.createTab.path,
+                iconColor:
+                index == 1
+                    ? AppColor.controllerActiveColor
+                    : AppColor.controllerUnActiveColor,
                 color:
                 index == 1
                     ? AppColor.controllerActiveColor
@@ -83,10 +88,14 @@ class _NavigationPageState extends State<NavigationPage> {
 
                   setState(() {});
                 },
-                title: 'Creation',
+                title: 'Создать',
               ),
               BottomItem(
-                icon: (index ==2)?'assets/svg/chat_active.svg':'assets/svg/chat.svg',
+                icon: Assets.svg.chatTab.path,
+                iconColor:
+                index == 2
+                    ? AppColor.controllerActiveColor
+                    : AppColor.controllerUnActiveColor,
                 color:
                 index == 2
                     ? AppColor.controllerActiveColor
@@ -96,25 +105,40 @@ class _NavigationPageState extends State<NavigationPage> {
 
                   setState(() {});
                 },
-                title: 'Chat',
+                title: 'Чат',
               ),
-              BottomItem(
-                icon: (index==3)
-                    ?'assets/svg/chat_active.svg'
-                    :'assets/svg/chat.svg',
-                color:
-                index == 3
-                    ? AppColor.controllerActiveColor
-                    : AppColor.controllerUnActiveColor,
-                function: () {
+              InkWell(
+                onTap: (){
                   index = 3;
 
                   setState(() {});
                 },
-                title: 'profile',
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(Assets.images.profileTab.path,
+                      height: 22.r,
+                      width: 22.r,
+                    ),
+                    Flexible(
+                      child: Text(
+                        "Профиль",
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                          color:  index == 3
+                              ? AppColor.controllerActiveColor
+                              : AppColor.controllerUnActiveColor,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
+                ),
               ),
 
-              const SizedBox(),
             ],
           ),
         ),

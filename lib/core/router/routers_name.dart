@@ -46,4 +46,16 @@ class RoutersName{
 
   static const String transferWalletPageName='transfer_wallet_page';
   static const String transferWalletPagePath='/transfer_wallet_page';
+
+  static const String  profileEditPageName ='profile_edit_page';
+  static const String  profileEditPagePath ='/profile_edit_page';
+
+  static const String myOrdersPageName ='my_orders_page';
+  static const String myOrdersPagePath ='/my_orders_page';
+
+  static const String chatMessagePageName ='chat_message_page';
+  static const String chatMessagePagePath ='/chat_message_page';
+
+  static const String changePricePageName ='change_price_page';
+  static const String changePricePagePath ='/change_price_page';
 }

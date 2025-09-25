@@ -9,12 +9,14 @@ class BottomItem extends StatelessWidget {
     required this.title,
     required this.function,
     required this.color,
+    required this.iconColor
   });
 
   final String icon;
   final String title;
   final VoidCallback function;
   final Color color;
+  final Color iconColor;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class BottomItem extends StatelessWidget {
         children: [
           SvgPicture.asset(
             icon,
+            colorFilter: ColorFilter.mode(iconColor,  BlendMode.srcIn,),
             height: 22.r,
             width: 22.r,
           ),
