@@ -28,6 +28,10 @@
         <string>9ecf99e5-34b4-414e-b699-ff3d14271345</string>
         <key>YMKSearchApiKey</key>
         <string>9ecf99e5-34b4-414e-b699-ff3d14271345</string>
+        <key>NSPhotoLibraryUsageDescription</key>
+        <string>Нужен доступ к фото для загрузки изображений.</string>
+        <key>NSCameraUsageDescription</key>
+        <string>Нужен доступ к камере для съемки фото.</string>
 		<key>UILaunchStoryboardName</key>
 		<string>LaunchScreen</string>
 		<key>UIMainStoryboardFile</key>

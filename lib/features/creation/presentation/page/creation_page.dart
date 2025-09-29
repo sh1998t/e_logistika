@@ -1,14 +1,19 @@
 import 'package:e_logistika/core/constants/app_coler.dart';
 import 'package:e_logistika/core/router/routers_name.dart';
+import 'package:e_logistika/features/home/presentation/widget/button_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_button/flutter_animated_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 import '../../../../gen/assets.gen.dart';
+import '../widgets/animated_button_widget.dart';
+import '../widgets/swipe_fill_button.dart';
 
 
 
@@ -39,6 +44,8 @@ class _CreationPageState extends State<CreationPage> {
     target: Point(latitude: 41.3111, longitude: 69.2797),
     zoom: 14.0,
   );
+
+
 
   @override
   void dispose() {
@@ -87,7 +94,7 @@ class _CreationPageState extends State<CreationPage> {
                 Navigator.of(context).pop();
               },
               child: Container(
-                height: 270.h,
+                height: 320.h,
 
                 width: MediaQuery.of(context).size.width,
                 alignment: Alignment.center,
@@ -165,6 +172,28 @@ class _CreationPageState extends State<CreationPage> {
                         ),
                       ),
                     ),
+                    SizedBox(height: 10.h,),
+
+                  Padding(padding: EdgeInsets.symmetric(horizontal: 19.w),
+                  child:   SizedBox(
+                    height: 56,
+                    child: SwipeFillButton(
+
+                      leadingSvg: SvgPicture.asset(Assets.svg.arrows.path, width:54.w,height: 19.h,),
+                        color1: Color(0xFF285CAF),
+                        color2: Color(0xFF104280),
+                        titleStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
+                          color: AppColor.white
+                        ),
+                        title: "Проведите для подтверждения",
+                      onCompleted: () {
+                        context.pushNamed(RoutersName.createTwoName);
+                      },),
+                  ),
+                  )
+
                   ],
                 ),
               ),
@@ -177,7 +206,6 @@ class _CreationPageState extends State<CreationPage> {
     );
   }
 
-  /// Foydalanuvchi joylashuvini ko‘rsatish
   void _showMyPosition() async {
     if (_currentPosition != null) {
       final newCameraPosition = CameraPosition(

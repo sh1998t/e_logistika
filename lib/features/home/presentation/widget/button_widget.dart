@@ -19,7 +19,6 @@ class ButtonWidget extends StatelessWidget {
   final TextStyle? titleStyle;
   final BorderRadiusGeometry? borderRadius;
 
-  /// Yangi qo‘shilgan parametrlari:
   final Widget? leadingSvg;
   final Widget? trailingSvg;
 

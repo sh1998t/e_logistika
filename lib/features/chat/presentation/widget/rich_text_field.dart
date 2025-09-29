@@ -79,6 +79,7 @@ class RichTextField extends StatelessWidget {
         ),
         const SizedBox(height: 5),
         TextFormField(
+
           textCapitalization: textCapitalization ?? TextCapitalization.none,
           controller: controller,
           textAlign: textAlign ?? TextAlign.start,
@@ -99,6 +100,7 @@ class RichTextField extends StatelessWidget {
             prefix: const SizedBox(),
             prefixIcon: prefix,
             suffixIcon: suffix,
+
             fillColor: AppColor.inputColors,
             hintText: hintText,
             // labelText: labelText,  ❌ buni olib tashlaymiz
@@ -108,7 +110,7 @@ class RichTextField extends StatelessWidget {
                 text: labelText,
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   fontSize: 12.sp,
-                  color: AppColor.textLightGray,
+                  color: Color(0xFF97A3AF),
                   fontWeight: FontWeight.w400,
                 ),
                 children: [

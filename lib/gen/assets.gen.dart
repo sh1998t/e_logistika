@@ -34,6 +34,10 @@ class $AssetsImagesGen {
   AssetGenImage get backgroundImageLogin =>
       const AssetGenImage('assets/images/background_image_login.png');
 
+  /// File path: assets/images/bacround_images.png
+  AssetGenImage get bacroundImages =>
+      const AssetGenImage('assets/images/bacround_images.png');
+
   /// File path: assets/images/card.png
   AssetGenImage get card => const AssetGenImage('assets/images/card.png');
 
@@ -102,6 +106,7 @@ class $AssetsImagesGen {
   List<AssetGenImage> get values => [
     avatar,
     backgroundImageLogin,
+    bacroundImages,
     card,
     card1,
     cashCard,
@@ -152,6 +157,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/arrow_forward.svg
   SvgGenImage get arrowForward =>
       const SvgGenImage('assets/svg/arrow_forward.svg');
+
+  /// File path: assets/svg/arrows.svg
+  SvgGenImage get arrows => const SvgGenImage('assets/svg/arrows.svg');
 
   /// File path: assets/svg/bank_cards 1.svg
   SvgGenImage get bankCards1 =>
@@ -324,6 +332,10 @@ class $AssetsSvgGen {
   /// File path: assets/svg/qrCode.svg
   SvgGenImage get qrCode => const SvgGenImage('assets/svg/qrCode.svg');
 
+  /// File path: assets/svg/search-normal.svg
+  SvgGenImage get searchNormal =>
+      const SvgGenImage('assets/svg/search-normal.svg');
+
   /// File path: assets/svg/singin.svg
   SvgGenImage get singin => const SvgGenImage('assets/svg/singin.svg');
 
@@ -360,6 +372,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/truck.svg
   SvgGenImage get truck => const SvgGenImage('assets/svg/truck.svg');
 
+  /// File path: assets/svg/upload.svg
+  SvgGenImage get upload => const SvgGenImage('assets/svg/upload.svg');
+
   /// File path: assets/svg/uzcard.svg
   SvgGenImage get uzcard => const SvgGenImage('assets/svg/uzcard.svg');
 
@@ -382,6 +397,7 @@ class $AssetsSvgGen {
     vector1,
     arrowBottun,
     arrowForward,
+    arrows,
     bankCards1,
     calendar,
     call,
@@ -436,6 +452,7 @@ class $AssetsSvgGen {
     password,
     person,
     qrCode,
+    searchNormal,
     singin,
     sss,
     star,
@@ -447,6 +464,7 @@ class $AssetsSvgGen {
     translate,
     transporter,
     truck,
+    upload,
     uzcard,
     uzcard21,
     uzcardss,
