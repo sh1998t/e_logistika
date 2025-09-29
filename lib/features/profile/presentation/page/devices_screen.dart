@@ -27,7 +27,7 @@ class _DevicesScreenState extends State<DevicesScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "devices",
+          "Устройства",
           style: Theme.of(context).textTheme.bodySmall!.copyWith(
             fontSize: 17.sp,
             fontWeight: FontWeight.w700,
@@ -284,7 +284,7 @@ class CardWidget extends StatelessWidget {
                                 ),
                                 side: BorderSide.none,
                                 backgroundColor:
-                                AppColor.containerColorBiometrics,
+                                AppColor.blueColor2,
                               ),
                               child: Text(
                                 "finish",

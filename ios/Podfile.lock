@@ -23,8 +23,8 @@ PODS:
     - FlutterMacOS
   - yandex_mapkit (0.0.1):
     - Flutter
-    - YandexMapsMobile (= 4.6.1-lite)
-  - YandexMapsMobile (4.6.1-lite)
+    - YandexMapsMobile (= 4.22.0-lite)
+  - YandexMapsMobile (4.22.0-lite)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
@@ -69,8 +69,8 @@ SPEC CHECKSUMS:
   path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
   PhoneNumberKit: ec00ab8cef5342c1dc49fadb99d23fa7e66cf0ef
   shared_preferences_foundation: 9e1978ff2562383bd5676f64ec4e9aa8fa06a6f7
-  yandex_mapkit: d9c479705f0f3888a3fc67b0d9c6156108e74270
-  YandexMapsMobile: 7e20ef4db180b901c96f8107fade91d6349248a0
+  yandex_mapkit: bac34ca1bdf97e87252a8c6d09a95b1fe39ba103
+  YandexMapsMobile: c73844c6096bbb240d1491adc511c2ef4a88d88d
 
 PODFILE CHECKSUM: bf155a144e1d92cecbb5873ff2c9ff82b848f4f2
 

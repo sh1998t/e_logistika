@@ -1,3 +1,5 @@
+import 'package:e_logistika/features/chat/presentation/widget/rich_text_field.dart';
+import 'package:e_logistika/features/home/presentation/widget/button_widget.dart';
 import 'package:e_logistika/features/my_card/presentation/screens/pinput_code_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -47,7 +49,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "addACard",
+          "Добавить карту",
           style: Theme.of(context).textTheme.bodySmall!.copyWith(
             fontSize: 17.sp,
             fontWeight: FontWeight.bold,
@@ -73,13 +75,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                   color: AppColor.white,
                   child: Container(
                     alignment: Alignment.center,
-                    height: 378.w,
-                    width: 343.w,
-                    padding: EdgeInsets.only(
-                      left: 10.w,
-                      right: 10.w,
-                      bottom: 10.h,
-                    ),
+                    padding: EdgeInsets.all(16.r),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16.r),
                     ),
@@ -87,7 +83,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(height: 0.h),
-                        MainTextField(
+                        RichTextField(
+                          isRequired: true,
                           validator: (value) {
                             if (value == null ||
                                 value.isEmpty ||
@@ -96,7 +93,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                             }
                             return null;
                           },
-                          title: "cardNumber",
+                          title: "Номер карты ",
                           inputFormatters: [Formatters.creditCard],
 
                           keyboardType: TextInputType.number,
@@ -115,11 +112,12 @@ class _AddCardScreenState extends State<AddCardScreen> {
                             ),
                           ),
                         ),
-                        MainTextField(
-                          title: "validityPeriod",
-
+                        SizedBox(height: 10.h),
+                        RichTextField(
+                          title: "Срок действия",
+                          isRequired: true,
                           keyboardType: TextInputType.number,
-                          hintText: "validThru",
+                          hintText: "мм/гг",
                           inputFormatters: [Formatters.expiryDate],
                           controller: validityController,
                           validator: (value) {
@@ -131,27 +129,28 @@ class _AddCardScreenState extends State<AddCardScreen> {
                             return null;
                           },
                         ),
+                        SizedBox(height: 10.h),
+                        // MainTextField(
+                        //   title: "ccv",
+                        //
+                        //   keyboardType: TextInputType.number,
+                        //   hintText: '000',
+                        //   inputFormatters: [Formatters.cvv],
+                        //   controller: ccvController,
+                        //   validator: (value) {
+                        //     if (value == null ||
+                        //         value.isEmpty ||
+                        //         value.length < 3) {
+                        //       return "pleaseEnterValidCcv";
+                        //     }
+                        //     return null;
+                        //   },
+                        // ),
                         MainTextField(
-                          title: "ccv",
-
-                          keyboardType: TextInputType.number,
-                          hintText: '000',
-                          inputFormatters: [Formatters.cvv],
-                          controller: ccvController,
-                          validator: (value) {
-                            if (value == null ||
-                                value.isEmpty ||
-                                value.length < 3) {
-                              return "pleaseEnterValidCcv";
-                            }
-                            return null;
-                          },
-                        ),
-                        MainTextField(
-                          title:"cardName",
+                          title:"Название карты",
 
                           keyboardType: TextInputType.text,
-                          hintText: "validCardNameText",
+                          hintText: "Введите название карты",
                           controller: cardNameController,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -164,110 +163,69 @@ class _AddCardScreenState extends State<AddCardScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 120.h),
+                SizedBox(height: 250.h),
                 Column(
                   spacing: 5.h,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "byClickingText",
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodySmall!.copyWith(
-                            fontSize: 13.sp,
-                            fontWeight: FontWeight.w400,
-                            color: AppColor.black,
-                          ),
-                        ),
-                        Text("termsOfTheUser",
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodySmall!.copyWith(
-                            fontSize: 13.sp,
-                            fontWeight: FontWeight.w400,
-                            color: AppColor.textColors,
-                          ),
-                        ),
-                      ],
+                    Text(
+                      "Нажимая «Добавить карту», принимаю условия ",
+                      style: Theme.of(
+                        context,
+                      ).textTheme.bodySmall!.copyWith(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
+                        color: AppColor.textLightGray,
+                      ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                           'agreement',
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodySmall!.copyWith(
-                            fontSize: 13.sp,
-                            fontWeight: FontWeight.w400,
-                            color: AppColor.textColors,
-                          ),
-                        ),
-                        Text(
-                          "and",
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodySmall!.copyWith(
-                            fontSize: 13.sp,
-                            fontWeight: FontWeight.w400,
-                            color: AppColor.black,
-                          ),
-                        ),
-                        Text(
-                          "thePersonalDataProcessingPolicy",
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodySmall!.copyWith(
-                            fontSize: 13.sp,
-                            fontWeight: FontWeight.w400,
-                            color: AppColor.textColors,
-                          ),
-                        ),
-                      ],
+                    Text(
+                      "пользовательского соглашения и политику обработки",
+                      style: Theme.of(
+                        context,
+                      ).textTheme.bodySmall!.copyWith(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
+                        color: AppColor.textLightGray,
+                      ),
                     ),
+                    Text(
+                      "персональных данных",
+                      style: Theme.of(
+                        context,
+                      ).textTheme.bodySmall!.copyWith(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
+                        color: AppColor.textLightGray,
+                      ),
+                    ),
+
                     SizedBox(height: 15.h),
-                    OutlinedButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder:
-                                  (context) => PinPutCodeScreen(
-                                    card: CreditCard(
-                                      cardNumber: cardNumberController.text,
-                                      validFrom: validityController.text,
-                                      ccv: ccvController.text,
-                                      cardHolderFullName:
-                                          cardNameController.text,
-                                      logoUrl:
-                                         Assets.images.card.path,
-                                      url:  Assets.images.card1.path,
-                                    ),
-                                  ),
-                            ),
-                          );
-                        }
-                      },
-                      style: OutlinedButton.styleFrom(
-                        minimumSize: Size(343.w, 50.h),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.r),
-                        ),
-                        side: BorderSide.none,
-                        backgroundColor: AppColor.containerColorBiometrics,
-                      ),
-                      child: Text(
-                        'addCard',
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          fontSize: 17.sp,
-                          color: AppColor.black,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
+
+                 ButtonWidget(
+                    color1: Color(0xFF185CAF),
+                    color2: Color(0xFF104280),
+                     title: 'Добавить карту',
+                     onPressed: (){
+                   if (_formKey.currentState!.validate()) {
+                     Navigator.push(
+                       context,
+                       MaterialPageRoute(
+                         builder:
+                             (context) => PinPutCodeScreen(
+                           card: CreditCard(
+                             cardNumber: cardNumberController.text,
+                             validFrom: validityController.text,
+                             ccv: ccvController.text,
+                             cardHolderFullName:
+                             cardNameController.text,
+                             logoUrl:
+                             Assets.images.card.path,
+                             url:  Assets.images.card1.path,
+                           ),
+                         ),
+                       ),
+                     );
+                   }
+                 }),
                     SizedBox(height: 30.h),
                   ],
                 ),

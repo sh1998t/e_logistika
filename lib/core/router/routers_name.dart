@@ -29,8 +29,8 @@ class RoutersName{
   static const String devicesName = 'devices_screen';
   static const String devicesPath = '/devices_screen';
 
-  static const String createOrderName ='create_order_page';
-  static const String createOrderPath ='/create_order_page';
+  static const String createSearchPageName ="create_search_page";
+  static const String createSearchPagePath ="/create_search_page";
 
   static const String walletPageName ='wallet_page';
   static const String walletPagePath ='/wallet_page';
@@ -58,4 +58,10 @@ class RoutersName{
 
   static const String changePricePageName ='change_price_page';
   static const String changePricePagePath ='/change_price_page';
+
+  static const String downloadDetailsPageName = 'download_details_page';
+  static const String downloadDetailsPagePath = '/download_details_page';
+
+  static const String createTwoName = 'create_two_page';
+  static const String createTwoPath= '/create_two_page';
 }

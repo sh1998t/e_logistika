@@ -26,7 +26,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late TabController _tabController;
   int _currentIndex = 0;
-  bool _showActiveOrders = true;
+  bool _showActiveOrders = false;
   int _selectedTabIndex = 0;
 
   final List<Map<String, dynamic>> _tabs = [
@@ -72,8 +72,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             height: 46.h,
             color1: Color(0xFF185CAF),
             color2: Color(0xFF104280),
-            leadingSvg: SvgPicture.asset(Assets.svg.singin.path),
-
             title: 'Вход в Е-логистика', onPressed: (){}),
       ):CustomAppBar(),
       body: Padding(

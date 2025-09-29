@@ -1,5 +1,10 @@
+import 'package:e_logistika/core/router/routers_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../../../core/constants/app_coler.dart';
+import 'my_orders_card_widget.dart';
 
 class MyOrdersCancelPage extends StatelessWidget {
   final VoidCallback onBackPressed;
@@ -11,21 +16,34 @@ class MyOrdersCancelPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return  SingleChildScrollView(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        spacing: 15.h,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.cancel, size: 64, color: Colors.grey),
-          SizedBox(height: 16.h),
-          Text(
-            "Отмененные заказы",
-            style: TextStyle(fontSize: 18.sp, color: Colors.grey),
-          ),
-          SizedBox(height: 20.h),
-          ElevatedButton(
-            onPressed: onBackPressed,
-            child: Text("Назад к главной"),
-          ),
+          MyOrdersCardWidget(
+              onTap: (){
+                context.pushNamed(RoutersName.downloadDetailsPageName);
+              },
+              titleColor: AppColor.textColor3,
+              backgroundColor: AppColor.buttonColor3, time: '12.09.2003',
+              id: 'ID: ASF3645', title: 'История'),
+          MyOrdersCardWidget(
+              onTap: (){
+                context.pushNamed(RoutersName.downloadDetailsPageName);
+              },
+              titleColor: AppColor.textColor3,
+              backgroundColor: AppColor.buttonColor3, time: '12.09.2003',
+              id: 'ID: ASF3645', title: 'История'),
+          MyOrdersCardWidget(
+            onTap: (){
+              context.pushNamed(RoutersName.downloadDetailsPageName);
+            },
+              titleColor: AppColor.textColor3,
+              backgroundColor: AppColor.buttonColor3, time: '12.09.2003',
+              id: 'ID: ASF3645', title: 'История',
+           ),
         ],
       ),
     );

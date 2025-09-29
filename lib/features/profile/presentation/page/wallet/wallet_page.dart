@@ -60,7 +60,7 @@ class _WalletPageState extends State<WalletPage> {
                               ),),
                               SizedBox(height: 8.h,),
                               Text('18 590 000 сум ', style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                                fontSize: 16.sp,
+                                fontSize: 24.sp,
                                 fontWeight: FontWeight.w500,
                                 color: AppColor.white,
                               ),),

@@ -44,7 +44,7 @@ class _ChatMessagePageState extends State<ChatMessagePage> {
                       fontWeight: FontWeight.w700,
                       color: AppColor.black,
                     ),),
-                  SizedBox(height: 12.h,),
+                  SizedBox(height: 15.h,),
                   ChatAppbarWidget(active: active, onTap: (){
                     setState(() {
                       active = !active;

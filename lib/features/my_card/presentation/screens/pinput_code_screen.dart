@@ -163,7 +163,7 @@ class _PinPutCodeScreenState extends State<PinPutCodeScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "addACard",
+          "Добавить карту",
           style: Theme.of(context).textTheme.bodySmall!.copyWith(
             fontSize: 17.sp,
             fontWeight: FontWeight.bold,
@@ -255,7 +255,7 @@ class _PinPutCodeScreenState extends State<PinPutCodeScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "requestNewCodeIn",
+                    "Запросите новый код через:",
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       fontSize: 14.sp,
                       color: AppColor.black,

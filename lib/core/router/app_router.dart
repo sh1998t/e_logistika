@@ -1,10 +1,12 @@
 import 'package:e_logistika/core/router/routers_name.dart';
 import 'package:e_logistika/features/chat/presentation/page/chat_message_page.dart';
-import 'package:e_logistika/features/creation/presentation/page/create_searce_page.dart';
+import 'package:e_logistika/features/creation/presentation/page/create_search_page.dart';
+import 'package:e_logistika/features/creation/presentation/page/create_two_page.dart';
 import 'package:e_logistika/features/my_card/presentation/screens/my_card_screen.dart';
 import 'package:e_logistika/features/navigation/navigation_page.dart';
 import 'package:e_logistika/features/profile/presentation/page/biometrics_screen.dart';
 import 'package:e_logistika/features/profile/presentation/page/devices_screen.dart';
+import 'package:e_logistika/features/profile/presentation/page/my_orders/download_details_page.dart';
 import 'package:e_logistika/features/profile/presentation/page/my_orders/my_orders_page.dart';
 import 'package:e_logistika/features/profile/presentation/page/pin_code_screen.dart';
 import 'package:e_logistika/features/profile/presentation/page/profile_edit_page.dart';
@@ -95,10 +97,10 @@ class AppRouter {
           ),
 
           GoRoute(
-            path: RoutersName.createOrderPath,
-            name: RoutersName.createOrderName,
+            path: RoutersName.createSearchPagePath,
+            name: RoutersName.createSearchPageName,
             builder: (BuildContext context, GoRouterState state) {
-              return const CreateOrderScreen();
+              return const CreateSearchPage();
             },
           ),
           GoRoute(
@@ -164,6 +166,20 @@ class AppRouter {
             name: RoutersName.changePricePageName,
             builder: (BuildContext context, GoRouterState state) {
               return  ChangePricePage();
+            },
+          ),
+          GoRoute(
+            path: RoutersName.downloadDetailsPagePath,
+            name: RoutersName.downloadDetailsPageName,
+            builder: (BuildContext context, GoRouterState state) {
+              return  DownloadDetailsPage();
+            },
+          ),
+          GoRoute(
+            path: RoutersName.createTwoPath,
+            name: RoutersName.createTwoName,
+            builder: (BuildContext context, GoRouterState state) {
+              return  CreateTwoPage();
             },
           ),
         ],

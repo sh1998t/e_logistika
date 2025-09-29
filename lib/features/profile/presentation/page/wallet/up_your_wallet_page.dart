@@ -2,7 +2,6 @@ import 'package:e_logistika/core/constants/app_coler.dart';
 import 'package:e_logistika/core/router/routers_name.dart';
 import 'package:e_logistika/features/home/presentation/widget/button_widget.dart';
 import 'package:e_logistika/features/my_card/presentation/widgets/main_text_fielid.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -99,8 +98,8 @@ class _UpYourWalletPageState extends State<UpYourWalletPage> {
                       borderRadius: BorderRadius.circular(8.r),
                       color: AppColor.white,
                     ),
-                    child: Image.asset(
-                      Assets.svg.uzcard.path,
+                    child: SvgPicture.asset(
+                      Assets.svg.uzcard21.path,
                       width: 32.w,
                       height: 38.h,
                       fit: BoxFit.fill,

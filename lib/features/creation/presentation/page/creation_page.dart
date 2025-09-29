@@ -137,7 +137,7 @@ class _CreationPageState extends State<CreationPage> {
                     SizedBox(height: 10.h,),
                     InkWell(
                       onTap: (){
-                     context.pushNamed(RoutersName.createOrderName);
+                     context.pushNamed(RoutersName.createSearchPageName);
                       },
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 19.w, ),

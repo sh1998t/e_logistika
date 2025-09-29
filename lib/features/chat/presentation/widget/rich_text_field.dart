@@ -66,7 +66,7 @@ class RichTextField extends StatelessWidget {
               children: [
                 if (isRequired)
                   TextSpan(
-                    text: '  *',
+                    text: '*',
                     style: TextStyle(
                       color: AppColor.red,
                       fontSize: 13.sp,
@@ -107,7 +107,7 @@ class RichTextField extends StatelessWidget {
               text: TextSpan(
                 text: labelText,
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                  fontSize: 15.sp,
+                  fontSize: 12.sp,
                   color: AppColor.textLightGray,
                   fontWeight: FontWeight.w400,
                 ),

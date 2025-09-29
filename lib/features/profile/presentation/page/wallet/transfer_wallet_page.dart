@@ -50,8 +50,8 @@ class _TransferWalletPageState extends State<TransferWalletPage> {
                         borderRadius: BorderRadius.circular(8.r),
                         color: AppColor.white,
                       ),
-                      child: Image.asset(
-                        Assets.svg.uzcard.path,
+                      child: SvgPicture.asset(
+                        Assets.svg.uzcard21.path,
                         width: 32.w,
                         height: 38.h,
                         fit: BoxFit.fill,

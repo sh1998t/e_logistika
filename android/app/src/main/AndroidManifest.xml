@@ -34,6 +34,12 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data
+            android:name="com.yandex.maps.apikey"
+            android:value="4901e9f8-1b63-449f-b349-f25bfaa28cb5" />
+        <meta-data
+            android:name="com.yandex.search.apikey"
+            android:value="9ecf99e5-34b4-414e-b699-ff3d14271345"/>
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

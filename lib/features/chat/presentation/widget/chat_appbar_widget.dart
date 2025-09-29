@@ -94,7 +94,7 @@ class _ChatAppbarWidgetState extends State<ChatAppbarWidget> {
                   ),
                   child: Center(
                     child: SvgPicture.asset(
-                      Assets.svg.moreHorizontal.path,
+                      Assets.svg.moreHorizontalEdit.path,
                       width: 24.r,
                       height: 24.r,
                     ),
@@ -218,7 +218,7 @@ class _ChatAppbarWidgetState extends State<ChatAppbarWidget> {
                           style: TextStyle(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w500,
-                            color: AppColor.blueColor,
+                            color: AppColor.greyColor2,
                           ),
                           maxLines: 2,
                         ),

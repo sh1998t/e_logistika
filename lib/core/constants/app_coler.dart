@@ -48,7 +48,11 @@ class AppColor{
   static const Color darkGray = Color(0xFF323232);
   static const Color backgroundColor = Color(0xFFEEF1F5);
   static  Color buttonColor = Color(0xFF00FF47).withValues(alpha: 0.25);
-  static  Color buttonColor2 = Color(0xFFFAA300).withValues(alpha: 0.25);
+  static  Color textColor = Color(0xFF008B27);
+  static  Color buttonColor2 = Color(0xFFFAA300).withValues(alpha: 0.22);
+  static  Color textColor2 = Color(0xFFFAA300);
+  static  Color buttonColor3 = Color(0xFFE84118).withValues(alpha: 0.2);
+  static  Color textColor3 = Color(0xFFE84118);
   static  Color titleColor = Color(0xFF00BB27);
   static  Color titleColor2 = Color(0xFFFAA300);
   static const Color emptyColor = Color(0xFFE8E8E9);
@@ -97,27 +101,18 @@ class AppColor{
   static Color buttonColorBiometrics = const Color(
     0xFF747480,
   ).withValues(alpha: 0.12);
-  static const Color containerColorBiometrics = Color(0xFFFCE000);
   static Color? grey600 = Colors.grey[600];
   static Color? inputColors = const Color(0xFFF8F8F8);
   static Color textColors = const Color(0xFF007AFF);
   static Color sliderActiveColors = const Color(0xFF007AFF);
   static Color sliderColors = const Color(0xFF007AFF).withValues(alpha: 0.3);
-  static Color white70 = Colors.white70;
-  static Color yourTextInfoColor = const Color(0xFF28313F);
-  static Color yourTextColor = const Color(0xFF007AFF);
-  static Color yourButtonColor = const Color(
-    0xFF747480,
-  ).withValues(alpha: 0.12);
-  static Color insuranceButtonColor = const Color(0xFFFCE000);
-  static Color insuranceActiveColor = const Color(0xFF34C759);
+
   static Color ticketsCardColor = const Color(0xFF00356D);
 
   static Color finesContoinerColor = const Color(0xFF34C759);
 
   static const Color cashColor = Color(0xFF34C759);
   static const Color cashColor1 = Color(0xFFEED23A);
-  static const Color cashColor2 = Color(0xFFDC04D3);
   static const Color dividerColor = Color(0xFF8E8E93);
   static const Color dividerColor2 = Color.fromRGBO(216, 234, 233, 1);
   static const Color payDividerColor = Color.fromRGBO(239, 239, 244, 1);
@@ -137,6 +132,7 @@ class AppColor{
   static  Color greyColor = Color(0xFF323232).withValues(alpha: 0.1);
   static  Color greyColor2 = Color(0xFF323232);
   static  Color blueColor = Color(0xFF1565C0);
+  static  Color blueColor2= Color(0xFF1656A5);
   static  Color dodgerBlueColor = Color(0xFF347ED9);
   static  Color greenColors = Color(0xFF75E363);
   static  Color blackColor = Color(0xFF1C1B1B);

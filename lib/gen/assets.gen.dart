@@ -73,6 +73,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
+  /// File path: assets/images/map_image.png
+  AssetGenImage get mapImage =>
+      const AssetGenImage('assets/images/map_image.png');
+
   /// File path: assets/images/money_send.png
   AssetGenImage get moneySend =>
       const AssetGenImage('assets/images/money_send.png');
@@ -110,6 +114,7 @@ class $AssetsImagesGen {
     group1,
     group2,
     logo,
+    mapImage,
     moneySend,
     order,
     person,
@@ -244,6 +249,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/info.svg
   SvgGenImage get info => const SvgGenImage('assets/svg/info.svg');
 
+  /// File path: assets/svg/info_icon.svg
+  SvgGenImage get infoIcon => const SvgGenImage('assets/svg/info_icon.svg');
+
   /// File path: assets/svg/lightbulb.svg
   SvgGenImage get lightbulb => const SvgGenImage('assets/svg/lightbulb.svg');
 
@@ -291,15 +299,18 @@ class $AssetsSvgGen {
   /// File path: assets/svg/money_send1.svg
   SvgGenImage get moneySend1 => const SvgGenImage('assets/svg/money_send1.svg');
 
-  /// File path: assets/svg/more_horizontal .svg
-  SvgGenImage get moreHorizontal =>
-      const SvgGenImage('assets/svg/more_horizontal .svg');
+  /// File path: assets/svg/more_horizontal_edit.svg
+  SvgGenImage get moreHorizontalEdit =>
+      const SvgGenImage('assets/svg/more_horizontal_edit.svg');
 
   /// File path: assets/svg/my_location.svg
   SvgGenImage get myLocation => const SvgGenImage('assets/svg/my_location.svg');
 
   /// File path: assets/svg/new1.svg
   SvgGenImage get new1 => const SvgGenImage('assets/svg/new1.svg');
+
+  /// File path: assets/svg/package.svg
+  SvgGenImage get package => const SvgGenImage('assets/svg/package.svg');
 
   /// File path: assets/svg/paperclip.svg
   SvgGenImage get paperclip => const SvgGenImage('assets/svg/paperclip.svg');
@@ -401,6 +412,7 @@ class $AssetsSvgGen {
     homeTab,
     image259,
     info,
+    infoIcon,
     lightbulb,
     loading,
     location,
@@ -416,9 +428,10 @@ class $AssetsSvgGen {
     modeEdit1,
     moneySend,
     moneySend1,
-    moreHorizontal,
+    moreHorizontalEdit,
     myLocation,
     new1,
+    package,
     paperclip,
     password,
     person,

@@ -83,7 +83,7 @@ class BiometricsScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12.r),
                     ),
                     side: BorderSide.none,
-                    backgroundColor: AppColor.containerColorBiometrics,
+                    backgroundColor: AppColor.blueColor2,
                   ),
                   child: Text(
                     "turnOn",

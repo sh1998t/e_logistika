@@ -129,7 +129,7 @@ class CreditCardWidget extends StatelessWidget {
                                 ),
                                 side: BorderSide.none,
                                 backgroundColor:
-                                AppColor.containerColorBiometrics,
+                                AppColor.red,
                               ),
                               child: Text(
                                 'Apply',
@@ -255,7 +255,7 @@ class CreditCardWidget extends StatelessWidget {
                                 ),
                                 side: BorderSide.none,
                                 backgroundColor:
-                                AppColor.containerColorBiometrics,
+                                AppColor.blueColor2,
                               ),
                               child: Text(
                                 'Yes, delete',

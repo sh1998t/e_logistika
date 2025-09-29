@@ -14,6 +14,7 @@ class ButtonWidget extends StatelessWidget {
   final double? height;
   final double? width;
   final bool? isLoading;
+  final double? size;
   final VoidCallback? onLongPress;
   final TextStyle? titleStyle;
   final BorderRadiusGeometry? borderRadius;
@@ -33,6 +34,7 @@ class ButtonWidget extends StatelessWidget {
     required this.onPressed,
     this.height,
     this.width,
+    this.size,
     this.isLoading,
     this.onLongPress,
     this.titleStyle,
@@ -80,7 +82,9 @@ class ButtonWidget extends StatelessWidget {
               backgroundColor: Colors.white,
             )
                 : Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: 15.w),
+                  padding: (size == null)
+                      ? EdgeInsets.symmetric(horizontal: 15.w)
+                      :EdgeInsets.symmetric(horizontal: size!),
                   child: Row(
                     mainAxisAlignment: leadingSvg == null && trailingSvg == null
                         ? MainAxisAlignment.center
