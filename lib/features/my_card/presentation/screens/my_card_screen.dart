@@ -145,6 +145,11 @@ class _MyCardScreenState extends State<MyCardScreen> {
                               creditCard,
                             );
                           },
+                          onDelete: () {
+                            context.read<CardCubit>().removeCard(
+                              creditCard,
+                            );
+                          },
                         );
                       }).toList(),
                     );

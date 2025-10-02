@@ -17,6 +17,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textStyles =Theme.of(context).textTheme.bodySmall;
     return Scaffold(
       backgroundColor: AppColor.scaffoldBackground,
       appBar: AppBar(
@@ -33,7 +34,8 @@ class ProfilePage extends StatelessWidget {
         ),
         automaticallyImplyLeading: false,
       ),
-      body: Padding(
+      body: SingleChildScrollView(
+
         padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: Column(
           children: [
@@ -54,19 +56,11 @@ class ProfilePage extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Container(
-                          height: 48.h,
-                          width: 48.w,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
-                          child: CircleAvatar(
-                            radius: 25.sp,
-                            child: ClipOval(
-                              child: Image.asset(
-                                Assets.images.person.path,
-                              ),
-                            ),
+                        CircleAvatar(
+                          radius: 24.r,
+                          child: Image.asset(
+                            Assets.images.profileTab.path,
+                            fit: BoxFit.fill,
                           ),
                         ),
                         SizedBox(width: 10.w),
@@ -86,7 +80,7 @@ class ProfilePage extends StatelessWidget {
                             ),
                             SizedBox(height: 4.h),
                             Text(
-                              '(+971) 04 555 5555',
+                              '+998 90 123 23 34',
                               style: Theme.of(
                                 context,
                               ).textTheme.bodySmall!.copyWith(
@@ -188,20 +182,7 @@ class ProfilePage extends StatelessWidget {
                   RowWidget(
                     title: "Документы",
                     url: Assets.svg.documents.path,
-                    onTap: (context) {
-                      showModalBottomSheet(
-                        context: context,
-                        isScrollControlled: true,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(20.r),
-                          ),
-                        ),
-                        builder: (context) {
-                          return const SettingDialogWidget();
-                        },
-                      );
-                    },
+                    onTap: (context) {},
                   ),
                   Container(
                     padding: EdgeInsetsDirectional.only(start: 60.w),
@@ -240,9 +221,9 @@ class ProfilePage extends StatelessWidget {
                                   radius: 30.r,
                                   backgroundColor: AppColor.containerColor,
                                   child: SvgPicture.asset(
-                                    " Assets.images.svg.logout.path,",
-                                    width: 28.h,
-                                    height: 20.w,
+                                    Assets.svg.logout.path,
+                                    width: 38.h,
+                                    height: 30.w,
                                     colorFilter: ColorFilter.mode(
                                       AppColor.logOutColor,
                                       BlendMode.srcIn,
@@ -251,7 +232,7 @@ class ProfilePage extends StatelessWidget {
                                 ),
                                 SizedBox(height: 10.h),
                                 Text(
-                                  "doYouReallyWantToExit",
+                                  "Вы действительно хотите выйти?",
                                   style: Theme.of(
                                     context,
                                   ).textTheme.bodySmall!.copyWith(
@@ -277,10 +258,10 @@ class ProfilePage extends StatelessWidget {
                                         ),
                                         side: BorderSide.none,
                                         backgroundColor:
-                                        AppColor.devicesButtonColor,
+                                        AppColor.greyColor2.withValues(alpha: 0.07),
                                       ),
                                       child: Text(
-                                        "cancel",
+                                        "Отмена",
                                         style: Theme.of(
                                           context,
                                         ).textTheme.bodySmall!.copyWith(
@@ -305,15 +286,15 @@ class ProfilePage extends StatelessWidget {
                                         ),
                                         side: BorderSide.none,
                                         backgroundColor:
-                                        AppColor.secondaryColor,
+                                        Color(0xFF104280),
                                       ),
                                       child: Text(
-                                        "yesGoOut",
+                                        "Да, выходи",
                                         style: Theme.of(
                                           context,
                                         ).textTheme.bodySmall!.copyWith(
                                           fontSize: 15.sp,
-                                          color: AppColor.black,
+                                          color: AppColor.white,
                                           fontWeight: FontWeight.w600,
                                         ),
                                       ),
@@ -332,17 +313,18 @@ class ProfilePage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 14.h),
             ButtonWidget(
+              borderRadius: BorderRadius.circular(19.r),
               leadingSvg: SvgPicture.asset(
-                Assets.svg.eLogo.path, width: 23.r,height: 24.r,fit: BoxFit.fill,),
+                Assets.svg.meningYukum.path,),
               trailingSvg:SvgPicture.asset(
                   Assets.svg.arrowForward.path,
                 width: 16.r,height: 16.r,
                 fit: BoxFit.fill,
                 colorFilter: const ColorFilter.mode(
-                  AppColor.white, // istalgan rang
-                  BlendMode.srcIn, // rangni qo‘llash usuli
+                  AppColor.white,
+                  BlendMode.srcIn,
                 ),
               ) ,
               color1: Color(0xFF185CAF),
@@ -354,7 +336,15 @@ class ProfilePage extends StatelessWidget {
                 color: AppColor.white
               ),
               onPressed: () {},
-            )
+            ),
+            SizedBox(height: 10.h),
+            Text('Международные грузоперевозки', style: textStyles!.copyWith(
+              fontSize: 15.sp,
+              fontWeight: FontWeight.w600,
+              color: Color(0xFF1656A5)
+            ),),
+            SizedBox(height: 120.h),
+
           ],
         ),
       ),
@@ -386,12 +376,12 @@ class RowWidget extends StatelessWidget {
                   height: 36.h,
                   width: 36.w,
                   decoration: BoxDecoration(
-                    color: AppColor.containerColor,
+                    color: AppColor.greyColor2.withValues(alpha: 0.06),
                     borderRadius: BorderRadius.circular(5),
                   ),
                   child: Center(
                     child: SvgPicture.asset("$url",
-                        width: 15.w, height: 15.h),
+                        width: 20.r, height: 20.r),
                   ),
                 ),
                 SizedBox(width: 15.w),

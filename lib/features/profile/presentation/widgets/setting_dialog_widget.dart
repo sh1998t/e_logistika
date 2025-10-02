@@ -59,7 +59,7 @@ class _SettingDialogWidgetState extends State<SettingDialogWidget> {
           ),
           SizedBox(height: 10.h),
           LanguageOption(
-            icon: "Assets.svg.flagUz.path",
+            icon: Assets.svg.uzFlag.path,
             kartName: "O`zbekcha",
             isSelected: isSelectedList[0],
             onTap: () async {
@@ -81,7 +81,7 @@ class _SettingDialogWidgetState extends State<SettingDialogWidget> {
             },
           ),
           LanguageOption(
-            icon: "Assets.svg.flagEn.path",
+            icon: Assets.svg.enFlash.path,
             kartName: 'English',
             isSelected: isSelectedList[1],
             onTap: () async {

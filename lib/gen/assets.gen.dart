@@ -27,9 +27,6 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/Avatar.png
-  AssetGenImage get avatar => const AssetGenImage('assets/images/Avatar.png');
-
   /// File path: assets/images/background_image_login.png
   AssetGenImage get backgroundImageLogin =>
       const AssetGenImage('assets/images/background_image_login.png');
@@ -38,29 +35,9 @@ class $AssetsImagesGen {
   AssetGenImage get bacroundImages =>
       const AssetGenImage('assets/images/bacround_images.png');
 
-  /// File path: assets/images/card.png
-  AssetGenImage get card => const AssetGenImage('assets/images/card.png');
-
-  /// File path: assets/images/card1.png
-  AssetGenImage get card1 => const AssetGenImage('assets/images/card1.png');
-
-  /// File path: assets/images/cash_card.png
-  AssetGenImage get cashCard =>
-      const AssetGenImage('assets/images/cash_card.png');
-
   /// File path: assets/images/cash_card1.png
   AssetGenImage get cashCard1 =>
       const AssetGenImage('assets/images/cash_card1.png');
-
-  /// File path: assets/images/desigin.png
-  AssetGenImage get desigin => const AssetGenImage('assets/images/desigin.png');
-
-  /// File path: assets/images/desigin2.png
-  AssetGenImage get desigin2 =>
-      const AssetGenImage('assets/images/desigin2.png');
-
-  /// File path: assets/images/done.png
-  AssetGenImage get done => const AssetGenImage('assets/images/done.png');
 
   /// File path: assets/images/drive.png
   AssetGenImage get drive => const AssetGenImage('assets/images/drive.png');
@@ -68,64 +45,27 @@ class $AssetsImagesGen {
   /// File path: assets/images/drive2.png
   AssetGenImage get drive2 => const AssetGenImage('assets/images/drive2.png');
 
-  /// File path: assets/images/group1.png
-  AssetGenImage get group1 => const AssetGenImage('assets/images/group1.png');
-
-  /// File path: assets/images/group2.png
-  AssetGenImage get group2 => const AssetGenImage('assets/images/group2.png');
-
-  /// File path: assets/images/logo.png
-  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+  /// File path: assets/images/group321.svg
+  SvgGenImage get group321 => const SvgGenImage('assets/images/group321.svg');
 
   /// File path: assets/images/map_image.png
   AssetGenImage get mapImage =>
       const AssetGenImage('assets/images/map_image.png');
 
-  /// File path: assets/images/money_send.png
-  AssetGenImage get moneySend =>
-      const AssetGenImage('assets/images/money_send.png');
-
-  /// File path: assets/images/order.png
-  AssetGenImage get order => const AssetGenImage('assets/images/order.png');
-
-  /// File path: assets/images/person.png
-  AssetGenImage get person => const AssetGenImage('assets/images/person.png');
-
   /// File path: assets/images/profile_tab.png
   AssetGenImage get profileTab =>
       const AssetGenImage('assets/images/profile_tab.png');
 
-  /// File path: assets/images/rectangle.png
-  AssetGenImage get rectangle =>
-      const AssetGenImage('assets/images/rectangle.png');
-
-  /// File path: assets/images/uzcards.png
-  AssetGenImage get uzcards => const AssetGenImage('assets/images/uzcards.png');
-
   /// List of all assets
-  List<AssetGenImage> get values => [
-    avatar,
+  List<dynamic> get values => [
     backgroundImageLogin,
     bacroundImages,
-    card,
-    card1,
-    cashCard,
     cashCard1,
-    desigin,
-    desigin2,
-    done,
     drive,
     drive2,
-    group1,
-    group2,
-    logo,
+    group321,
     mapImage,
-    moneySend,
-    order,
-    person,
     profileTab,
-    rectangle,
-    uzcards,
   ];
 }
 
@@ -144,11 +84,32 @@ class $AssetsSvgGen {
   /// File path: assets/svg/Logo_1.svg
   SvgGenImage get logo1 => const SvgGenImage('assets/svg/Logo_1.svg');
 
+  /// File path: assets/svg/RadioButton.svg
+  SvgGenImage get radioButton =>
+      const SvgGenImage('assets/svg/RadioButton.svg');
+
+  /// File path: assets/svg/RadioButton2.svg
+  SvgGenImage get radioButton2 =>
+      const SvgGenImage('assets/svg/RadioButton2.svg');
+
+  /// File path: assets/svg/Union.svg
+  SvgGenImage get union => const SvgGenImage('assets/svg/Union.svg');
+
   /// File path: assets/svg/Vector.svg
   SvgGenImage get vector => const SvgGenImage('assets/svg/Vector.svg');
 
   /// File path: assets/svg/Vector1.svg
   SvgGenImage get vector1 => const SvgGenImage('assets/svg/Vector1.svg');
+
+  /// File path: assets/svg/alert_triangle.svg
+  SvgGenImage get alertTriangle =>
+      const SvgGenImage('assets/svg/alert_triangle.svg');
+
+  /// File path: assets/svg/allerts.svg
+  SvgGenImage get allerts => const SvgGenImage('assets/svg/allerts.svg');
+
+  /// File path: assets/svg/allerts2.svg
+  SvgGenImage get allerts2 => const SvgGenImage('assets/svg/allerts2.svg');
 
   /// File path: assets/svg/arrow_bottun.svg
   SvgGenImage get arrowBottun =>
@@ -157,6 +118,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/arrow_forward.svg
   SvgGenImage get arrowForward =>
       const SvgGenImage('assets/svg/arrow_forward.svg');
+
+  /// File path: assets/svg/arrow_rigth.svg
+  SvgGenImage get arrowRigth => const SvgGenImage('assets/svg/arrow_rigth.svg');
 
   /// File path: assets/svg/arrows.svg
   SvgGenImage get arrows => const SvgGenImage('assets/svg/arrows.svg');
@@ -167,6 +131,10 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/calendar.svg
   SvgGenImage get calendar => const SvgGenImage('assets/svg/calendar.svg');
+
+  /// File path: assets/svg/calendar_svgrepo.svg
+  SvgGenImage get calendarSvgrepo =>
+      const SvgGenImage('assets/svg/calendar_svgrepo.svg');
 
   /// File path: assets/svg/call.svg
   SvgGenImage get call => const SvgGenImage('assets/svg/call.svg');
@@ -182,6 +150,20 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/cancel2.svg
   SvgGenImage get cancel2 => const SvgGenImage('assets/svg/cancel2.svg');
+
+  /// File path: assets/svg/cancel_svgrepo.svg
+  SvgGenImage get cancelSvgrepo =>
+      const SvgGenImage('assets/svg/cancel_svgrepo.svg');
+
+  /// File path: assets/svg/chat-icon.svg
+  SvgGenImage get chatIconSvg => const SvgGenImage('assets/svg/chat-icon.svg');
+
+  /// File path: assets/svg/chat_icon.svg
+  SvgGenImage get chatIconSvg_ => const SvgGenImage('assets/svg/chat_icon.svg');
+
+  /// File path: assets/svg/chat_svgrepo.svg
+  SvgGenImage get chatSvgrepo =>
+      const SvgGenImage('assets/svg/chat_svgrepo.svg');
 
   /// File path: assets/svg/chat_tab.svg
   SvgGenImage get chatTab => const SvgGenImage('assets/svg/chat_tab.svg');
@@ -219,12 +201,21 @@ class $AssetsSvgGen {
   /// File path: assets/svg/document.svg
   SvgGenImage get document => const SvgGenImage('assets/svg/document.svg');
 
+  /// File path: assets/svg/document22.svg
+  SvgGenImage get document22 => const SvgGenImage('assets/svg/document22.svg');
+
   /// File path: assets/svg/documents.svg
   SvgGenImage get documents => const SvgGenImage('assets/svg/documents.svg');
+
+  /// File path: assets/svg/done.svg
+  SvgGenImage get done => const SvgGenImage('assets/svg/done.svg');
 
   /// File path: assets/svg/edit_svgrepo.svg
   SvgGenImage get editSvgrepo =>
       const SvgGenImage('assets/svg/edit_svgrepo.svg');
+
+  /// File path: assets/svg/en_flash.svg
+  SvgGenImage get enFlash => const SvgGenImage('assets/svg/en_flash.svg');
 
   /// File path: assets/svg/error.svg
   SvgGenImage get error => const SvgGenImage('assets/svg/error.svg');
@@ -241,12 +232,21 @@ class $AssetsSvgGen {
   /// File path: assets/svg/goot.svg
   SvgGenImage get goot => const SvgGenImage('assets/svg/goot.svg');
 
+  /// File path: assets/svg/group321.svg
+  SvgGenImage get group321 => const SvgGenImage('assets/svg/group321.svg');
+
+  /// File path: assets/svg/group43.svg
+  SvgGenImage get group43 => const SvgGenImage('assets/svg/group43.svg');
+
   /// File path: assets/svg/help_outline.svg
   SvgGenImage get helpOutline =>
       const SvgGenImage('assets/svg/help_outline.svg');
 
   /// File path: assets/svg/history.svg
   SvgGenImage get history => const SvgGenImage('assets/svg/history.svg');
+
+  /// File path: assets/svg/home_com.svg
+  SvgGenImage get homeCom => const SvgGenImage('assets/svg/home_com.svg');
 
   /// File path: assets/svg/home_tab.svg
   SvgGenImage get homeTab => const SvgGenImage('assets/svg/home_tab.svg');
@@ -272,6 +272,14 @@ class $AssetsSvgGen {
   /// File path: assets/svg/locations.svg
   SvgGenImage get locations => const SvgGenImage('assets/svg/locations.svg');
 
+  /// File path: assets/svg/locations21.svg
+  SvgGenImage get locations21 =>
+      const SvgGenImage('assets/svg/locations21.svg');
+
+  /// File path: assets/svg/locations33.svg
+  SvgGenImage get locations33 =>
+      const SvgGenImage('assets/svg/locations33.svg');
+
   /// File path: assets/svg/lock.svg
   SvgGenImage get lock => const SvgGenImage('assets/svg/lock.svg');
 
@@ -287,6 +295,13 @@ class $AssetsSvgGen {
   /// File path: assets/svg/lucide_wallet.svg
   SvgGenImage get lucideWallet =>
       const SvgGenImage('assets/svg/lucide_wallet.svg');
+
+  /// File path: assets/svg/mdi_share.svg
+  SvgGenImage get mdiShare => const SvgGenImage('assets/svg/mdi_share.svg');
+
+  /// File path: assets/svg/mening_yukum.svg
+  SvgGenImage get meningYukum =>
+      const SvgGenImage('assets/svg/mening_yukum.svg');
 
   /// File path: assets/svg/microphone.svg
   SvgGenImage get microphone => const SvgGenImage('assets/svg/microphone.svg');
@@ -329,12 +344,19 @@ class $AssetsSvgGen {
   /// File path: assets/svg/person.svg
   SvgGenImage get person => const SvgGenImage('assets/svg/person.svg');
 
+  /// File path: assets/svg/phone_fill.svg
+  SvgGenImage get phoneFill => const SvgGenImage('assets/svg/phone_fill.svg');
+
   /// File path: assets/svg/qrCode.svg
   SvgGenImage get qrCode => const SvgGenImage('assets/svg/qrCode.svg');
 
   /// File path: assets/svg/search-normal.svg
   SvgGenImage get searchNormal =>
       const SvgGenImage('assets/svg/search-normal.svg');
+
+  /// File path: assets/svg/search_svgrepo.svg
+  SvgGenImage get searchSvgrepo =>
+      const SvgGenImage('assets/svg/search_svgrepo.svg');
 
   /// File path: assets/svg/singin.svg
   SvgGenImage get singin => const SvgGenImage('assets/svg/singin.svg');
@@ -369,11 +391,18 @@ class $AssetsSvgGen {
   SvgGenImage get transporter =>
       const SvgGenImage('assets/svg/transporter.svg');
 
+  /// File path: assets/svg/truck-loading.svg
+  SvgGenImage get truckLoading =>
+      const SvgGenImage('assets/svg/truck-loading.svg');
+
   /// File path: assets/svg/truck.svg
   SvgGenImage get truck => const SvgGenImage('assets/svg/truck.svg');
 
   /// File path: assets/svg/upload.svg
   SvgGenImage get upload => const SvgGenImage('assets/svg/upload.svg');
+
+  /// File path: assets/svg/uz_flag.svg
+  SvgGenImage get uzFlag => const SvgGenImage('assets/svg/uz_flag.svg');
 
   /// File path: assets/svg/uzcard.svg
   SvgGenImage get uzcard => const SvgGenImage('assets/svg/uzcard.svg');
@@ -393,18 +422,30 @@ class $AssetsSvgGen {
     ellipse,
     logo2,
     logo1,
+    radioButton,
+    radioButton2,
+    union,
     vector,
     vector1,
+    alertTriangle,
+    allerts,
+    allerts2,
     arrowBottun,
     arrowForward,
+    arrowRigth,
     arrows,
     bankCards1,
     calendar,
+    calendarSvgrepo,
     call,
     call1,
     camera,
     cancel,
     cancel2,
+    cancelSvgrepo,
+    chatIconSvg,
+    chatIconSvg_,
+    chatSvgrepo,
     chatTab,
     check,
     check1,
@@ -416,15 +457,21 @@ class $AssetsSvgGen {
     deleteOutline,
     devices,
     document,
+    document22,
     documents,
+    done,
     editSvgrepo,
+    enFlash,
     error,
     faceId2,
     flagRussia,
     fullScreen,
     goot,
+    group321,
+    group43,
     helpOutline,
     history,
+    homeCom,
     homeTab,
     image259,
     info,
@@ -433,11 +480,15 @@ class $AssetsSvgGen {
     loading,
     location,
     locations,
+    locations21,
+    locations33,
     lock,
     logoE,
     logoLogin,
     logout,
     lucideWallet,
+    mdiShare,
+    meningYukum,
     microphone,
     mingcuteDocumentsLine,
     modeEdit,
@@ -451,8 +502,10 @@ class $AssetsSvgGen {
     paperclip,
     password,
     person,
+    phoneFill,
     qrCode,
     searchNormal,
+    searchSvgrepo,
     singin,
     sss,
     star,
@@ -463,8 +516,10 @@ class $AssetsSvgGen {
     symbolsHistory,
     translate,
     transporter,
+    truckLoading,
     truck,
     upload,
+    uzFlag,
     uzcard,
     uzcard21,
     uzcardss,

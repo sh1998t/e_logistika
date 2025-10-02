@@ -170,14 +170,11 @@ Future<DateTime?> showDateTimePickerDialog(
 }
 
 
-/// -------------------------
-/// 3) Header (контейнерные табы)
-/// -------------------------
 class HeaderBarContainerTabs extends StatelessWidget {
   final DateTime date;
   final TimeOfDay time;
-  final bool showBigTime;          // показывать крупное HH:mm (только для "ВРЕМЯ")
-  final int active;                // 0 = ДАТА, 1 = ВРЕМЯ
+  final bool showBigTime;
+  final int active;
   final ValueChanged<int> onChanged;
   final VoidCallback onOk;
   final VoidCallback onClose;
@@ -469,6 +466,8 @@ class _Wheel extends StatelessWidget {
       ),
     );
   }
+
 }
 
 String _ucFirst(String s) => s.isEmpty ? s : s[0].toUpperCase() + s.substring(1);
+

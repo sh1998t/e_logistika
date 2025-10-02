@@ -4,6 +4,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/constants/app_coler.dart';
+import '../../../../gen/assets.gen.dart';
 
 class DevicesScreen extends StatefulWidget {
   static const String name = 'devices_screen';
@@ -15,9 +16,9 @@ class DevicesScreen extends StatefulWidget {
 }
 
 List<Map<String, String>> devices = [
-  {'name': "deviceName", 'title': "deviceTitle"},
-  {'name': "deviceName2", 'title': 'iOS •9.2.4 • '},
-  {'name': "deviceName3", 'title': "deviceTitle"},
+  {'name': "Xiaomi Redmi 7", 'title': "Android"},
+  {'name': "iPhone 7", 'title': 'iOS •9.2.4 • '},
+  {'name': "Realme RMX2001 RM6785", 'title': "Android"},
 ];
 
 class _DevicesScreenState extends State<DevicesScreen> {
@@ -42,7 +43,7 @@ class _DevicesScreenState extends State<DevicesScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "currentDevice",
+              "Текущее устройство",
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 fontSize: 13.sp,
                 color: AppColor.textLightGray,
@@ -64,7 +65,7 @@ class _DevicesScreenState extends State<DevicesScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '',
+                      'iPhone 13',
                       style: Theme.of(context).textTheme.bodySmall!.copyWith(
                         fontSize: 15.sp,
                         color: AppColor.black,
@@ -97,7 +98,7 @@ class _DevicesScreenState extends State<DevicesScreen> {
                       ],
                     ),
                     Text(
-                      'registered: 13.11.2024',
+                      'Зарегистрировано: 13.11.2024',
                       style: Theme.of(context).textTheme.bodySmall!.copyWith(
                         fontSize: 11.sp,
                         color: AppColor.textLightGray,
@@ -117,12 +118,12 @@ class _DevicesScreenState extends State<DevicesScreen> {
                           backgroundColor: AppColor.devicesButtonColor,
                         ),
                         child: Text(
-                          "terminateAll",
+                          "Завершить все другие сессии",
                           style: Theme.of(
                             context,
                           ).textTheme.bodySmall!.copyWith(
                             fontSize: 15.sp,
-                            color: AppColor.red,
+                            color: Color(0xFFFF3B30),
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -130,7 +131,7 @@ class _DevicesScreenState extends State<DevicesScreen> {
                     ),
                     SizedBox(height: 12.h),
                     Text(
-                      "logOutOnAll",
+                      "Выйти на всех устройствах, кроме текущего.",
                       style: Theme.of(context).textTheme.bodySmall!.copyWith(
                         fontSize: 11.sp,
                         color: AppColor.textLightGray,
@@ -145,7 +146,7 @@ class _DevicesScreenState extends State<DevicesScreen> {
             (devices.isEmpty)
                 ? const Text('')
                 : Text(
-              "activeSessions",
+              " Активные сессии",
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 fontSize: 13.sp,
                 color: AppColor.textLightGray,
@@ -233,14 +234,14 @@ class CardWidget extends StatelessWidget {
                           radius: 45.r,
                           backgroundColor: AppColor.containerColor,
                           child: SvgPicture.asset(
-                            "Assets.images.svg.dalete.path",
+                            Assets.svg.delete.path,
                             width: 36.h,
                             height: 28.w,
                           ),
                         ),
                         SizedBox(height: 15.h),
                         Text(
-                          "areYouSureWant",
+                          "Вы уверены, что хотите завершить эту сессию? ",
                           style: Theme.of(
                             context,
                           ).textTheme.bodySmall!.copyWith(
@@ -248,7 +249,8 @@ class CardWidget extends StatelessWidget {
                             color: AppColor.black,
                             fontWeight: FontWeight.bold,
                           ),
-                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                          textAlign: TextAlign.start,
                         ),
                         SizedBox(height: 20.h),
                         Row(
@@ -265,7 +267,7 @@ class CardWidget extends StatelessWidget {
                                 backgroundColor: AppColor.devicesButtonColor,
                               ),
                               child: Text(
-                                "cancel",
+                                "Отмена",
                                 style: Theme.of(
                                   context,
                                 ).textTheme.bodySmall!.copyWith(
@@ -287,12 +289,12 @@ class CardWidget extends StatelessWidget {
                                 AppColor.blueColor2,
                               ),
                               child: Text(
-                                "finish",
+                                "Завершить",
                                 style: Theme.of(
                                   context,
                                 ).textTheme.bodySmall!.copyWith(
                                   fontSize: 15.sp,
-                                  color: AppColor.black,
+                                  color: AppColor.white,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
@@ -324,9 +326,9 @@ class CardWidget extends StatelessWidget {
               ),
               child: Center(
                 child: SvgPicture.asset(
-                  "Assets.images.svg.dalete.path",
-                  width: 16.w,
-                  height: 16.h,
+                  Assets.svg.deleteOutline.path,
+                  width: 24.w,
+                  height: 24.h,
                   fit: BoxFit.contain,
                 ),
               ),

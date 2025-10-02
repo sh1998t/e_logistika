@@ -218,8 +218,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
                              cardHolderFullName:
                              cardNameController.text,
                              logoUrl:
-                             Assets.images.card.path,
-                             url:  Assets.images.card1.path,
+                             Assets.images.cashCard1.path,
+                             url:  Assets.images.cashCard1.path,
                            ),
                          ),
                        ),

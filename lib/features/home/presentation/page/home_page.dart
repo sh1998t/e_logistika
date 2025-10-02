@@ -26,7 +26,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late TabController _tabController;
   int _currentIndex = 0;
-  bool _showActiveOrders = false;
+  bool _showActiveOrders = true;
   int _selectedTabIndex = 0;
 
   final List<Map<String, dynamic>> _tabs = [
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       "color": Colors.orange,
     },
     {
-      "title": "Отмене",
+      "title": "Отменено",
       "icon": 'assets/svg/cancel.svg',
       "color": Colors.red,
     },
@@ -99,9 +99,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             backgroundColor: Color(0xFF0D6EFD),
             title: '+ Создать новый заказ',
             onPressed: () {
-              // setState(() {
-              //   _showActiveOrders = true;
-              // });
+
               context.pushNamed(RoutersName.creationName, pathParameters: {'pageIndex': '1'});
 
 

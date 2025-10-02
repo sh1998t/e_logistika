@@ -15,7 +15,7 @@ class InfoShowDialog extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "IMPORTANT TO KNOW",
+            "ВАЖНО ЗНАТЬ",
             style: Theme.of(context).textTheme.bodySmall!.copyWith(
               fontSize: 17.sp,
               fontWeight: FontWeight.w700,
@@ -24,7 +24,7 @@ class InfoShowDialog extends StatelessWidget {
           ),
           SizedBox(height: 8.h),
           Text(
-            "myCardInfoText",
+            "Информация о карте",
             style: Theme.of(context).textTheme.bodySmall!.copyWith(
               fontSize: 13.sp,
               fontWeight: FontWeight.w500,
@@ -35,7 +35,7 @@ class InfoShowDialog extends StatelessWidget {
           ),
           SizedBox(height: 8.h),
           Text(
-            "For the service to work correctly:",
+            "Для корректной работы сервиса:",
             style: Theme.of(context).textTheme.bodySmall!.copyWith(
               fontSize: 13.sp,
               fontWeight: FontWeight.w500,
@@ -58,7 +58,7 @@ class InfoShowDialog extends StatelessWidget {
               ),
               SizedBox(width: 5.w),
               Text(
-                'Check the balance and status of your\nphone \nnumber.',
+                'Проверьте баланс и статус вашего\nномера телефона.',
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w400,
@@ -84,34 +84,7 @@ class InfoShowDialog extends StatelessWidget {
               ),
               SizedBox(width: 5.w),
               Text(
-                'Make sure that the SMS notification service is \nenabled and active. Contact your bank to do\n this.',
-                style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                  fontSize: 13.sp,
-                  fontWeight: FontWeight.w400,
-                  color: AppColor.black,
-                ),
-                softWrap: true,
-                maxLines: 3,
-              ),
-            ],
-          ),
-          SizedBox(height: 8.h),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                height: 5.h,
-                margin: EdgeInsets.only(top: 5.h),
-                width: 5.w,
-                decoration:  BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColor.black,
-                ),
-              ),
-              SizedBox(width: 5.w),
-              Text(
-                'The SMS notification number must be the \nsame as your account number.',
+                'Убедитесь, что служба SMS-уведомлений\nвключена и активна. Обратитесь в банк для\nэтого.',
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w400,
@@ -138,7 +111,34 @@ class InfoShowDialog extends StatelessWidget {
               ),
               SizedBox(width: 5.w),
               Text(
-                'The card must not have expired or been \nblocked.',
+                'Номер SMS-уведомлений должен\nсовпадать с номером вашего счета.',
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  fontSize: 13.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColor.black,
+                ),
+                softWrap: true,
+                maxLines: 3,
+              ),
+            ],
+          ),
+          SizedBox(height: 8.h),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                height: 5.h,
+                margin: EdgeInsets.only(top: 5.h),
+                width: 5.w,
+                decoration:  BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColor.black,
+                ),
+              ),
+              SizedBox(width: 5.w),
+              Text(
+                'Карта не должна быть просрочена или\nзаблокирована.',
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w400,

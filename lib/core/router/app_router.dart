@@ -8,6 +8,8 @@ import 'package:e_logistika/features/profile/presentation/page/biometrics_screen
 import 'package:e_logistika/features/profile/presentation/page/devices_screen.dart';
 import 'package:e_logistika/features/profile/presentation/page/my_orders/download_details_page.dart';
 import 'package:e_logistika/features/profile/presentation/page/my_orders/my_orders_page.dart';
+import 'package:e_logistika/features/profile/presentation/page/my_orders/order_page.dart';
+import 'package:e_logistika/features/profile/presentation/page/my_orders/reasons_page.dart';
 import 'package:e_logistika/features/profile/presentation/page/pin_code_screen.dart';
 import 'package:e_logistika/features/profile/presentation/page/profile_edit_page.dart';
 import 'package:e_logistika/features/profile/presentation/page/settings_screen.dart';
@@ -100,7 +102,7 @@ class AppRouter {
             path: RoutersName.createSearchPagePath,
             name: RoutersName.createSearchPageName,
             builder: (BuildContext context, GoRouterState state) {
-              return const CreateSearchPage();
+              return const SearchAddressScreen();
             },
           ),
           GoRoute(
@@ -180,6 +182,20 @@ class AppRouter {
             name: RoutersName.createTwoName,
             builder: (BuildContext context, GoRouterState state) {
               return  CreateTwoPage();
+            },
+          ),
+          GoRoute(
+            path: RoutersName.reasonsPagePath,
+            name: RoutersName.reasonsPageName,
+            builder: (BuildContext context, GoRouterState state) {
+              return  ReasonsPage();
+            },
+          ),
+          GoRoute(
+            path: RoutersName.orderPagePath,
+            name: RoutersName.orderPageName,
+            builder: (BuildContext context, GoRouterState state) {
+              return  OrderPage();
             },
           ),
         ],

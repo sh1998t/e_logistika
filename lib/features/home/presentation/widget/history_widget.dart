@@ -21,7 +21,7 @@ class HistoryTab extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 10.h,),
-        CardWidget(
+        HomeCardWidget(
         titleColor: AppColor.titleColor2,
         color: AppColor.buttonColor2, time: '12.09.2003',
         id: 'ID: ASF3645', title: 'История'),
@@ -39,7 +39,7 @@ class HistoryTab extends StatelessWidget {
               color: AppColor.black,
             ),)
         ],),
-        CardWidget(
+        HomeCardWidget(
             titleColor: AppColor.titleColor2,
             color: AppColor.buttonColor2, time: '12.09.2003',
             id: 'ID: ASF3645', title: 'История'),

@@ -64,4 +64,10 @@ class RoutersName{
 
   static const String createTwoName = 'create_two_page';
   static const String createTwoPath= '/create_two_page';
+
+  static const String reasonsPageName = 'reasons_page';
+  static const String reasonsPagePath = '/reasons_page';
+
+  static const String orderPageName ='order_page';
+  static const String orderPagePath ='/order_page';
 }

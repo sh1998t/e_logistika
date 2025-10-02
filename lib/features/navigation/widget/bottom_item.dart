@@ -30,8 +30,8 @@ class BottomItem extends StatelessWidget {
           SvgPicture.asset(
             icon,
             colorFilter: ColorFilter.mode(iconColor,  BlendMode.srcIn,),
-            height: 22.r,
-            width: 22.r,
+            height: 30.r,
+            width: 30.r,
           ),
           Flexible(
             child: Text(

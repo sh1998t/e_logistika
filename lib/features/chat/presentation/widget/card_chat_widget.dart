@@ -80,9 +80,9 @@ class _CardChatExpansionState extends State<CardChatExpansion> {
                     ),
                     child: Column(
                       children: [
-                        ChatProfileWidget(url: Assets.images.group1.path, name: 'Vali'),
+                        ChatProfileWidget(url: Assets.images.profileTab.path, name: 'Vali'),
                         SizedBox(height: 12.h,),
-                        ChatProfileWidget(url: Assets.images.group2.path, name: 'Ali', count: 1,),
+                        ChatProfileWidget(url: Assets.images.profileTab.path, name: 'Ali', count: 1,),
                       ],
                     ),
                   ),

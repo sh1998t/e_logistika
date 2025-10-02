@@ -31,6 +31,7 @@ class CreationPage extends StatefulWidget {
 class _CreationPageState extends State<CreationPage> {
   late final YandexMapController controller;
   bool showRouteMessage = false;
+  String selectedDestination = 'Куда едем?';
 
   final animation = const MapAnimation(
     type: MapAnimationType.smooth,
@@ -94,7 +95,7 @@ class _CreationPageState extends State<CreationPage> {
                 Navigator.of(context).pop();
               },
               child: Container(
-                height: 320.h,
+                height: selectedDestination == 'Куда едем?' ? 260.h : 320.h,
 
                 width: MediaQuery.of(context).size.width,
                 alignment: Alignment.center,
@@ -142,9 +143,14 @@ class _CreationPageState extends State<CreationPage> {
                       ),
                     ),
                     SizedBox(height: 10.h,),
-                    InkWell(
-                      onTap: (){
-                     context.pushNamed(RoutersName.createSearchPageName);
+                     InkWell(
+                      onTap: () async {
+                        final result = await context.pushNamed(RoutersName.createSearchPageName);
+                        if (result != null && mounted) {
+                          setState(() {
+                            selectedDestination = result.toString();
+                          });
+                        }
                       },
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 19.w, ),
@@ -161,11 +167,13 @@ class _CreationPageState extends State<CreationPage> {
                             children: [
                               SvgPicture.asset(Assets.svg.locations.path, width: 28.r,height: 28.r,fit: BoxFit.fill,),
                               SizedBox(width: 10.w,),
-                              Text('Куда едем?',
+                              Text(selectedDestination,
                                 style:Theme.of(context).textTheme.bodySmall!.copyWith(
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.w400,
-                                    color: AppColor.black
+                                    color: selectedDestination == 'Куда едем?' 
+                                        ? AppColor.greyColor2
+                                        : AppColor.greyColor2
                                 ) ,)
                             ],
                           ),
@@ -174,25 +182,28 @@ class _CreationPageState extends State<CreationPage> {
                     ),
                     SizedBox(height: 10.h,),
 
-                  Padding(padding: EdgeInsets.symmetric(horizontal: 19.w),
-                  child:   SizedBox(
-                    height: 56,
-                    child: SwipeFillButton(
+                    // SwipeFillButton faqat manzil tanlangandan keyin ko'rsatiladi
+                    if (selectedDestination != 'Куда едем?') ...[
+                      Padding(padding: EdgeInsets.symmetric(horizontal: 19.w),
+                      child:   SizedBox(
+                        height: 56,
+                        child: SwipeFillButton(
 
-                      leadingSvg: SvgPicture.asset(Assets.svg.arrows.path, width:54.w,height: 19.h,),
-                        color1: Color(0xFF285CAF),
-                        color2: Color(0xFF104280),
-                        titleStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w600,
-                          color: AppColor.white
-                        ),
-                        title: "Проведите для подтверждения",
-                      onCompleted: () {
-                        context.pushNamed(RoutersName.createTwoName);
-                      },),
-                  ),
-                  )
+                          leadingSvg: SvgPicture.asset(Assets.svg.arrows.path, width:54.w,height: 19.h,),
+                            color1: Color(0xFF285CAF),
+                            color2: Color(0xFF104280),
+                            titleStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w600,
+                              color: AppColor.white
+                            ),
+                            title: "Проведите для подтверждения",
+                          onCompleted: () {
+                            context.pushNamed(RoutersName.createTwoName);
+                          },),
+                      ),
+                      ),
+                    ]
 
                   ],
                 ),

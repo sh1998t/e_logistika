@@ -51,7 +51,7 @@ class _NavigationPageState extends State<NavigationPage> {
           ],
         ),
         child: BottomAppBar(
-          padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 20.w),
+          padding: EdgeInsets.only(top: 8.h, right: 20.w, left: 20.w),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -119,8 +119,9 @@ class _NavigationPageState extends State<NavigationPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(Assets.images.profileTab.path,
-                      height: 22.r,
-                      width: 22.r,
+                      height: 30.r,
+                      width: 30.r,
+                      fit: BoxFit.fill,
                     ),
                     Flexible(
                       child: Text(

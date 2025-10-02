@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CardWidget extends StatefulWidget {
+class HomeCardWidget extends StatefulWidget {
   final String title;
   final Color color;
   final Color titleColor;
   final String time;
   final String id;
-  const CardWidget({
+  const HomeCardWidget({
     super.key,
     required this.color,
     required this.titleColor,
@@ -20,10 +20,10 @@ class CardWidget extends StatefulWidget {
   });
 
   @override
-  State<CardWidget> createState() => _CardWidgetState();
+  State<HomeCardWidget> createState() => _HomeCardWidgetState();
 }
 
-class _CardWidgetState extends State<CardWidget> {
+class _HomeCardWidgetState extends State<HomeCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -184,7 +184,7 @@ class _CardWidgetState extends State<CardWidget> {
                 fontWeight: FontWeight.w400,
                 color: AppColor.black,
               ),),
-              Text('|    Yon tomoni', style: Theme.of(context).textTheme.bodySmall!.copyWith(
+              Text('|   Сторона', style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColor.black,

@@ -7,6 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/di/injection.dart';
 import 'core/router/app_router.dart';
 import 'core/utils/theme.dart';
+import 'features/creation/data/data_source/search_address_data_source.dart';
+import 'features/creation/presentation/bloc/search_address_cubit.dart';
 import 'features/main/presentation/pages/main_page.dart';
 import 'features/my_card/data/bloc/add_card_cubit.dart';
 
@@ -43,6 +45,8 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return MultiBlocProvider(providers: [
+        BlocProvider(  create: (_) => SearchAddressCubit(SearchAddressDataSource()),),
+
           BlocProvider(create: (_) => CardCubit()),        ],
 
             child: MaterialApp.router(

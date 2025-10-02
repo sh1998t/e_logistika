@@ -1,76 +1,58 @@
-//
-//
-//
-// import 'package:json_annotation/json_annotation.dart';
-// part "search_address_response.g.dart";
-//
-// @JsonSerializable(fieldRename: FieldRename.snake, createToJson: false)
-// class SearchAddressResponse{
-//   @JsonKey(name: "suggest_reqid")
-//   final String suggestRuqId;
-//   final List<YandexAddressModel> results;
-//
-//   SearchAddressResponse({required this.suggestRuqId, required this.results});
-//
-//   factory SearchAddressResponse.fromJson(Map<String, dynamic> json) => _$SearchAddressResponseFromJson(json);
-// }
-//
-// @JsonSerializable(fieldRename: FieldRename.snake, createToJson: false)
-// class YandexAddressModel {
-//   final  TitleModel title;
-//   final  SubtitleModel subtitle;
-//   final List<String> tags;
-//   final DistanceModel distance;
-//   final AddressModel address;
-//   final String uri;
-//
-//   YandexAddressModel({required this.title, required this.subtitle, required this.tags, required this.distance, required this.address, required this.uri});
-//   factory YandexAddressModel.fromJson(Map<String, dynamic> json) => _$YandexAddressModelFromJson(json);
-// }
-//
-// @JsonSerializable(fieldRename: FieldRename.snake, createToJson: false)
-// class TitleModel{
-//   final String text;
-//
-//   TitleModel({required this.text});
-//
-//   factory TitleModel.fromJson(Map<String, dynamic> json) => _$TitleModelFromJson(json);
-// }
-// @JsonSerializable(fieldRename: FieldRename.snake, createToJson: false)
-// class SubtitleModel{
-//   final String text;
-//
-//   SubtitleModel({required this.text});
-//
-//   factory SubtitleModel.fromJson(Map<String, dynamic> json) => _$SubtitleModelFromJson(json);
-// }
-//
-// @JsonSerializable(fieldRename: FieldRename.snake, createToJson: false)
-// class DistanceModel{
-//   final double value;
-//   final String text;
-//
-//   DistanceModel({required this.value, required this.text});
-//
-//   factory DistanceModel.fromJson(Map<String, dynamic> json) => _$DistanceModelFromJson(json);
-//
-// }
-//
-// @JsonSerializable(fieldRename: FieldRename.snake, createToJson: false)
-// class AddressModel {
-//   final String formattedAddress;
-//   final List<ComponentModel> component;
-//
-//   AddressModel({required this.formattedAddress, required this.component});
-//   factory AddressModel.fromJson(Map<String, dynamic> json) => _$AddressModelFromJson(json);
-// }
-//
-// @JsonSerializable()
-// class ComponentModel {
-//   final String name;
-//   final List<String> kind;
-//
-//   ComponentModel({required this.name, required this.kind});
-//
-//   factory ComponentModel.fromJson(Map<String, dynamic> json) => _$ComponentModelFromJson(json);
-// }
+
+
+class SearchAddressResponse {
+  final List<SearchAddressItem> results;
+
+  SearchAddressResponse({required this.results});
+
+  factory SearchAddressResponse.fromJson(dynamic json) {
+    if (json is List) {
+      // To‘g‘ridan-to‘g‘ri List kelsa
+      return SearchAddressResponse(
+        results: json.map((e) => SearchAddressItem.fromJson(e as Map<String, dynamic>)).toList(),
+      );
+    } else if (json is Map<String, dynamic>) {
+      // Agar Map bo‘lsa va ichida results bo‘lsa
+      final list = json['results'] as List<dynamic>? ?? [];
+      return SearchAddressResponse(
+        results: list.map((e) => SearchAddressItem.fromJson(e as Map<String, dynamic>)).toList(),
+      );
+    } else {
+      throw Exception("Invalid JSON format");
+    }
+  }
+}
+
+
+class SearchAddressItem {
+  final String title;
+  final String? subtitle;
+  final String? distanceText;
+
+  SearchAddressItem({
+    required this.title,
+    this.subtitle,
+    this.distanceText,
+  });
+
+  factory SearchAddressItem.fromJson(Map<String, dynamic> json) {
+    return SearchAddressItem(
+      title: (json['title']?['text'] as String?) ?? '',
+      subtitle: (json['subtitle']?['text'] as String?) ?? '',
+      distanceText: (json['distance']?['text'] as String?),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'subtitle': subtitle,
+      'distanceText': distanceText,
+    };
+  }
+
+  @override
+  String toString() {
+    return 'SearchAddressItem(title: $title, subtitle: $subtitle, distance: $distanceText)';
+  }
+}

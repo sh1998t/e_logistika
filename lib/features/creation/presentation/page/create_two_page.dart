@@ -4,7 +4,10 @@ import 'package:e_logistika/features/home/presentation/widget/button_widget.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import '../widgets/price_selection_widget.dart';
+import '../widgets/contact_bottom_sheet_widget.dart';
 
+import '../../../../core/utils/formatters/formatters.dart';
 import '../../../../gen/assets.gen.dart';
 import '../widgets/animated_widget.dart';
 import '../widgets/date_time_widget.dart';
@@ -54,7 +57,13 @@ class _CreateTwoPageState extends State<CreateTwoPage> {
   ];
   String? selected2;
   late final isEmpty = selected?.isEmpty ?? true;
-  bool loading =false;
+  bool loading = false;
+  bool showPriceSelection = false;
+  final TextEditingController controllerData = TextEditingController();
+  final TextEditingController controllerData2 = TextEditingController();
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -99,23 +108,73 @@ class _CreateTwoPageState extends State<CreateTwoPage> {
                       },
                     ),
                   ),
+
                   SizedBox(width: 10.w),
+
                   SizedBox(
-                    width: 217.w,
-                    child: OutlinedValueField(
-                      label: 'Дата',
-                      value: picked == null ? '—' : DateFormat('dd.MM.yyyy', 'ru').format(picked!),
-                      requiredMark: true,
-                      focused: true,
-                      onTap: () async {
-                        final res = await showDateTimePickerDialog(
-                          context,
-                          initialDateTime: picked ?? DateTime.now(),
-                        );
-                        if (res != null) setState(() => picked = res);
-                      },
-                    ),
-                  ),
+                      width: 217.w,
+                      child: TextFormField(
+                        controller: controllerData,
+                        inputFormatters: [Formatters.dateFormatter],
+
+                        decoration: InputDecoration(
+                          label:  RichText(
+                            text: TextSpan(
+                              text:  'Дата',
+                              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                                fontSize: 13.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColor.textLightGray,
+                              ),
+                              children: [
+
+                                TextSpan(
+                                  text: '*',
+                                  style: TextStyle(
+                                    color: AppColor.red,
+                                    fontSize: 13.sp,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          labelStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFF97A3AF),
+                          ),
+                          border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12.r),
+
+                            borderSide: BorderSide(color: Colors.grey, width: 1),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12.r),
+                            borderSide: BorderSide(color: Colors.grey, width: 2),
+                          ),
+                          suffixIcon: IconButton(
+                            onPressed: () async {
+                              final res = await showDateTimePickerDialog(
+                                context,
+                                initialDateTime: picked ?? DateTime.now(),
+                              );
+                              if (res != null) {
+                                setState(() {
+                                  picked = res;
+                                  controllerData.text =
+                                  "${res.day.toString().padLeft(2, '0')}/${res.month.toString().padLeft(2, '0')}/${res.year}";
+                                });
+                              }
+                            },
+                            icon: SvgPicture.asset(Assets.svg.calendarSvgrepo.path),
+                          ),
+                        ),
+                      )
+
+                  )
+
                 ],
               ),
               SizedBox(height: 10.h),
@@ -138,23 +197,86 @@ class _CreateTwoPageState extends State<CreateTwoPage> {
                       },
                     ),
                   ),
+
                   SizedBox(width: 10.w),
+
                   SizedBox(
                     width: 217.w,
-                    child: OutlinedValueField(
-                      label: 'Дата',
-                      value: picked == null ? '—' : DateFormat('dd.MM.yyyy', 'ru').format(picked!),
-                      requiredMark: true,
-                      focused: true,
-                      onTap: () async {
-                        final res = await showDateTimePickerDialog(
-                          context,
-                          initialDateTime: picked ?? DateTime.now(),
-                        );
-                        if (res != null) setState(() => picked = res);
-                      },
-                    ),
-                  ),
+                    child: TextFormField(
+                      controller: controllerData2,
+                      inputFormatters: [Formatters.dateFormatter],
+
+                      decoration: InputDecoration(
+                        label:  RichText(
+                          text: TextSpan(
+                            text:  'Дата',
+                            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              fontSize: 13.sp,
+                              fontWeight: FontWeight.w400,
+                              color: AppColor.textLightGray,
+                            ),
+                            children: [
+
+                                TextSpan(
+                                  text: '*',
+                                  style: TextStyle(
+                                    color: AppColor.red,
+                                    fontSize: 13.sp,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
+                        labelStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFF97A3AF),
+                        ),
+                        border: OutlineInputBorder(),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.r),
+
+                          borderSide: BorderSide(color: Colors.grey, width: 1),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.r),
+                          borderSide: BorderSide(color: Colors.grey, width: 2),
+                        ),
+                        suffixIcon: IconButton(
+                          onPressed: () async {
+                            final res = await showDateTimePickerDialog(
+                              context,
+                              initialDateTime: picked ?? DateTime.now(),
+                            );
+                            if (res != null) {
+                              setState(() {
+                                picked = res;
+                                controllerData2.text =
+                                "${res.day.toString().padLeft(2, '0')}/${res.month.toString().padLeft(2, '0')}/${res.year}";
+                              });
+                            }
+                          },
+                          icon: SvgPicture.asset(Assets.svg.calendarSvgrepo.path),
+                        ),
+                      ),
+                    )
+
+                  )
+
+                  // OutlinedValueField(
+                  //                       label: 'Дата',
+                  //                       value: picked == null ? '—' : DateFormat('dd.MM.yyyy', 'ru').format(picked!),
+                  //                       requiredMark: true,
+                  //                       focused: true,
+                  //                       onTap: () async {
+                  //                         final res = await showDateTimePickerDialog(
+                  //                           context,
+                  //                           initialDateTime: picked ?? DateTime.now(),
+                  //                         );
+                  //                         if (res != null) setState(() => picked = res);
+                  //                       },
+                  //                     ),
                 ],
               ),
 
@@ -247,6 +369,7 @@ class _CreateTwoPageState extends State<CreateTwoPage> {
               SizedBox(height: 5.h,),
               InkWell(
                 onTap: (){
+
                 },
                 child: CustomPaint(
                   painter: DashedBorderPainter(color: Color(0xFF1849D6), strokeWidth: 2),
@@ -309,14 +432,7 @@ class _CreateTwoPageState extends State<CreateTwoPage> {
                   ),
                   children: [
 
-                    TextSpan(
-                      text: '*',
-                      style: TextStyle(
-                        color: AppColor.red,
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+
                   ],
                 ),
               ),
@@ -403,18 +519,29 @@ class _CreateTwoPageState extends State<CreateTwoPage> {
                 ],
 
               ),
-              SizedBox(height:(loading == false)? 119.h:30.h,),
-              (loading == false)
+              SizedBox(height:(loading == false)? 30.h:30.h,),
+              (loading == false && !showPriceSelection)
                   ?ButtonWidget(
                 color1: Color(0xFF185CAF),
                   color2: Color(0xFF104280),
                   title: 'Продолжить',
                   onPressed: (){
                    setState(() {
-                     loading = !loading;
+                     loading = true;
+                   });
+                   
+                   Future.delayed(Duration(seconds: 3), () {
+                     if (mounted) {
+                       setState(() {
+                         loading = false;
+                         showPriceSelection = true;
+                       });
+                     }
                    });
               })
-                  :AnimatedWidgets(),
+                  : loading 
+                      ? AnimatedWidgets()
+                      : PriceSelectionWidget(),
               SizedBox(height:(loading == false)? 15.h:30.h,),
             ],
           ),

@@ -51,7 +51,7 @@ class AppColor{
   static  Color textColor = Color(0xFF008B27);
   static  Color buttonColor2 = Color(0xFFFAA300).withValues(alpha: 0.22);
   static  Color textColor2 = Color(0xFFFAA300);
-  static  Color buttonColor3 = Color(0xFFE84118).withValues(alpha: 0.2);
+  static  Color buttonColor3 = Color(0xFFE84118).withValues(alpha: 0.25);
   static  Color textColor3 = Color(0xFFE84118);
   static  Color titleColor = Color(0xFF00BB27);
   static  Color titleColor2 = Color(0xFFFAA300);
@@ -113,7 +113,7 @@ class AppColor{
 
   static const Color cashColor = Color(0xFF34C759);
   static const Color cashColor1 = Color(0xFFEED23A);
-  static const Color dividerColor = Color(0xFF8E8E93);
+  static const Color dividerColor = Color(0xFF7F8FA6);
   static const Color dividerColor2 = Color.fromRGBO(216, 234, 233, 1);
   static const Color payDividerColor = Color.fromRGBO(239, 239, 244, 1);
   static const Color rateButtonColor = Color(0xFF00C0FC);
@@ -131,8 +131,11 @@ class AppColor{
   static const Color greenColor = Color(0xFF4CD137);
   static  Color greyColor = Color(0xFF323232).withValues(alpha: 0.1);
   static  Color greyColor2 = Color(0xFF323232);
+  static  Color greyColor3 = Color(0xFF252333);
+  static  Color greyColor4 = Color(0xFF718093);
   static  Color blueColor = Color(0xFF1565C0);
   static  Color blueColor2= Color(0xFF1656A5);
+  static  Color blueColor3= Color(0xFF286EF1);
   static  Color dodgerBlueColor = Color(0xFF347ED9);
   static  Color greenColors = Color(0xFF75E363);
   static  Color blackColor = Color(0xFF1C1B1B);
@@ -141,6 +144,9 @@ class AppColor{
   static Color greyBlue30 = Color(0xFF00A8FF).withValues(alpha: 0.3);
   static  Color greenBase30 = Color(0xFF44BD32).withValues(alpha: 0.3);
   static  Color greenBase = Color(0xFF44BD32);
+  static  Color sliderColor1= Color(0xFF7085A2);
+  static  Color sliderColor2= Color(0xFF7085A2).withValues(alpha: 0.5);
+
 
 
 

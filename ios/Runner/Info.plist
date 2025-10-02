@@ -36,8 +36,10 @@
 		<string>LaunchScreen</string>
 		<key>UIMainStoryboardFile</key>
 		<string>Main</string>
-		<key>NSLocationWhenInUseUsageDescription</key>
+        <key>NSLocationWhenInUseUsageDescription</key>
          <string>Map permission for the app to get your location</string>
+        <key>NSContactsUsageDescription</key>
+        <string>Нужен доступ к контактам для выбора получателя доставки</string>
 		<key>UISupportedInterfaceOrientations</key>
 		<array>
 			<string>UIInterfaceOrientationPortrait</string>

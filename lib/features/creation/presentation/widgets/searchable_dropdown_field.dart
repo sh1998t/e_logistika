@@ -49,7 +49,6 @@ class _TransportDropdownFieldState extends State<TransportDropdownField> {
   }
 
   void _ensureFocus() {
-    // FocusNode ulangan bo'lsa darhol, aks holda post-frame’da
     if (_focus.context != null) {
       _focus.requestFocus();
     } else {
@@ -94,7 +93,6 @@ class _TransportDropdownFieldState extends State<TransportDropdownField> {
     final hasSelection =
         _selected?.item != null && _selected!.item!.isNotEmpty;
 
-    // Xavfsiz fokus tekshiruvi: FocusNode hali ulanmagan bo’lishi mumkin
     final isFocused = _focus.context != null && _focus.hasFocus;
 
     final Widget suffixIcon = InkWell(
@@ -102,14 +100,14 @@ class _TransportDropdownFieldState extends State<TransportDropdownField> {
         _ensureFocus(); // fokusni xavfsiz beramiz
         _ctl.selection = TextSelection.collapsed(offset: _ctl.text.length);
       },
-      child: (hasSelection && !isFocused)
-          ? SvgPicture.asset(Assets.svg.arrowBottun.path)
-          : SvgPicture.asset(Assets.svg.searchNormal.path),
+      child: isFocused
+          ? SvgPicture.asset(Assets.svg.searchNormal.path)
+          : SvgPicture.asset(Assets.svg.arrowBottun.path),  // Oynaga kirishdan oldin va keyin
     );
 
     return SearchField<String>(
       controller: _ctl,
-      focusNode: _focus,                         // muhim
+      focusNode: _focus,
       suggestions: suggestions,
       suggestionState: Suggestion.expand,
       maxSuggestionBoxHeight: widget.maxSuggestionHeight,

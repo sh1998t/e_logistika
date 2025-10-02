@@ -31,7 +31,7 @@ class _DonePageState extends State<DonePage> {
            Column(
              children: [
                Center(
-                 child:Image.asset(Assets.images.done.path, width: 236.r,height: 236.r,fit: BoxFit.fill,),
+                 child:SvgPicture.asset(Assets.svg.done.path, width: 236.r,height: 236.r,fit: BoxFit.fill,),
                ),
                Text('Готово', style: Theme.of(context).textTheme.bodySmall!.copyWith(
                  fontSize: 30.sp,

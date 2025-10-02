@@ -40,7 +40,7 @@ class _UpYourWalletPageState extends State<UpYourWalletPage> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.r),
               image: DecorationImage(
-                image: AssetImage(Assets.images.cashCard.path),
+                image: AssetImage(Assets.images.cashCard1.path),
                 fit: BoxFit.fill,
               ),
             ),

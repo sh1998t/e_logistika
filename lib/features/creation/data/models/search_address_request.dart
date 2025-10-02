@@ -1,15 +1,17 @@
-//
-// import 'package:json_annotation/json_annotation.dart';
-// part 'search_address_request.g.dart';
-//
-// @JsonSerializable(createFactory: false)
-// class SearchAddressRequest {
-//   final String lang;
-//   final String text;
-//
-//   SearchAddressRequest({required this.lang, required this.text});
-//
-//   Map<String, dynamic> toJson() => _$SearchAddressRequestToJson(this);
-//
-//
-// }
+class SearchAddressRequest {
+  final String text;
+  final String lang;
+  final String coords;
+
+  SearchAddressRequest({
+    required this.text,
+    this.lang = "uz_UZ",
+    this.coords = "69.2401,41.2995",
+  });
+
+  Map<String, dynamic> toJson() => {
+    "text": text,
+    "lang": lang,
+    "ll": coords,
+  };
+}
