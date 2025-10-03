@@ -45,7 +45,8 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                    CircleAvatar(
                      radius: 24.r,
                      backgroundColor: Color(0xFFEFEFF4),
-                     child: SvgPicture.asset(Assets.svg.person.path, width: 24.r,height: 24.r,),
+                     child: SvgPicture.asset(Assets.svg.person33.path, width: 24.r,height: 24.r,
+                       colorFilter: ColorFilter.mode(Color(0xFF8E8E93), BlendMode.srcIn),),
                    ),
                    SizedBox(width: 10.w,),
                    Container(

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/constants/app_coler.dart';
+import '../../../../core/router/routers_name.dart';
 import 'card_widget.dart';
 class CanceledTab extends StatelessWidget {
   final VoidCallback onBackPressed;
@@ -20,11 +22,16 @@ class CanceledTab extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 10.h,),
-        HomeCardWidget(
-            titleColor: AppColor.textColor3,
-            color: AppColor.buttonColor3,
-          time: '12.09.2003',
-            id: 'ID: ASF3645', title: 'История',),
+        InkWell(
+          onTap: (){
+            context.pushNamed(RoutersName.downloadDetailsPageName);
+          },
+          child: HomeCardWidget(
+              titleColor: AppColor.textColor3,
+              color: AppColor.buttonColor3,
+            time: '12.09.2003',
+              id: 'ID: ASF3645', title: 'История',),
+        ),
         Row(
           spacing: 10.w,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -39,10 +46,15 @@ class CanceledTab extends StatelessWidget {
                 color: AppColor.black,
               ),)
           ],),
-        HomeCardWidget(
-            titleColor: AppColor.titleColor2,
-            color: AppColor.buttonColor2, time: '12.09.2003',
-            id: 'ID: ASF3645', title: 'История'),
+        InkWell(
+          onTap: (){
+            context.pushNamed(RoutersName.downloadDetailsPageName);
+          },
+          child: HomeCardWidget(
+              titleColor: AppColor.titleColor2,
+              color: AppColor.buttonColor2, time: '12.09.2003',
+              id: 'ID: ASF3645', title: 'История'),
+        ),
       ],
     );
   }

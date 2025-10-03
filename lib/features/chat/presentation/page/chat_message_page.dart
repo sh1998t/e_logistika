@@ -172,16 +172,44 @@ class _ChatMessagePageState extends State<ChatMessagePage> {
               child: TextField(
                 decoration: InputDecoration(
                   hintText: "Введите сообщение...",
-                  border: InputBorder.none,
+                  hintStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+                    color: const Color(0xFF2C2D3A),
+                  ),
+                  suffixIcon: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: SvgPicture.asset(
+                          Assets.svg.camera.path,
+                          width: 22.r,
+                          height: 22.r,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: SvgPicture.asset(
+                          Assets.svg.paperclip.path,
+                          width: 24.r,
+                          height: 24.r,
+                        ),
+                      ),
+                    ],
+                  ),
+                  border: OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8.r),
+                    borderSide: const BorderSide(color: Color(0xFFD0D1DB), width: 1),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8.r),
+                    borderSide: const BorderSide(color: Color(0xFF40C4FF), width: 2),
+                  ),
                 ),
               ),
+
             ),
-            IconButton(
-                onPressed: () {},
-                icon: SvgPicture.asset(Assets.svg.camera.path, width: 22.r,height: 22.r,)),
-            IconButton(
-                onPressed: () {},
-                icon: SvgPicture.asset(Assets.svg.paperclip.path, width: 24.r,height: 24.r,)),
+               SizedBox( width: 10.w,),
             CircleAvatar(
               radius: 22.r,
               backgroundColor: Colors.blue,

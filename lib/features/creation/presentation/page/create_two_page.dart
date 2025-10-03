@@ -322,22 +322,97 @@ class _CreateTwoPageState extends State<CreateTwoPage> {
                 children: [
                   SizedBox(
                     width: 160.w,
-                    child: RichTextField(
-                      isRequired: true,
-                      labelText: 'Вес груза (т)',
-                      height: 46.h,
-                      keyboardType: TextInputType.number,
+                    child: TextFormField(
+                      controller: controllerData,
+                      inputFormatters: [Formatters.dateFormatter],
+
+                      decoration: InputDecoration(
+                        label:  RichText(
+                          text: TextSpan(
+                            text:  'Вес груза (т)',
+                            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              fontSize: 13.sp,
+                              fontWeight: FontWeight.w400,
+                              color: AppColor.textLightGray,
+                            ),
+                            children: [
+
+                              TextSpan(
+                                text: '*',
+                                style: TextStyle(
+                                  color: AppColor.red,
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        labelStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFF97A3AF),
+                        ),
+                        border: OutlineInputBorder(),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.r),
+
+                          borderSide: BorderSide(color: Colors.grey, width: 1),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.r),
+                          borderSide: BorderSide(color: Color(0xFF0D6EFD), width: 2),
+                        ),
+
+                      ),
                     ),
                   ),
                   SizedBox(width: 10.w),
                   SizedBox(
                     width: 160.w,
-                    child: RichTextField(
-                      isRequired: true,
-                      labelText: 'Объем груза (м³)',
+                    child: TextFormField(
+                      controller: controllerData,
+                      inputFormatters: [Formatters.dateFormatter],
 
-                      height: 46.h,
-                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        label:  RichText(
+                          text: TextSpan(
+                            text:  'Объем груза (м³)',
+                            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              fontSize: 13.sp,
+                              fontWeight: FontWeight.w400,
+                              color: AppColor.textLightGray,
+                            ),
+                            children: [
+
+                              TextSpan(
+                                text: '*',
+                                style: TextStyle(
+                                  color: AppColor.red,
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        labelStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFF97A3AF),
+                        ),
+                        border: OutlineInputBorder(),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.r),
+
+                          borderSide: BorderSide(color: Colors.grey, width: 1),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.r),
+                          borderSide: BorderSide(color: Color(0xFF0D6EFD), width: 2),
+                        ),
+
+                      ),
                     ),
                   ),
                 ],

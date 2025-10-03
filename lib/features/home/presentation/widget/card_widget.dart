@@ -1,5 +1,6 @@
 import 'package:e_logistika/core/constants/app_coler.dart';
 import 'package:e_logistika/features/auth/presentation/widgets/custom_button.dart';
+import 'package:e_logistika/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -90,11 +91,11 @@ class _HomeCardWidgetState extends State<HomeCardWidget> {
           ),          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             spacing: 4.w,
-            children: [
-            ContainerWidget(url: 'assets/svg/calendar.svg', title: '19.06-21.06'),
-            ContainerWidget(url: 'assets/svg/transporter.svg', title: 'Тент (3)'),
-            ContainerWidget(url: 'assets/svg/weight.svg', title: '22 t'),
-            ContainerWidget(url: 'assets/svg/full_screen.svg', title: '86 м3'),
+            children: [//assets/svg/calendar.svg
+            ContainerWidget(url: Assets.svg.calendar.path, title: '19.06-21.06'),
+            ContainerWidget(url: Assets.svg.transporter.path, title: 'Тент (3)'),
+            ContainerWidget(url: Assets.svg.weight.path, title: '22 t'),
+            ContainerWidget(url: Assets.svg.fullScreen.path, title: '86 м3'),
           ],),
           SizedBox(height: 5.h,),
           Text('18 000 000 сум  ', style: Theme.of(context).textTheme.bodySmall!.copyWith(
@@ -182,17 +183,17 @@ class _HomeCardWidgetState extends State<HomeCardWidget> {
               Text('CMR  ', style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color: AppColor.black,
+                color: AppColor.greyColor2.withValues(alpha: 0.6),
               ),),
               Text('|   Сторона', style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color: AppColor.black,
+                color: AppColor.greyColor2.withValues(alpha: 0.6),
               ),),
-              Text('|    Tushurish sanasi: 28.10.2024', style: Theme.of(context).textTheme.bodySmall!.copyWith(
+              Text('|    Дата выгрузки: 28.10.2025', style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color: AppColor.black,
+                color: AppColor.greyColor2.withValues(alpha: 0.6),
               ),),
             ],
           ),

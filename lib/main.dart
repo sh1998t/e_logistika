@@ -15,12 +15,9 @@ import 'features/my_card/data/bloc/add_card_cubit.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
-  await initDi();
-
   await EasyLocalization.ensureInitialized();
-
+  
   // Dependency Injection
-  await disposeDi();
   await initDi();
 
   runApp(
@@ -44,19 +41,24 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return MultiBlocProvider(providers: [
-        BlocProvider(  create: (_) => SearchAddressCubit(SearchAddressDataSource()),),
-
-          BlocProvider(create: (_) => CardCubit()),        ],
-
-            child: MaterialApp.router(
-              title: 'Flutter Demo',
-              theme: AppTheme.lightTheme,
-              routerConfig: AppRouter.router,
-              localizationsDelegates: context.localizationDelegates,
-              supportedLocales: context.supportedLocales,
-              locale: context.locale,
-            ));
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (_) => SearchAddressCubit(SearchAddressDataSource()),
+            ),
+            BlocProvider(
+              create: (_) => CardCubit(),
+            ),
+          ],
+          child: MaterialApp.router(
+            title: 'Flutter Demo',
+            theme: AppTheme.lightTheme,
+            routerConfig: AppRouter.router,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+          ),
+        );
       },
     );
   }

@@ -40,6 +40,12 @@
          <string>Map permission for the app to get your location</string>
         <key>NSContactsUsageDescription</key>
         <string>Нужен доступ к контактам для выбора получателя доставки</string>
+        <key>NSMicrophoneUsageDescription</key>
+        <string>Нужен доступ к микрофону для записи аудио</string>
+        <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+        <string>Нужен доступ к местоположению для отслеживания доставки</string>
+        <key>NSLocationAlwaysUsageDescription</key>
+        <string>Нужен доступ к местоположению для отслеживания доставки</string>
 		<key>UISupportedInterfaceOrientations</key>
 		<array>
 			<string>UIInterfaceOrientationPortrait</string>

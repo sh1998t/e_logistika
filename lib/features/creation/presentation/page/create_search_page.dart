@@ -57,7 +57,7 @@ class _SearchAddressScreenState extends State<SearchAddressScreen> {
               Row(
                 children: [
                   SizedBox(width: 4.w,),
-                  SvgPicture.asset(Assets.svg.group43.path,
+                  SvgPicture.asset(Assets.svg.union23.path,
                     width: 18.r,height: 18.r,fit: BoxFit.fill,),
                   SizedBox(width: 24.w,),
                   Text('Usmon Nosir street(Tashkent), 6',
@@ -93,9 +93,9 @@ class _SearchAddressScreenState extends State<SearchAddressScreen> {
                                fontWeight: FontWeight.w400,
                                color: AppColor.greyColor2.withValues(alpha: 0.6),
                              ),
-                             border: InputBorder.none,          // <— asosiy
-                             enabledBorder: InputBorder.none,   // <— underline'ni o'chiradi
-                             focusedBorder: InputBorder.none,   // <— fokusta ham yo'q
+                             border: InputBorder.none,
+                             enabledBorder: InputBorder.none,
+                             focusedBorder: InputBorder.none,
                              errorBorder: InputBorder.none,
                              disabledBorder: InputBorder.none,
                              contentPadding: EdgeInsets.zero,
@@ -106,7 +106,7 @@ class _SearchAddressScreenState extends State<SearchAddressScreen> {
                        ),
                        InkWell(
                          onTap: (){},
-                         child: Text('|  Карта', style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                         child: Text('|  Карта    ', style: Theme.of(context).textTheme.bodySmall!.copyWith(
                            fontSize: 12.sp,
                            fontWeight: FontWeight.w400,
                            color: AppColor.greyColor2

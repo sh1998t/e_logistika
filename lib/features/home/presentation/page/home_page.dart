@@ -31,8 +31,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   final List<Map<String, dynamic>> _tabs = [
     {
-      "title": "Активный заказ",
-      "icon": 'assets/svg/check.svg',
+      "title": "Активый",
+      "icon":Assets.svg.check.path,
       "color": Colors.green,
     },
     {

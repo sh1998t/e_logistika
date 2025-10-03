@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../../../core/constants/app_coler.dart';
+import '../../../../gen/assets.gen.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({Key? key}) : super(key: key);
@@ -14,9 +16,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.white,
       title: Row(
         children: [
-          const CircleAvatar(
+           CircleAvatar(
             radius: 20,
-            backgroundColor: Colors.blue,
+            child: Image.asset(Assets.images.person2.path,fit: BoxFit.fill,),
           ),
           const SizedBox(width: 10),
           Column(
@@ -43,35 +45,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
       actions: [
-        Stack(
-          children: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.notifications,
-                color: Color(0xFF0D6EFD),
-                size: 28,
-              ),
-            ),
-            Positioned(
-              right: 8,
-              top: 8,
-              child: Container(
-                padding: const EdgeInsets.all(3),
-                decoration: const BoxDecoration(
-                  color: Colors.orange,
-                  shape: BoxShape.circle,
-                ),
-                child: const Text(
-                  "2",
-                  style: TextStyle(
-                    fontSize: 10,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-          ],
+        IconButton(
+          onPressed: () {},
+          icon:SvgPicture.asset(Assets.svg.bellSvgrepo.path, width: 28.r,height: 28.r,),
         ),
       ],
     );

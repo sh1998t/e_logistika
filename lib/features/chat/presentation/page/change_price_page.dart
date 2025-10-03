@@ -1,4 +1,5 @@
 import 'package:e_logistika/core/constants/app_coler.dart';
+import 'package:e_logistika/features/chat/presentation/widget/date_field_mock.dart';
 import 'package:e_logistika/features/home/presentation/widget/button_widget.dart';
 import 'package:e_logistika/features/my_card/presentation/widgets/main_text_fielid.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,8 @@ class ChangePricePage extends StatefulWidget {
 
 class _ChangePricePageState extends State<ChangePricePage> {
   final TextEditingController priceController = TextEditingController();
+
+
 
   bool priceEdit = true;
   bool checkIcon = true;
@@ -95,31 +98,36 @@ class _ChangePricePageState extends State<ChangePricePage> {
                     )
                   ],
                 ),
+            SizedBox(height: 16.h,),
+            Text('Информация о грузе',style: Theme.of(context).textTheme.bodySmall!.copyWith(
+              fontSize:12.sp,
+              fontWeight: FontWeight.w500,
+              color: AppColor.greyColor2
+            ),),
+            SizedBox(height: 5.h),
+            Divider(
+              height: 1.h,
+              color: AppColor.dividerColor,
+            ),
             SizedBox(height: 16.h),
-            RichTextField(
-              labelText: "Дата",
-              isRequired: true,
+            SizedBox(
+              height: 46.h,
+              width: 337.w,
+              child: DateFieldMock(label: 'Дата', value: '12:15  08/28/2025'),
             ),
             SizedBox(height: 16.h),
            Row(
              children: [
                SizedBox(
+                 height: 46.h,
                  width: 160.w,
-                 child: RichTextField(
-                   labelText: "Вес груза (т)",
-                   isRequired: true,
-
-                   keyboardType: TextInputType.number,
-                 ),
+                 child: DateFieldMock(label: 'Вес груза (т)', value: '12'),
                ),
                SizedBox(width: 17.h),
                SizedBox(
+                 height: 46.h,
                  width: 160.w,
-                 child: RichTextField(
-                   labelText: "Объем груза (м³)",
-                   isRequired: true,
-                   keyboardType: TextInputType.number,
-                 ),
+                 child: DateFieldMock(label: 'Объем груза (м³)', value: '500'),
                ),
              ],
            ),

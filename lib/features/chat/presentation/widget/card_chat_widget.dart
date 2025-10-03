@@ -47,49 +47,56 @@ class _CardChatExpansionState extends State<CardChatExpansion> {
             ),
           ],
         ),
-        child: ExpansionPanelList(
-          elevation: 0,
-          expandedHeaderPadding: EdgeInsets.zero,
-          expansionCallback: (index, isExpanded) {
-            setState(() {
-              _expanded = !_expanded;
-            });
-          },
-          children: [
-            ExpansionPanel(
-              canTapOnHeader: true,
-              isExpanded: _expanded,
-              headerBuilder: (context, isExpanded) {
-                return CardChatWidget(
-                  from: widget.from,
-                  to: widget.to,
-                  id: widget.id,
-                  product: widget.product,
-                );
-              },
-              body: Column(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.all(16.w),
-                    decoration: BoxDecoration(
-                      color: AppColor.white,
-                      borderRadius: BorderRadius.vertical(
-                        bottom: Radius.circular(10.r),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10.r), // butun panel radiusini kesadi
+
+          child: ExpansionPanelList(
+
+            elevation: 0,
+            expandedHeaderPadding: EdgeInsets.zero,
+            expansionCallback: (index, isExpanded) {
+              setState(() {
+                _expanded = !_expanded;
+              });
+            },
+
+
+            children: [
+              ExpansionPanel(
+                canTapOnHeader: true,
+                isExpanded: _expanded,
+                headerBuilder: (context, isExpanded) {
+                  return CardChatWidget(
+                    from: widget.from,
+                    to: widget.to,
+                    id: widget.id,
+                    product: widget.product,
+                  );
+                },
+                body: Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.all(16.w),
+                      decoration: BoxDecoration(
+                        color: AppColor.white,
+                        borderRadius: BorderRadius.vertical(
+                          bottom: Radius.circular(10.r),
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          ChatProfileWidget(url: Assets.images.profileTab.path, name: 'Vali'),
+                          SizedBox(height: 12.h,),
+                          ChatProfileWidget(url: Assets.images.profileTab.path, name: 'Ali', count: 1,),
+                        ],
                       ),
                     ),
-                    child: Column(
-                      children: [
-                        ChatProfileWidget(url: Assets.images.profileTab.path, name: 'Vali'),
-                        SizedBox(height: 12.h,),
-                        ChatProfileWidget(url: Assets.images.profileTab.path, name: 'Ali', count: 1,),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         )
       ),
     );

@@ -47,10 +47,10 @@ class LanguageOption extends StatelessWidget {
       ),
       trailing: isSelected == true
           ? SvgPicture.asset(
-        "Assets.images.svg.selectedRadioButton.path",
+        "assets/svg/RadioButton2.svg",
       )
           : SvgPicture.asset(
-        "Assets.images.svg.selectRadioButton.path",
+        "assets/svg/RadioButton.svg",
       ),
       onTap: onTap,
     );

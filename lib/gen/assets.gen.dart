@@ -52,6 +52,9 @@ class $AssetsImagesGen {
   AssetGenImage get mapImage =>
       const AssetGenImage('assets/images/map_image.png');
 
+  /// File path: assets/images/person2.png
+  AssetGenImage get person2 => const AssetGenImage('assets/images/person2.png');
+
   /// File path: assets/images/profile_tab.png
   AssetGenImage get profileTab =>
       const AssetGenImage('assets/images/profile_tab.png');
@@ -65,6 +68,7 @@ class $AssetsImagesGen {
     drive2,
     group321,
     mapImage,
+    person2,
     profileTab,
   ];
 }
@@ -94,6 +98,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/Union.svg
   SvgGenImage get union => const SvgGenImage('assets/svg/Union.svg');
+
+  /// File path: assets/svg/Union23.svg
+  SvgGenImage get union23 => const SvgGenImage('assets/svg/Union23.svg');
 
   /// File path: assets/svg/Vector.svg
   SvgGenImage get vector => const SvgGenImage('assets/svg/Vector.svg');
@@ -128,6 +135,10 @@ class $AssetsSvgGen {
   /// File path: assets/svg/bank_cards 1.svg
   SvgGenImage get bankCards1 =>
       const SvgGenImage('assets/svg/bank_cards 1.svg');
+
+  /// File path: assets/svg/bell_svgrepo.svg
+  SvgGenImage get bellSvgrepo =>
+      const SvgGenImage('assets/svg/bell_svgrepo.svg');
 
   /// File path: assets/svg/calendar.svg
   SvgGenImage get calendar => const SvgGenImage('assets/svg/calendar.svg');
@@ -341,8 +352,8 @@ class $AssetsSvgGen {
   /// File path: assets/svg/password.svg
   SvgGenImage get password => const SvgGenImage('assets/svg/password.svg');
 
-  /// File path: assets/svg/person.svg
-  SvgGenImage get person => const SvgGenImage('assets/svg/person.svg');
+  /// File path: assets/svg/person33.svg
+  SvgGenImage get person33 => const SvgGenImage('assets/svg/person33.svg');
 
   /// File path: assets/svg/phone_fill.svg
   SvgGenImage get phoneFill => const SvgGenImage('assets/svg/phone_fill.svg');
@@ -413,6 +424,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/uzcardss.svg
   SvgGenImage get uzcardss => const SvgGenImage('assets/svg/uzcardss.svg');
 
+  /// File path: assets/svg/weight.svg
+  SvgGenImage get weight => const SvgGenImage('assets/svg/weight.svg');
+
   /// File path: assets/svg/wysiwyg.svg
   SvgGenImage get wysiwyg => const SvgGenImage('assets/svg/wysiwyg.svg');
 
@@ -425,6 +439,7 @@ class $AssetsSvgGen {
     radioButton,
     radioButton2,
     union,
+    union23,
     vector,
     vector1,
     alertTriangle,
@@ -435,6 +450,7 @@ class $AssetsSvgGen {
     arrowRigth,
     arrows,
     bankCards1,
+    bellSvgrepo,
     calendar,
     calendarSvgrepo,
     call,
@@ -501,7 +517,7 @@ class $AssetsSvgGen {
     package,
     paperclip,
     password,
-    person,
+    person33,
     phoneFill,
     qrCode,
     searchNormal,
@@ -523,6 +539,7 @@ class $AssetsSvgGen {
     uzcard,
     uzcard21,
     uzcardss,
+    weight,
     wysiwyg,
   ];
 }

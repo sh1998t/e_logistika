@@ -8,20 +8,41 @@ import 'contact_bottom_sheet_widget.dart';
 
 import '../../../../gen/assets.gen.dart';
 
-class PriceSelectionWidget extends StatelessWidget {
+class PriceSelectionWidget extends StatefulWidget {
   const PriceSelectionWidget({super.key});
+
+  @override
+  State<PriceSelectionWidget> createState() => _PriceSelectionWidgetState();
+}
+
+class _PriceSelectionWidgetState extends State<PriceSelectionWidget> {
+  int selectedPriceIndex = 1; // Средняя цена tanlangan bo'lsin
+  String customPrice = '13 000 000';
+  final TextEditingController _customPriceController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _customPriceController.text = customPrice;
+  }
+
+  @override
+  void dispose() {
+    _customPriceController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _buildPriceField('Минимальная цена', '10 000 000 сум', false),
+        _buildPriceField('Минимальная цена', '10 000 000 сум', 0),
         SizedBox(height: 16.h),
         
-        _buildPriceField('Средняя цена', '13 000 000 сум', true),
+        _buildPriceField('Средняя цена', '13 000 000 сум', 1),
         SizedBox(height: 16.h),
         
-        _buildPriceField('Максимальная цена', '16 000 000 сум', false),
+        _buildPriceField('Максимальная цена', '16 000 000 сум', 2),
         SizedBox(height: 16.h),
         
         _buildCustomPriceField(),
@@ -52,44 +73,57 @@ class PriceSelectionWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildPriceField(String label, String price, bool isSelected) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w500,
-            color: Color(0xFF718093),
+  Widget _buildPriceField(String label, String price, int index) {
+    bool isSelected = selectedPriceIndex == index;
+    return InkWell(
+      onTap: () {
+        setState(() {
+          selectedPriceIndex = index;
+        });
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w500,
+              color: Color(0xFF718093),
+            ),
           ),
-        ),
-        SizedBox(height: 8.h),
-        Container(
-          width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-          decoration: BoxDecoration(
-            color: isSelected ? Colors.blue[50] : Colors.grey[100],
-            borderRadius: BorderRadius.circular(8.r),
-          ),
-          child: Row(
-            children: [
-              Expanded(
-                child: Text(
-                  price,
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey[800],
+          SizedBox(height: 8.h),
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+            decoration: BoxDecoration(
+              color: isSelected ? Color(0xFF0D6EFD).withOpacity(0.1) : Colors.grey[100],
+              borderRadius: BorderRadius.circular(8.r),
+              border: isSelected ? Border.all(color: Color(0xFF0D6EFD), width: 2) : null,
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    price,
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.bold,
+                      color: isSelected ? Color(0xFF0D6EFD) : Colors.grey[800],
+                    ),
                   ),
                 ),
-              ),
-              if (isSelected)
-                SvgPicture.asset(Assets.svg.group321.path)
-            ],
+                if (isSelected)
+                  Icon(
+                    Icons.check_circle,
+                    color: Color(0xFF0D6EFD),
+                    size: 24.r,
+                  )
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -117,7 +151,7 @@ class PriceSelectionWidget extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  '13 000 000',
+                  customPrice,
                   style: TextStyle(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.bold,
@@ -131,18 +165,59 @@ class PriceSelectionWidget extends StatelessWidget {
                 color: Colors.grey[400],
               ),
               SizedBox(width: 12.w),
-              Text(
-                'Изменить',
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.grey[600],
+              InkWell(
+                onTap: () {
+                  _showEditPriceDialog();
+                },
+                child: Text(
+                  'Изменить',
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xFF0D6EFD),
+                  ),
                 ),
               ),
             ],
           ),
         ),
       ],
+    );
+  }
+
+  void _showEditPriceDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Изменить цену'),
+          content: TextField(
+            controller: _customPriceController,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              hintText: 'Введите цену',
+              border: OutlineInputBorder(),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Отмена'),
+            ),
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  customPrice = _customPriceController.text;
+                });
+                Navigator.of(context).pop();
+              },
+              child: Text('Сохранить'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
