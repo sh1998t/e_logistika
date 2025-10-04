@@ -14,42 +14,66 @@ class ChatMessagePage extends StatefulWidget {
   @override
   State<ChatMessagePage> createState() => _ChatMessagePageState();
 }
-
 class _ChatMessagePageState extends State<ChatMessagePage> {
-  bool active =false;
+  bool active = false;
+
+  // text controller
+  final TextEditingController _controller = TextEditingController();
+
+  // messages list
+  final List<Map<String, dynamic>> _messages = [
+    {
+      "text": "Здравствуйте у меня есть груз! Из Андижана в Ригу! 20 июня нужно отгрузить 😊",
+      "time": "10:10",
+      "isMe": false,
+      "isSeen": false
+    },
+    {"text": "Привет", "time": "10:10", "isMe": true, "isSeen": true},
+    {"text": "Отлично Я как раз свободен в эти даты", "time": "10:11", "isMe": true, "isSeen": true},
+    {"text": "Во сколько вы приедете?", "time": "10:11", "isMe": false, "isSeen": false},
+    {"text": "Я ждал тебя долгое время.", "time": "10:11", "isMe": false, "isSeen": false},
+    {"text": "Через 15 минут 😊", "time": "10:12", "isMe": true, "isSeen": true},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFEEF1F5),
       appBar: PreferredSize(
-        preferredSize: active==true?Size.fromHeight(184.h):Size.fromHeight(100.h),
+        preferredSize: active ? Size.fromHeight(184.h) : Size.fromHeight(100.h),
         child: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: AppColor.white,
-          leading:   Padding(
-            padding:  EdgeInsets.only(bottom: 20.h),
-            child: IconButton(onPressed: (){
-              Navigator.pop(context);
-            }, icon: SvgPicture.asset(Assets.svg.symbolsArrow.path, width: 24.r,height: 24.r,fit: BoxFit.cover,)),
+          leading: Padding(
+            padding: EdgeInsets.only(bottom: 20.h),
+            child: IconButton(
+              onPressed: () => Navigator.pop(context),
+              icon: SvgPicture.asset(
+                Assets.svg.symbolsArrow.path,
+                width: 24.r,
+                height: 24.r,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
-
           flexibleSpace: SafeArea(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12.w,),
+              padding: EdgeInsets.symmetric(horizontal: 12.w),
               child: Column(
                 children: [
-                  Text('Чаты ',
+                  Text(
+                    'Чаты ',
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w700,
                       color: AppColor.black,
-                    ),),
-                  SizedBox(height: 15.h,),
-                  ChatAppbarWidget(active: active, onTap: (){
-                    setState(() {
-                      active = !active;
-                    });
-                  })
+                    ),
+                  ),
+                  SizedBox(height: 15.h),
+                  ChatAppbarWidget(
+                    active: active,
+                    onTap: () => setState(() => active = !active),
+                  )
                 ],
               ),
             ),
@@ -59,36 +83,18 @@ class _ChatMessagePageState extends State<ChatMessagePage> {
       body: Column(
         children: [
           Expanded(
-            child: ListView(
+            child: ListView.builder(
               padding: EdgeInsets.all(12.w),
-              children: [
-                _message(
-                  text:
-                  "Здравствуйте у меня есть груз! Из Андижана в Ригу! 20 июня нужно отгрузить 😊",
-                  time: "10:10",
-                  isMe: false,
-                ),
-                _message(
-                    text: "Привет", time: "10:10", isMe: true, isSeen: true),
-                _message(
-                    text: "Отлично Я как раз свободен в эти даты",
-                    time: "10:11",
-                    isMe: true,
-                    isSeen: true),
-                _message(
-                    text: "Во сколько вы приедете?",
-                    time: "10:11",
-                    isMe: false),
-                _message(
-                    text: "Я ждал тебя долгое время.",
-                    time: "10:11",
-                    isMe: false),
-                _message(
-                    text: "Через 15 минут 😊",
-                    time: "10:12",
-                    isMe: true,
-                    isSeen: true),
-              ],
+              itemCount: _messages.length,
+              itemBuilder: (context, index) {
+                final msg = _messages[index];
+                return _message(
+                  text: msg["text"],
+                  time: msg["time"],
+                  isMe: msg["isMe"],
+                  isSeen: msg["isSeen"],
+                );
+              },
             ),
           ),
           _inputField(),
@@ -170,12 +176,20 @@ class _ChatMessagePageState extends State<ChatMessagePage> {
           children: [
             Expanded(
               child: TextField(
+                controller: _controller,
+                onChanged: (_) => setState(() {}),
                 decoration: InputDecoration(
                   hintText: "Введите сообщение...",
                   hintStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
                     color: const Color(0xFF2C2D3A),
                   ),
-                  suffixIcon: Row(
+                  // agar text bo‘lsa → send icon chiqadi
+                  suffixIcon: _controller.text.isNotEmpty
+                      ? IconButton(
+                    onPressed: _sendMessage,
+                    icon: Icon(Icons.send, color: Colors.blue, size: 26),
+                  )
+                      : Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
@@ -199,25 +213,46 @@ class _ChatMessagePageState extends State<ChatMessagePage> {
                   border: OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8.r),
-                    borderSide: const BorderSide(color: Color(0xFFD0D1DB), width: 1),
+                    borderSide:
+                    const BorderSide(color: Color(0xFFD0D1DB), width: 1),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8.r),
-                    borderSide: const BorderSide(color: Color(0xFF40C4FF), width: 2),
+                    borderSide:
+                    const BorderSide(color: Color(0xFF40C4FF), width: 2),
                   ),
                 ),
               ),
-
             ),
-               SizedBox( width: 10.w,),
+            SizedBox(width: 10.w),
             CircleAvatar(
               radius: 22.r,
               backgroundColor: Colors.blue,
-              child: SvgPicture.asset(Assets.svg.microphone.path, width: 26.r,height: 26.r,),
+              child: SvgPicture.asset(
+                Assets.svg.microphone.path,
+                width: 26.r,
+                height: 26.r,
+              ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  void _sendMessage() {
+    final text = _controller.text.trim();
+    if (text.isEmpty) return;
+
+    setState(() {
+      _messages.add({
+        "text": text,
+        "time":
+        "${TimeOfDay.now().hour}:${TimeOfDay.now().minute.toString().padLeft(2, '0')}",
+        "isMe": true,
+        "isSeen": false,
+      });
+      _controller.clear();
+    });
   }
 }

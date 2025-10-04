@@ -29,7 +29,7 @@ class _HomeCardWidgetState extends State<HomeCardWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 18.h),
+      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 18.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.r),
         color: AppColor.white,

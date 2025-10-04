@@ -42,17 +42,18 @@ class _SearchAddressScreenState extends State<SearchAddressScreen> {
           padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 16.h),
         decoration: BoxDecoration(
         color: Colors.white,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(18.r),
           boxShadow: const [
             BoxShadow(
-              color: Color(0x407F8FA6),        // #7F8FA6 @ 25%
-              offset: Offset(0, 2),            // X:0, Y:2
-              blurRadius: 7.5,                 // Blur 7.5
-              spreadRadius: 0,                 // Spread 0
+              color: Color(0x407F8FA6),
+              offset: Offset(0, 2),
+              blurRadius: 7.5,
+              spreadRadius: 0,
             ),
           ],
         ),
           child:Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Row(
                 children: [
@@ -70,7 +71,7 @@ class _SearchAddressScreenState extends State<SearchAddressScreen> {
                 ],
               ),
               Container(
-                margin: EdgeInsets.only(left: 40.w, top: 12.h),
+                margin: EdgeInsets.only(left: 40.w, top: 12.h, right: 0.w),
                 height: 0.3.h,
                 color: Color(0xFF7F8FA6),
                 width: double.infinity,
@@ -84,33 +85,46 @@ class _SearchAddressScreenState extends State<SearchAddressScreen> {
                    child: Row(
                      children: [
                        Expanded(
-                         child: TextFormField(
-                           controller: controller,
-                           decoration: InputDecoration(
-                             hint:Text('Куда едем?'),
-                             hintStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
-                               fontSize: 16.sp,
-                               fontWeight: FontWeight.w400,
-                               color: AppColor.greyColor2.withValues(alpha: 0.6),
+                         child: SizedBox(
+                           height: 35.h,
+                           child: TextFormField(
+                             controller: controller,
+                             decoration: InputDecoration(
+                               hint:Text('Куда едем?'),
+                               hintStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+                                 fontSize: 16.sp,
+                                 fontWeight: FontWeight.w400,
+                                 color: AppColor.greyColor2.withValues(alpha: 0.6),
+                               ),
+                               border: InputBorder.none,
+                               enabledBorder: InputBorder.none,
+                               focusedBorder: InputBorder.none,
+                               errorBorder: InputBorder.none,
+                               disabledBorder: InputBorder.none,
+                               contentPadding: EdgeInsets.zero,
                              ),
-                             border: InputBorder.none,
-                             enabledBorder: InputBorder.none,
-                             focusedBorder: InputBorder.none,
-                             errorBorder: InputBorder.none,
-                             disabledBorder: InputBorder.none,
-                             contentPadding: EdgeInsets.zero,
+                             onChanged: (v) =>
+                                 context.read<SearchAddressCubit>().search(v),
                            ),
-                           onChanged: (v) =>
-                               context.read<SearchAddressCubit>().search(v),
                          ),
                        ),
                        InkWell(
                          onTap: (){},
-                         child: Text('|  Карта    ', style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                           fontSize: 12.sp,
-                           fontWeight: FontWeight.w400,
-                           color: AppColor.greyColor2
-                         ),),
+                         child: Row(
+                           children: [
+                             Container(
+                               margin: EdgeInsets.only(top: 8.7.h),
+                               width: 0.3.h,height: 27.h,
+                               color: Color(0xFF7F8FA6),
+                             ),
+                             SizedBox(width: 10.w,),
+                             Text(' Карта    ', style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                               fontSize: 12.sp,
+                               fontWeight: FontWeight.w400,
+                               color: AppColor.greyColor2
+                             ),),
+                           ],
+                         ),
                        ),
                      ],
                    ),
@@ -140,7 +154,7 @@ class _SearchAddressScreenState extends State<SearchAddressScreen> {
                           subTitle: '${item.subtitle}',
 
                           onTap: () {
-                            // element tanlandi va CreationPage ga qaytish
+
                             Navigator.pop(context, item.title);
                           },
                         );
@@ -148,7 +162,7 @@ class _SearchAddressScreenState extends State<SearchAddressScreen> {
                       },
                     );
                   }
-                  return const Center(child: Text('Maʼlumot yoʻq'));
+                  return const Center(child: Text(''));
                 },
               ),
             ),

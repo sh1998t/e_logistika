@@ -36,7 +36,12 @@ class ProfilePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
 
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        padding: EdgeInsets.only(
+
+          left: 16.w,
+          right: 16.w,
+          bottom: kBottomNavigationBarHeight + 20.h,
+        ),
         child: Column(
           children: [
             InkWell(
@@ -343,7 +348,6 @@ class ProfilePage extends StatelessWidget {
               fontWeight: FontWeight.w600,
               color: Color(0xFF1656A5)
             ),),
-            SizedBox(height: 120.h),
 
           ],
         ),

@@ -2,6 +2,9 @@ class RoutersName{
   static const String loginName = 'login_page';
   static const String loginPath = '/login_page';
 
+  static const String registerPageName = 'register_page';
+  static const String registerPagePath ='/register_page';
+
   static const String mainName = 'main_page';
   static const String mainPath = '/main_page'
   ;

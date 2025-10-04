@@ -1,321 +1,182 @@
-import 'package:e_logistika/core/constants/app_coler.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
-import 'package:permission_handler/permission_handler.dart';
 
-class ContactListWidget {
+class ContactBottomSheetDemo extends StatefulWidget {
   static void show(BuildContext context) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (context) => Container(
-        height: MediaQuery.of(context).size.height * 0.9,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.r),
-            topRight: Radius.circular(20.r),
-          ),
-        ),
-        child: Column(
-          children: [
-            // Handle bar
-            Container(
-              margin: EdgeInsets.only(top: 12.h),
-              width: 40.w,
-              height: 4.h,
-              decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(2.r),
-              ),
-            ),
-            
-            // Header
-            Padding(
-              padding: EdgeInsets.all(20.w),
-              child: Row(
-                children: [
-                  Text(
-                    'Получатель',
-                    style: TextStyle(
-                      fontSize: 24.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Spacer(),
-                  IconButton(
-                    onPressed: () => Navigator.pop(context),
-                    icon: Icon(Icons.close, color: Colors.grey[600]),
-                  ),
-                ],
-              ),
-            ),
-            
-            // Description
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Text(
-                'Отправим ему ссылку на отслеживание доставки. Курьер сможет связаться с ним, но не увидит его имя',
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  color: Colors.grey[600],
-                ),
-              ),
-            ),
-            
-            SizedBox(height: 20.h),
-            
-            // Search field
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Введите имя или номер...',
-                  prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(color: Colors.grey[300]!),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(color: Colors.grey[300]!),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(color: AppColor.buttonColor),
-                  ),
-                ),
-              ),
-            ),
-            
-            SizedBox(height: 20.h),
-            
-            // Pre-defined options
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Column(
-                children: [
-                  // "Я" option
-                  _buildPredefinedOption(
-                    title: 'Я',
-                    subtitle: '+998931234567',
-                    isSelected: false,
-                    onTap: () {
-                      Navigator.pop(context);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Выбран: Я (+998931234567)')),
-                      );
-                    },
-                  ),
-                  
-                  SizedBox(height: 12.h),
-                  
-                  // "Не указывать" option
-                  _buildPredefinedOption(
-                    title: 'Не указывать',
-                    subtitle: 'У курьера будет ваш номер',
-                    isSelected: false,
-                    onTap: () {
-                      Navigator.pop(context);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Выбран: Не указывать')),
-                      );
-                    },
-                  ),
-                  
-                  SizedBox(height: 20.h),
-                  
-                  // Divider
-                  Container(
-                    height: 1.h,
-                    color: Colors.grey[300],
-                  ),
-                  
-                  SizedBox(height: 20.h),
-                ],
-              ),
-            ),
-            
-            // Contacts list
-            Expanded(
-              child: FutureBuilder<List<Contact>>(
-                future: _getContacts(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
-                  }
-                  
-                  if (snapshot.hasError) {
-                    return Center(
-                      child: Text('Ошибка загрузки контактов: ${snapshot.error}'),
-                    );
-                  }
-                  
-                  final contacts = snapshot.data ?? [];
-                  
-                  return ListView.builder(
-                    padding: EdgeInsets.symmetric(horizontal: 20.w),
-                    itemCount: contacts.length,
-                    itemBuilder: (context, index) {
-                      final contact = contacts[index];
-                      final name = contact.displayName.isNotEmpty ? contact.displayName : 'Без имени';
-                      final phone = contact.phones.isNotEmpty 
-                          ? contact.phones.first.number
-                          : '';
-                      
-                      return _buildContactItem(
-                        name: name,
-                        phone: phone,
-                        isSelected: index == 1, // Abdurasul tanlangan
-                        onTap: () {
-                          Navigator.pop(context);
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Выбран: $name ($phone)')),
-                          );
-                        },
-                      );
-                    },
-                  );
-                },
-              ),
-            ),
-            
-            // Continue button
-            Padding(
-              padding: EdgeInsets.all(20.w),
-              child: SizedBox(
-                width: double.infinity,
-                height: 50.h,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Продолжить нажат')),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColor.buttonColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.r),
-                    ),
-                  ),
-                  child: Text(
-                    'Продолжить',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      builder: (context) => ContactBottomSheetDemo(),
     );
   }
 
-  static Future<List<Contact>> _getContacts() async {
-    final status = await Permission.contacts.request();
-    if (status.isGranted) {
-      return await FlutterContacts.getContacts(withProperties: true);
-    } else {
-      return [];
+  @override
+  _ContactBottomSheetDemoState createState() => _ContactBottomSheetDemoState();
+}
+
+class _ContactBottomSheetDemoState extends State<ContactBottomSheetDemo> {
+  List<Contact> contacts = [];
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchContacts();
+  }
+
+  Future<void> _fetchContacts() async {
+    try {
+      // Permission tekshirish
+      final permission = await FlutterContacts.requestPermission();
+      print('Permission status: $permission'); // Debug uchun
+      
+      if (permission) {
+        // Barcha kontaktlarni olish
+        final allContacts = await FlutterContacts.getContacts(
+          withProperties: true,
+          withPhoto: false, // Rasm kerak emas
+        );
+        
+        print('Total contacts found: ${allContacts.length}'); // Debug uchun
+        
+        setState(() {
+          // Faqat ism va telefon raqami bor kontaktlarni olish
+          contacts = allContacts.where((contact) {
+            final hasName = contact.displayName.isNotEmpty;
+            final hasPhone = contact.phones.isNotEmpty;
+            print('Contact: ${contact.displayName}, hasPhone: $hasPhone'); // Debug uchun
+            return hasName && hasPhone;
+          }).toList();
+          
+          print('Filtered contacts: ${contacts.length}'); // Debug uchun
+          isLoading = false;
+        });
+      } else {
+        print('Permission denied'); // Debug uchun
+        setState(() {
+          isLoading = false;
+        });
+      }
+    } catch (e) {
+      print('Error fetching contacts: $e'); // Debug uchun
+      setState(() {
+        isLoading = false;
+      });
     }
   }
 
-  static Widget _buildPredefinedOption({
-    required String title,
-    required String subtitle,
-    required bool isSelected,
-    required VoidCallback onTap,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
-        child: Row(
-          children: [
-            Expanded(
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.8,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      child: Column(
+        children: [
+          // Handle bar
+          Container(
+            margin: EdgeInsets.only(top: 12),
+            width: 40,
+            height: 4,
+            decoration: BoxDecoration(
+              color: Colors.grey[300],
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
+
+          // Header
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: Row(
+              children: [
+                Text(
+                  'Выберите контакт',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
+                ),
+                Spacer(),
+                IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: Icon(Icons.close, color: Colors.grey[600]),
+                ),
+              ],
+            ),
+          ),
+
+          // Content
+          Expanded(
+            child: isLoading
+                ? Center(child: CircularProgressIndicator())
+                : contacts.isEmpty
+                ? Center(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    title,
+                    'Контакты не найдены',
                     style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
-                  ),
-                  SizedBox(height: 4.h),
-                  Text(
-                    subtitle,
-                    style: TextStyle(
-                      fontSize: 14.sp,
+                      fontSize: 16,
                       color: Colors.grey[600],
                     ),
                   ),
+                  SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: _fetchContacts,
+                    child: Text('Обновить'),
+                  ),
                 ],
               ),
-            ),
-            Radio<bool>(
-              value: true,
-              groupValue: isSelected,
-              onChanged: (value) => onTap(),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+            )
+                : ListView.builder(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              itemCount: contacts.length,
+              itemBuilder: (context, index) {
+                final contact = contacts[index];
+                final phone = contact.phones.isNotEmpty
+                    ? contact.phones.first.number
+                    : "raqam yo‘q";
 
-  static Widget _buildContactItem({
-    required String name,
-    required String phone,
-    required bool isSelected,
-    required VoidCallback onTap,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
-        child: Row(
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    name,
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
+                return ListTile(
+                  leading: CircleAvatar(
+                    backgroundColor: Colors.blue[100],
+                    child: Text(
+                      contact.displayName.isNotEmpty
+                          ? contact.displayName[0].toUpperCase()
+                          : "?",
+                      style: TextStyle(
+                        color: Colors.blue[800],
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                  SizedBox(height: 4.h),
-                  Text(
+                  title: Text(
+                    contact.displayName,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  subtitle: Text(
                     phone,
                     style: TextStyle(
-                      fontSize: 14.sp,
+                      fontSize: 14,
                       color: Colors.grey[600],
                     ),
                   ),
-                ],
-              ),
+                  onTap: () {
+                    Navigator.pop(context, contact);
+                  },
+                );
+              },
             ),
-            Radio<bool>(
-              value: true,
-              groupValue: isSelected,
-              onChanged: (value) => onTap(),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

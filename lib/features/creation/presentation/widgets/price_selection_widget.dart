@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'contact_bottom_sheet_widget.dart';
+import 'contact_list_widget.dart';
 
 import '../../../../gen/assets.gen.dart';
 
@@ -53,18 +53,16 @@ class _PriceSelectionWidgetState extends State<PriceSelectionWidget> {
           color2: Color(0xFF104280),
           title: 'Продолжить',
           onPressed: () async {
-            // Kontaktlar uchun ruxsat so'rash
             final status = await Permission.contacts.request();
             if (status.isGranted) {
-              // Ruxsat berilgan bo'lsa, contact bottom sheet ko'rsatish
-              ContactBottomSheetWidget.show(context);
+              // ContactBottomSheetDemo ni ko'rsatish
+              ContactBottomSheetDemo.show(context);
             } else if (status.isDenied) {
               // Ruxsat rad etilgan bo'lsa, xabar ko'rsatish
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('Разрешение на доступ к контактам отклонено')),
               );
             } else if (status.isPermanentlyDenied) {
-              // Ruxsat doimiy rad etilgan bo'lsa, sozlamalarga yo'naltirish
               openAppSettings();
             }
           },
@@ -167,7 +165,7 @@ class _PriceSelectionWidgetState extends State<PriceSelectionWidget> {
               SizedBox(width: 12.w),
               InkWell(
                 onTap: () {
-                  _showEditPriceDialog();
+                 // _showEditPriceDialog();
                 },
                 child: Text(
                   'Изменить',

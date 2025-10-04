@@ -22,8 +22,13 @@ class ChatPage extends StatelessWidget {
          color: AppColor.greyColor2,
        ),),
      ),
-      body: Padding(
-        padding:  EdgeInsets.all(16.r),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.only(
+          top: 16.h,
+          left: 16.w,
+          right: 16.w,
+          bottom: kBottomNavigationBarHeight + 20.h,
+        ),
         child: Column(
           spacing: 10.h,
           children: [

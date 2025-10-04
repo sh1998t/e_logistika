@@ -1,18 +1,14 @@
 import 'package:e_logistika/core/constants/app_coler.dart';
 import 'package:e_logistika/core/router/routers_name.dart';
-import 'package:e_logistika/features/home/presentation/widget/button_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animated_button/flutter_animated_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 import '../../../../gen/assets.gen.dart';
-import '../widgets/animated_button_widget.dart';
 import '../widgets/swipe_fill_button.dart';
 
 
@@ -40,6 +36,7 @@ class _CreationPageState extends State<CreationPage> {
 
   final List<MapObject> _mapObjects = [];
   Position? _currentPosition;
+  String _currentLocationName = 'Joylashuv yuklanmoqda...';
 
   CameraPosition initialPosition = const CameraPosition(
     target: Point(latitude: 41.3111, longitude: 69.2797),
@@ -89,6 +86,18 @@ class _CreationPageState extends State<CreationPage> {
           ),
 
           Positioned(
+            bottom: selectedDestination == 'Куда едем?' ? 300.h : 360.h,
+            right: 16.w,
+            child: FloatingActionButton(
+              onPressed: () {
+                _showMyPosition();
+              },
+              backgroundColor: Colors.white,
+              child:SvgPicture.asset(Assets.svg.gpsFixed.path,width: 32.r,height: 32.r,fit: BoxFit.fill,),
+            ),
+          ),
+
+          Positioned(
             bottom: 0.h,
             child: GestureDetector(
               onTap: () {
@@ -132,7 +141,7 @@ class _CreationPageState extends State<CreationPage> {
                           children: [
                           SvgPicture.asset(Assets.svg.sss.path, width: 28.r,height: 28.r,fit: BoxFit.fill,),
                             SizedBox(width: 10.w,),
-                            Text('Usmon Nosir street(Tashkent), 6',
+                            Text(_currentLocationName,
                               style:Theme.of(context).textTheme.bodySmall!.copyWith(
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w400,
@@ -217,7 +226,123 @@ class _CreationPageState extends State<CreationPage> {
     );
   }
 
+  // Geolocation ruxsatini tekshirish va so'rash
+  Future<bool> _checkLocationPermission() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Location xizmati yoqilganligini tekshirish
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      if (kDebugMode) {
+        print('Location services are disabled.');
+      }
+      return false;
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        if (kDebugMode) {
+          print('Location permissions are denied');
+        }
+        return false;
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      if (kDebugMode) {
+        print('Location permissions are permanently denied, we cannot request permissions.');
+      }
+      return false;
+    }
+
+    return true;
+  }
+
+  // Joylashuv nomini olish (reverse geocoding)
+  Future<void> _getLocationName(double latitude, double longitude) async {
+    try {
+      final (session, resultFuture) = await YandexSearch.searchByPoint(
+        point: Point(latitude: latitude, longitude: longitude),
+        searchOptions: const SearchOptions(),
+      );
+
+      final result = await resultFuture;
+
+      if (result.error != null) {
+        if (kDebugMode) {
+          print('Xatolik: ${result.error}');
+        }
+        setState(() {
+          _currentLocationName = 'Joylashuv nomi topilmadi';
+        });
+        return;
+      }
+
+      if (result.items != null && result.items!.isNotEmpty) {
+        final topResult = result.items!.first;
+        final address = topResult.toponymMetadata?.address.formattedAddress ?? 'Joylashuv nomi topilmadi';
+        
+        setState(() {
+          _currentLocationName = address;
+        });
+        
+        if (kDebugMode) {
+          print('Manzil: $address');
+        }
+      } else {
+        setState(() {
+          _currentLocationName = 'Joylashuv nomi topilmadi';
+        });
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error getting location name: $e');
+      }
+      setState(() {
+        _currentLocationName = 'Joylashuv nomi topilmadi';
+      });
+    }
+  }
+
+  // Hozirgi joylashuvni olish
+  Future<void> _getCurrentLocation() async {
+    try {
+      bool hasPermission = await _checkLocationPermission();
+      if (!hasPermission) {
+        if (kDebugMode) {
+          print('Location permission not granted');
+        }
+        return;
+      }
+
+      Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
+
+      setState(() {
+        _currentPosition = position;
+      });
+
+      // Joylashuv nomini olish
+      await _getLocationName(position.latitude, position.longitude);
+
+      if (kDebugMode) {
+        print('Current position: ${position.latitude}, ${position.longitude}');
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error getting location: $e');
+      }
+    }
+  }
+
   void _showMyPosition() async {
+    // Avval joylashuvni olish
+    await _getCurrentLocation();
+    
     if (_currentPosition != null) {
       final newCameraPosition = CameraPosition(
         target: Point(
@@ -227,6 +352,29 @@ class _CreationPageState extends State<CreationPage> {
         zoom: 14.0,
       );
 
+      // Eski markerlarni tozalash
+      _mapObjects.clear();
+      
+      // Foydalanuvchi joylashuviga marker qo'shish
+      _mapObjects.add(
+        PlacemarkMapObject(
+          mapId: const MapObjectId('user_location'),
+          point: Point(
+            latitude: _currentPosition!.latitude,
+            longitude: _currentPosition!.longitude,
+          ),
+          icon: PlacemarkIcon.single(
+            PlacemarkIconStyle(
+              image: BitmapDescriptor.fromAssetImage('assets/icons/logo.png'),
+              scale: 1.0,
+            ),
+          ),
+        ),
+      );
+
+      // State ni yangilash
+      setState(() {});
+      
       controller.moveCamera(CameraUpdate.newCameraPosition(newCameraPosition));
     }
   }

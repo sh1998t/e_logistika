@@ -63,10 +63,10 @@ class _SettingDialogWidgetState extends State<SettingDialogWidget> {
             kartName: "O`zbekcha",
             isSelected: isSelectedList[0],
             onTap: () async {
-              await context.setLocale(const Locale('uz', 'UZ'));
-              setState(() {
-                isSelectedList = [true, false];
-              });
+              // await context.setLocale(const Locale('uz', 'UZ'));
+              // setState(() {
+              //   // isSelectedList = [true, false];
+              // });
             },
           ),
           LanguageOption(
@@ -74,10 +74,10 @@ class _SettingDialogWidgetState extends State<SettingDialogWidget> {
             kartName: 'Русский',
             isSelected: isSelectedList[1],
             onTap: () async {
-              await context.setLocale(const Locale('ru', 'RU'));
-              setState(() {
-                isSelectedList = [false, true];
-              });
+              // await context.setLocale(const Locale('ru', 'RU'));
+              // setState(() {
+              //   // isSelectedList = [false, true];
+              // });
             },
           ),
           LanguageOption(
@@ -85,10 +85,10 @@ class _SettingDialogWidgetState extends State<SettingDialogWidget> {
             kartName: 'English',
             isSelected: isSelectedList[1],
             onTap: () async {
-              await context.setLocale(const Locale('en', 'EN'));
-              setState(() {
-                isSelectedList = [false, true];
-              });
+              // await context.setLocale(const Locale('en', 'EN'));
+              // setState(() {
+              //   isSelectedList = [false, true];
+              // });
             },
           ),
         ],

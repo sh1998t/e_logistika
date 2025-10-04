@@ -1,12 +1,18 @@
+import 'package:e_logistika/core/router/routers_name.dart';
+import 'package:e_logistika/core/utils/formatters/formatters.dart';
+import 'package:e_logistika/features/my_card/presentation/widgets/main_text_fielid.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/constants/app_coler.dart';
 import '../../../../core/constants/app_constants.dart';
+import '../../../../gen/assets.gen.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/phone_input_field.dart';
+
 
 class LoginPage extends StatefulWidget {
   static String name = 'login_page';
@@ -23,14 +29,13 @@ class _LoginPageState extends State<LoginPage> {
   final _loginController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _obscurePassword = true;
-
+  FocusNode focusNode = FocusNode();
   @override
   void dispose() {
     _loginController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,10 +44,15 @@ class _LoginPageState extends State<LoginPage> {
         body: Stack(
           fit: StackFit.expand,
           children: [
-            Image.asset(
-              'assets/images/background_image_login.png',
-              fit: BoxFit.cover,
+            Opacity(opacity: 0.6,
+
+              child: Image.asset(
+                'assets/images/background_image_login.png',
+                fit: BoxFit.cover,
+              ),
+
             ),
+
 
             Container(
               decoration: BoxDecoration(
@@ -107,26 +117,28 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             const SizedBox(height: 20),
-                            PhoneInputField(),
-                            const SizedBox(height: 12),
-                            CustomTextField(
-                              controller: _passwordController,
-                              prefixIcon: Padding(
-                                padding:  EdgeInsets.only(left: 15.w),
-                                child: SvgPicture.asset('assets/svg/lock.svg',fit: BoxFit.cover,),
+                            MainTextField(
+                              controller: _loginController,
+                              hintText: "+998 93 123 45 67",
+                              inputFormatters: [Formatters.phoneNumber],
+                              keyboardType: TextInputType.number,
+                              prefix: Padding(
+                                padding:  EdgeInsets.all(10.r),
+                                child: Assets.svg.call.svg(width: 8.r, height: 8.r, fit: BoxFit.fill),
                               ),
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Parol kiriting';
-                                }
-                                if (value.length <
-                                    AppConstants.minPasswordLength) {
-                                  return 'Parol kamida ${AppConstants.minPasswordLength} ta belgidan iborat bo‘lsin';
-                                }
-                                return null;
-                              },
-                              inputType: TextInputType.text,
-                              hintText: ' Пароль',
+                            ),
+
+
+
+                      SizedBox(height: 12.h),
+                            MainTextField(
+                              hintText: "Пароль",
+                              controller: _passwordController,
+                              keyboardType: TextInputType.text,
+                              prefix: Padding(
+                                padding:  EdgeInsets.all(10.r),
+                                child: Assets.svg.lock.svg(width: 8.r, height: 8.r, fit: BoxFit.fill),
+                              ),
                             ),
                             SizedBox(height: 12.h),
 
@@ -143,7 +155,6 @@ class _LoginPageState extends State<LoginPage> {
 
                             const SizedBox(height: 16),
 
-                            // Ro‘yxatdan o‘tish matni
                             Column(
                               children: [
                                 Text(
@@ -155,10 +166,10 @@ class _LoginPageState extends State<LoginPage> {
                                       ?.copyWith(color: Colors.grey[600]),
                                 ),
                                 TextButton(
-                                  onPressed: () => Navigator.pushNamed(
-                                    context,
-                                    '/register',
-                                  ),
+                                  onPressed: (){
+                                    context.pushNamed(RoutersName.registerPageName);
+                                  },
+
                                   child:  Text('Регистрация ',
                                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
                                     fontSize: 12.sp,
@@ -177,37 +188,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
 
-            // 4️⃣ Pastdagi yozuv
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 12,
-              child: Column(
-                children: [
-                  Text(
-                    'Developed by Digital Project Center 2024',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall
-                        ?.copyWith(color: Colors.white70),
-                  ),
-                  const SizedBox(height: 8),
-                  OutlinedButton.icon(
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      side: const BorderSide(color: Colors.white70),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 8),
-                    ),
-                    onPressed: () {
-                      // TODO: til almashtirish funksiyasi
-                    },
-                    icon: const Icon(Icons.language),
-                    label: const Text('O\'z • Ru'),
-                  ),
-                ],
-              ),
-            ),
+
           ],
         ),
       ),

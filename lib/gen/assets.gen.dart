@@ -108,6 +108,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/Vector1.svg
   SvgGenImage get vector1 => const SvgGenImage('assets/svg/Vector1.svg');
 
+  /// File path: assets/svg/add_image.svg
+  SvgGenImage get addImage => const SvgGenImage('assets/svg/add_image.svg');
+
   /// File path: assets/svg/alert_triangle.svg
   SvgGenImage get alertTriangle =>
       const SvgGenImage('assets/svg/alert_triangle.svg');
@@ -231,6 +234,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/error.svg
   SvgGenImage get error => const SvgGenImage('assets/svg/error.svg');
 
+  /// File path: assets/svg/eye_icon.svg
+  SvgGenImage get eyeIcon => const SvgGenImage('assets/svg/eye_icon.svg');
+
   /// File path: assets/svg/face_id 2.svg
   SvgGenImage get faceId2 => const SvgGenImage('assets/svg/face_id 2.svg');
 
@@ -242,6 +248,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/goot.svg
   SvgGenImage get goot => const SvgGenImage('assets/svg/goot.svg');
+
+  /// File path: assets/svg/gps_fixed.svg
+  SvgGenImage get gpsFixed => const SvgGenImage('assets/svg/gps_fixed.svg');
 
   /// File path: assets/svg/group321.svg
   SvgGenImage get group321 => const SvgGenImage('assets/svg/group321.svg');
@@ -442,6 +451,7 @@ class $AssetsSvgGen {
     union23,
     vector,
     vector1,
+    addImage,
     alertTriangle,
     allerts,
     allerts2,
@@ -479,10 +489,12 @@ class $AssetsSvgGen {
     editSvgrepo,
     enFlash,
     error,
+    eyeIcon,
     faceId2,
     flagRussia,
     fullScreen,
     goot,
+    gpsFixed,
     group321,
     group43,
     helpOutline,

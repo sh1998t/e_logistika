@@ -1,4 +1,6 @@
 import 'package:e_logistika/core/router/routers_name.dart';
+import 'package:e_logistika/features/auth/presentation/pages/login_page.dart';
+import 'package:e_logistika/features/auth/presentation/pages/register_page.dart';
 import 'package:e_logistika/features/chat/presentation/page/chat_message_page.dart';
 import 'package:e_logistika/features/creation/presentation/page/create_search_page.dart';
 import 'package:e_logistika/features/creation/presentation/page/create_two_page.dart';
@@ -44,6 +46,20 @@ class AppRouter {
             name: RoutersName.mainName,
             builder: (BuildContext context, GoRouterState state) {
               return const NavigationPage();
+            },
+          ),
+          GoRoute(
+            path: RoutersName.registerPagePath,
+            name: RoutersName.registerPageName,
+            builder: (BuildContext context, GoRouterState state) {
+              return const RegisterPage();
+            },
+          ),
+          GoRoute(
+            path: RoutersName.loginPath,
+            name: RoutersName.loginName,
+            builder: (BuildContext context, GoRouterState state) {
+              return const LoginPage();
             },
           ),
           GoRoute(

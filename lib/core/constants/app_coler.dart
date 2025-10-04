@@ -56,12 +56,6 @@ class AppColor{
   static  Color titleColor = Color(0xFF00BB27);
   static  Color titleColor2 = Color(0xFFFAA300);
   static const Color emptyColor = Color(0xFFE8E8E9);
-  static const Color grey4 = Color(0xFF455968);
-  static const Color grey1 = Color(0xFFE1ECF6);
-  static const Color grey2 = Color(0xFFC7D4DE);
-  static const Color grey3 = Color(0xFF92A5B4);
-  static const Color inputColor = Color(0xFFF4F9FB);
-  static const Color error = Color(0xFFFF0000);
   static const Color green = Color(0xFF49AF26);
   static const Color appbar = Color(0xFF527447);
   static const Color bg = Color(0xFFF0F6F8);

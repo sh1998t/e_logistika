@@ -4,12 +4,18 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/constants/app_coler.dart';
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/utils/formatters/formatters.dart';
+import '../../../../gen/assets.gen.dart';
+import '../../../my_card/presentation/widgets/main_text_fielid.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/phone_input_field.dart';
 
 
 class RegisterPage extends StatefulWidget {
+   static const String name = 'register_page';
+   static const String path ='/register_page';
+
   const RegisterPage({super.key});
 
   @override
@@ -18,6 +24,10 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
+  final _surnameController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _numberController = TextEditingController();
+
   final _passwordController = TextEditingController();
 
 
@@ -40,7 +50,6 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
 
-            // 3️⃣ Login form (markazda kartochka)
             Center(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(AppConstants.defaultPadding),
@@ -96,27 +105,35 @@ class _RegisterPageState extends State<RegisterPage> {
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 20),
-                            PhoneInputField(),
-                            const SizedBox(height: 12),
-                            CustomTextField(
-                              controller: _passwordController,
-                              prefixIcon: Padding(
-                                padding:  EdgeInsets.only(left: 15.w),
-                                child: SvgPicture.asset('assets/svg/lock.svg',fit: BoxFit.cover,),
+                             SizedBox(height: 20.h),
+                            MainTextField(
+                              hintText: 'Имя',
+                              controller: _nameController,
+                              keyboardType: TextInputType.text,
+                            ),
+                            MainTextField(
+                              controller: _numberController,
+                              hintText: "+998 93 123 45 67",
+                              inputFormatters: [Formatters.phoneNumber],
+                              keyboardType: TextInputType.number,
+                              prefix: Padding(
+                                padding:  EdgeInsets.all(10.r),
+                                child: Assets.svg.call.svg(width: 8.r, height: 8.r, fit: BoxFit.fill),
                               ),
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Parol kiriting';
-                                }
-                                if (value.length <
-                                    AppConstants.minPasswordLength) {
-                                  return 'Parol kamida ${AppConstants.minPasswordLength} ta belgidan iborat bo‘lsin';
-                                }
-                                return null;
-                              },
-                              inputType: TextInputType.text,
-                              hintText: ' Пароль',
+                            ),
+                            SizedBox(height: 10.h),
+                            MainTextField(
+                              hintText: "Пароль",
+                              controller: _passwordController,
+                              keyboardType: TextInputType.text,
+                              prefix: Padding(
+                                padding:  EdgeInsets.all(10.r),
+                                child: Assets.svg.lock.svg(width: 8.r, height: 8.r, fit: BoxFit.fill),
+                              ),
+                              suffix:  Padding(
+                                padding:  EdgeInsets.all(10.r),
+                                child: Assets.svg.eyeIcon.svg(width: 8.r, height: 8.r, fit: BoxFit.fill),
+                              ),
                             ),
                             SizedBox(height: 12.h),
 

@@ -1,11 +1,23 @@
 package com.example.e_logistika
-import android.app.Application
 
+import io.flutter.embedding.android.FlutterActivity
+import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.plugins.GeneratedPluginRegistrant
 import com.yandex.mapkit.MapKitFactory
 
-class MainApplication: Application() {
-    override fun onCreate() {
-        super.onCreate()
-        MapKitFactory.setApiKey("4901e9f8-1b63-449f-b349-f25bfaa28cb5")
+class MainActivity : FlutterActivity() {
+    override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
+        super.configureFlutterEngine(flutterEngine)
+        GeneratedPluginRegistrant.registerWith(flutterEngine)
+    }
+    
+    override fun onStop() {
+        MapKitFactory.getInstance().onStop()
+        super.onStop()
+    }
+    
+    override fun onStart() {
+        super.onStart()
+        MapKitFactory.getInstance().onStart()
     }
 }
